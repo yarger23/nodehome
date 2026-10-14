@@ -11,7 +11,7 @@
       "label": "Каталог статей",
       "href": "/catalog/",
       "activePrefixes": ["/catalog/", "/article/"],
-      "shortcutCategoryIds": ["land", "foundation", "walls", "floors"],
+      "desktopCategoryIds": ["land", "foundation", "walls", "floors"],
       "groups": [
         { "label": "До начала работ", "categoryIds": ["land", "foundation"] },
         { "label": "Конструкции и отделка", "categoryIds": ["walls", "floors"] }
