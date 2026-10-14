@@ -49,9 +49,10 @@ function schemaScript(data) {
   return '<script type="application/ld+json">' + safeJson(data) + "</script>";
 }
 
-function breadcrumb(items) {
+function breadcrumb(items, contained = false) {
   const links = [{ label: "Главная", href: "/" }, ...items];
-  return '<nav class="breadcrumbs" aria-label="Хлебные крошки"><ol>' +
+  const classes = contained ? "breadcrumbs container" : "breadcrumbs";
+  return '<nav class="' + classes + '" aria-label="Хлебные крошки"><ol>' +
     links.map((item, index) => {
       const content = item.href && index !== links.length - 1
         ? '<a href="' + escapeHtml(item.href) + '">' + escapeHtml(item.label) + "</a>"
@@ -148,7 +149,7 @@ function articleCard(article) {
   const primaryCategory = categoryById[article.categoryIds[0]];
   return '<article class="article-card"><a class="article-card-image" href="/article/' +
     escapeHtml(article.slug) + '/" tabindex="-1" aria-hidden="true">' +
-    '<img src="/assets/images/' + escapeHtml(article.image) + '" alt="" width="1120" height="747" loading="lazy" decoding="async"></a>' +
+    '<img src="/assets/images/' + escapeHtml(article.image) + '" alt="" width="1200" height="800" loading="lazy" decoding="async"></a>' +
     '<div class="article-card-body"><div class="article-card-meta"><span>' +
     escapeHtml(primaryCategory ? primaryCategory.cardTitle : "Материал") + "</span><span>" +
     escapeHtml(article.minutes) + " мин</span></div>" +
@@ -174,7 +175,7 @@ function homePage() {
     '<input id="home-search" name="q" type="search" placeholder="Например, стяжка пола" autocomplete="off">' +
     '<button type="submit" aria-label="Искать">Найти <span aria-hidden="true">→</span></button></form>' +
     '<p class="hero-search-hint">Ищите инструкции, расчёты и разборы материалов</p></div>' +
-    '<figure class="hero-visual"><img src="/assets/images/hero-house.webp" alt="Строительство загородного дома: деревянный каркас, материалы и чертёж" width="1120" height="747" fetchpriority="high" decoding="async">' +
+    '<figure class="hero-visual"><img src="/assets/images/hero-house.webp" alt="Строительство загородного дома: деревянный каркас, материалы и чертёж" width="1200" height="800" fetchpriority="high" decoding="async">' +
     '<figcaption><span class="photo-mark"></span> От участка до готового дома</figcaption></figure></section>' +
     '<section class="section container" aria-labelledby="topics-title">' +
     sectionHeading("Выберите тему", "С чего начинается ваш проект?", "Откройте нужный раздел и двигайтесь по этапам.", "topics-title") +
@@ -212,7 +213,7 @@ function homePage() {
 }
 
 function catalogPage() {
-  const body = breadcrumb([{ label: "Материалы", href: "/catalog/" }]) +
+  const body = breadcrumb([{ label: "Материалы", href: "/catalog/" }], true) +
     '<section class="page-intro container"><p class="eyebrow">Библиотека Nodehome</p>' +
     "<h1>Материалы о строительстве и ремонте</h1>" +
     '<p class="page-lead">Выберите этап работ, чтобы найти инструкции, расчёты и список того, что стоит проверить.</p></section>' +
@@ -236,7 +237,7 @@ function categoryPage(category) {
   const body = breadcrumb([
     { label: "Материалы", href: "/catalog/" },
     { label: category.title }
-  ]) +
+  ], true) +
     '<section class="page-intro container"><p class="eyebrow">Раздел материалов</p>' +
     "<h1>" + escapeHtml(category.title) + "</h1>" +
     '<p class="page-lead">' + escapeHtml(category.intro) + "</p></section>" +
@@ -268,6 +269,16 @@ function articleBody(article) {
     if (section.bullets) {
       html += "<ul>" + section.bullets.map((item) => "<li>" + escapeHtml(item) + "</li>").join("") + "</ul>";
     }
+    if (section.image) {
+      html += '<figure class="article-figure"><img src="/assets/images/' + escapeHtml(section.image) +
+        '" alt="' + escapeHtml(section.imageAlt || "") + '" width="1200" height="800" loading="lazy" decoding="async">' +
+        (section.imageCaption ? '<figcaption>' + escapeHtml(section.imageCaption) + "</figcaption>" : "") + "</figure>";
+    }
+    if (section.links && section.links.length) {
+      html += '<p class="article-inline-links">' + section.links.map((link) =>
+        '<a href="' + escapeHtml(link.href) + '">' + escapeHtml(link.label) + ' <span aria-hidden="true">→</span></a>'
+      ).join("") + "</p>";
+    }
     if (section.callout) {
       html += '<aside class="article-callout"><span class="callout-mark" aria-hidden="true">i</span><p>' +
         escapeHtml(section.callout) + "</p></aside>";
@@ -285,6 +296,13 @@ function articlePage(article) {
   const faqs = article.faqs.map((item) =>
     '<details class="faq-item"><summary>' + escapeHtml(item.question) + '</summary><p>' +
     escapeHtml(item.answer) + "</p></details>").join("");
+  const sources = (article.sources || []).map((source) =>
+    '<li><a href="' + escapeHtml(source.url) + '" target="_blank" rel="noopener noreferrer">' +
+    escapeHtml(source.title) + '</a><span>' + escapeHtml(source.note) + '</span><small>Проверено: ' +
+    escapeHtml(source.checkedAt) + "</small></li>").join("");
+  const sourcesHtml = sources
+    ? '<section class="article-sources"><h2>Источники и техническая документация</h2><ol>' + sources + "</ol></section>"
+    : "";
   const pathItems = [
     { label: "Материалы", href: "/catalog/" },
     { label: primaryCategory ? primaryCategory.title : "Статья", href: primaryCategory ? "/catalog/" + primaryCategory.id + "/" : "/catalog/" },
@@ -295,10 +313,11 @@ function articlePage(article) {
     "<h1>" + escapeHtml(article.title) + "</h1><p class=\"article-lead\">" + escapeHtml(article.intro) + "</p>" +
     '<div class="article-meta"><span>' + escapeHtml(article.minutes) + " минут чтения</span><span>Практическая инструкция</span></div></header>" +
     '<img class="article-cover" src="/assets/images/' + escapeHtml(article.image) + '" alt="' + escapeHtml(article.imageAlt) +
-    '" width="1120" height="747" fetchpriority="high" decoding="async">' +
+    '" width="1200" height="800" fetchpriority="high" decoding="async">' +
     '<details class="article-toc"><summary>Содержание статьи <span>' + article.sections.length + " раздела</span></summary><ol>" + toc + "</ol></details>" +
     '<div class="article-reading"><div class="article-content">' + articleBody(article) +
     (faqs ? '<section class="article-faq"><h2>Частые вопросы</h2>' + faqs + "</section>" : "") +
+    sourcesHtml +
     '<p class="source-note">Материал носит справочный характер. Условия работ, допустимые слои и сроки проверяйте по проекту и инструкции производителя.</p>' +
     "</div></div></article>" +
     (related.length ? '<section class="section section-muted related-section"><div class="container">' +
@@ -385,7 +404,7 @@ function calculatorsPage() {
     '<a class="tool-card" href="/calculators/' + id + '/"><span class="category-number">' +
     String(index + 1).padStart(2, "0") + '</span><div><h3>' + escapeHtml(data.title) +
     "</h3><p>" + escapeHtml(data.intro) + '</p></div><span class="category-arrow" aria-hidden="true">↗</span></a>').join("");
-  const body = breadcrumb([{ label: "Калькуляторы" }]) +
+  const body = breadcrumb([{ label: "Калькуляторы" }], true) +
     '<section class="page-intro container"><p class="eyebrow">Инструменты</p><h1>Строительные калькуляторы</h1>' +
     '<p class="page-lead">Подставьте параметры своего объекта и проверьте, как получается результат. Для расхода материалов используйте данные производителя.</p></section>' +
     '<section class="section container calculator-list"><div class="tool-grid">' + cards + "</div></section>" +
@@ -404,7 +423,7 @@ function calculatorPage(id, data) {
   const body = breadcrumb([
     { label: "Калькуляторы", href: "/calculators/" },
     { label: data.title }
-  ]) +
+  ], true) +
     '<section class="page-intro container"><p class="eyebrow">Калькулятор Nodehome</p><h1>' +
     escapeHtml(data.title) + "</h1><p class=\"page-lead\">" + escapeHtml(data.intro) + "</p></section>" +
     '<section class="container calculator-page-layout"><div class="calculator-panel">' +
