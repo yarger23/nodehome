@@ -18,8 +18,10 @@ const [site, categories, articleRecords] = await Promise.all([
 const articles = articleRecords.filter((item) => item.status === "published");
 const categoryById = Object.fromEntries(categories.map((item) => [item.id, item]));
 const articleById = Object.fromEntries(articles.map((item) => [item.id, item]));
-const missingMenuCategories = site.navigation.flatMap((item) =>
-  (item.groups || []).flatMap((group) => group.categoryIds.filter((id) => !categoryById[id])));
+const missingMenuCategories = site.navigation.flatMap((item) => [
+  ...(item.shortcutCategoryIds || []),
+  ...(item.groups || []).flatMap((group) => group.categoryIds)
+]).filter((id) => !categoryById[id]);
 if (missingMenuCategories.length) {
   throw new Error("Unknown category ID in navigation: " + missingMenuCategories.join(", "));
 }
@@ -104,13 +106,19 @@ function header(active = "") {
   const nav = site.navigation.map((item) => {
     const link = navLink(item, active);
     if (!item.groups) return link;
+    const shortcuts = (item.shortcutCategoryIds || []).map((id) => categoryById[id]).filter(Boolean).map((category) => {
+      const href = "/catalog/" + category.id + "/";
+      return '<a class="nav-link nav-category-shortcut" href="' + escapeHtml(href) + '" title="' +
+        escapeHtml(category.title) + '"' + (active === href ? ' aria-current="page"' : "") + ">" +
+        escapeHtml(category.cardTitle || category.title) + "</a>";
+    }).join("");
     return '<div class="nav-catalog-item">' + link +
       '<details class="menu-disclosure catalog-disclosure"><summary aria-label="Показать разделы каталога" title="Разделы каталога">' +
       '<span class="nav-chevron" aria-hidden="true"></span></summary>' +
       '<div class="catalog-mega-menu"><div class="catalog-menu-head"><strong>Разделы каталога</strong>' +
       '<a href="' + escapeHtml(item.href) + '"' + (active === item.href ? ' aria-current="page"' : "") +
       '>Все статьи <span aria-hidden="true">→</span></a></div>' +
-      catalogGroups(item, active, "catalog-menu") + "</div></details></div>";
+      catalogGroups(item, active, "catalog-menu") + "</div></details></div>" + shortcuts;
   }).join("");
   const mobileCatalog = catalogItem
     ? '<div class="mobile-nav-section"><div class="mobile-nav-heading"><strong>Статьи</strong>' +
