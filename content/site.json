@@ -5,10 +5,22 @@
   "slogan": "Стройка становится понятнее, когда всё по порядку.",
   "heroTitle": "Строительство и ремонт — без лишних догадок",
   "heroLead": "Разбираемся в материалах, этапах работ и расчётах: от подготовки участка до отделки.",
+  "searchHref": "/search/",
   "navigation": [
-    { "label": "Материалы", "href": "/catalog/" },
-    { "label": "Участок и стройка", "href": "/catalog/land/" },
-    { "label": "Калькуляторы", "href": "/calculators/" }
+    {
+      "label": "Каталог статей",
+      "href": "/catalog/",
+      "activePrefixes": ["/catalog/", "/article/"],
+      "groups": [
+        { "label": "До начала работ", "categoryIds": ["land", "foundation"] },
+        { "label": "Конструкции и отделка", "categoryIds": ["walls", "floors"] }
+      ]
+    },
+    {
+      "label": "Калькуляторы",
+      "href": "/calculators/",
+      "activePrefixes": ["/calculators/"]
+    }
   ],
   "featuredArticles": ["foundation", "screed", "plaster"],
   "homeFaq": [

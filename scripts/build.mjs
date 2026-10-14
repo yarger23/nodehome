@@ -18,6 +18,11 @@ const [site, categories, articleRecords] = await Promise.all([
 const articles = articleRecords.filter((item) => item.status === "published");
 const categoryById = Object.fromEntries(categories.map((item) => [item.id, item]));
 const articleById = Object.fromEntries(articles.map((item) => [item.id, item]));
+const missingMenuCategories = site.navigation.flatMap((item) =>
+  (item.groups || []).flatMap((group) => group.categoryIds.filter((id) => !categoryById[id])));
+if (missingMenuCategories.length) {
+  throw new Error("Unknown category ID in navigation: " + missingMenuCategories.join(", "));
+}
 
 function escapeHtml(value = "") {
   return String(value).replace(/[&<>"']/g, (character) => ({
@@ -77,22 +82,57 @@ function breadcrumbSchema(items, route) {
 }
 
 function header(active = "") {
-  const nav = site.navigation.map((item) => {
-    const current = item.href === active ? ' aria-current="page"' : "";
-    return '<a href="' + escapeHtml(item.href) + '"' + current + ">" +
-      escapeHtml(item.label) + "</a>";
+  const isCurrent = (item, route) => (item.activePrefixes || [item.href])
+    .some((prefix) => route === prefix || route.startsWith(prefix));
+  const navLink = (item, route, className = "nav-link") =>
+    '<a class="' + className + '" href="' + escapeHtml(item.href) + '"' +
+    (isCurrent(item, route) ? ' aria-current="page"' : "") + ">" +
+    escapeHtml(item.label) + "</a>";
+  const catalogGroups = (item, route, prefix) => item.groups.map((group) => {
+    const links = group.categoryIds.map((id) => categoryById[id]).filter(Boolean).map((category) => {
+      const href = "/catalog/" + category.id + "/";
+      return '<a class="' + prefix + '-link" href="' + escapeHtml(href) + '"' +
+        (route === href ? ' aria-current="page"' : "") + ">" +
+        '<span class="' + prefix + '-link-copy"><strong>' + escapeHtml(category.title) +
+        "</strong><small>" + escapeHtml(category.description) + "</small></span>" +
+        '<span class="' + prefix + '-link-arrow" aria-hidden="true">↗</span></a>';
+    }).join("");
+    return '<section class="' + prefix + '-group"><h2>' + escapeHtml(group.label) +
+      '</h2><div class="' + prefix + '-links">' + links + "</div></section>";
   }).join("");
+  const catalogItem = site.navigation.find((item) => item.groups);
+  const nav = site.navigation.map((item) => {
+    const link = navLink(item, active);
+    if (!item.groups) return link;
+    return '<div class="nav-catalog-item">' + link +
+      '<details class="menu-disclosure catalog-disclosure"><summary aria-label="Показать разделы каталога" title="Разделы каталога">' +
+      '<span class="nav-chevron" aria-hidden="true"></span></summary>' +
+      '<div class="catalog-mega-menu"><div class="catalog-menu-head"><strong>Разделы каталога</strong>' +
+      '<a href="' + escapeHtml(item.href) + '"' + (active === item.href ? ' aria-current="page"' : "") +
+      '>Все статьи <span aria-hidden="true">→</span></a></div>' +
+      catalogGroups(item, active, "catalog-menu") + "</div></details></div>";
+  }).join("");
+  const mobileCatalog = catalogItem
+    ? '<div class="mobile-nav-section"><div class="mobile-nav-heading"><strong>Статьи</strong>' +
+      '<a href="' + escapeHtml(catalogItem.href) + '"' + (active === catalogItem.href ? ' aria-current="page"' : "") +
+      '>Все статьи <span aria-hidden="true">→</span></a></div>' +
+      catalogGroups(catalogItem, active, "mobile-nav") + "</div>"
+    : "";
+  const mobileTools = site.navigation.filter((item) => !item.groups).map((item) =>
+    navLink(item, active, "mobile-nav-top-link")).join("");
 
   return '<header class="site-header"><div class="header-inner container">' +
     '<a class="brand" href="/" aria-label="Nodehome — главная страница">' +
     '<span class="brand-mark" aria-hidden="true">N</span>' +
     '<span class="brand-name">NODEHOME</span></a>' +
     '<nav class="desktop-nav" aria-label="Главная навигация">' + nav + "</nav>" +
-    '<a class="header-cta" href="/calculators/">Калькуляторы <span aria-hidden="true">↗</span></a>' +
-    '<details class="mobile-menu"><summary aria-label="Открыть меню"><span class="menu-icon" aria-hidden="true"></span><span>Меню</span></summary>' +
-    '<nav class="mobile-nav" aria-label="Мобильная навигация">' +
-    '<a href="/catalog/">Материалы</a><a href="/catalog/land/">Участок и стройка</a>' +
-    '<a href="/calculators/">Калькуляторы</a><a href="/search/">Поиск по сайту</a></nav></details>' +
+    '<a class="header-search" href="' + escapeHtml(site.searchHref || "/search/") + '" aria-label="Поиск по сайту">' +
+    '<svg class="search-icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.3"></circle><path d="m15.5 15.5 4.2 4.2"></path></svg>' +
+    '<span>Поиск</span></a>' +
+    '<details class="mobile-menu menu-disclosure"><summary aria-label="Открыть меню"><span class="menu-icon" aria-hidden="true"></span><span>Меню</span></summary>' +
+    '<nav class="mobile-nav" aria-label="Мобильная навигация">' + mobileCatalog +
+    '<div class="mobile-nav-tools">' + mobileTools + '<a class="mobile-nav-top-link" href="' +
+    escapeHtml(site.searchHref || "/search/") + '">Поиск по сайту</a></div></nav></details>' +
     "</div></header>";
 }
 
@@ -127,7 +167,7 @@ function layout(options) {
     '<link rel="stylesheet" href="/assets/site.css">\n' +
     schemaScript(options.schema) + '\n' +
     '<script src="/assets/site.js" defer></script>\n</head>\n<body>\n' +
-    header(options.active || "") + '<main id="main-content">' + options.body + "</main>" +
+    header(options.active || options.route || "") + '<main id="main-content">' + options.body + "</main>" +
     footer() + '\n</body>\n</html>';
 }
 
@@ -254,7 +294,7 @@ function categoryPage(category) {
     description: category.description,
     route: "/catalog/" + category.id + "/",
     body,
-    active: category.id === "land" ? "/catalog/land/" : "/catalog/",
+    active: "/catalog/" + category.id + "/",
     schema: [breadcrumbSchema([
       { label: "Материалы", href: "/catalog/" },
       { label: category.title }

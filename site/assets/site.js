@@ -5,6 +5,24 @@
     maximumFractionDigits: 2
   });
 
+  const menuDisclosures = Array.from(document.querySelectorAll(".menu-disclosure"));
+  menuDisclosures.forEach((menu) => {
+    menu.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && menu.open) {
+        menu.open = false;
+        menu.querySelector("summary")?.focus();
+      }
+    });
+    menu.addEventListener("focusout", (event) => {
+      if (event.relatedTarget && !menu.contains(event.relatedTarget)) menu.open = false;
+    });
+  });
+  document.addEventListener("pointerdown", (event) => {
+    menuDisclosures.forEach((menu) => {
+      if (menu.open && !menu.contains(event.target)) menu.open = false;
+    });
+  });
+
   const getNumber = (form, name) => {
     const field = form.elements.namedItem(name);
     return field ? Number(field.value) : 0;
