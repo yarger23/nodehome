@@ -158,7 +158,7 @@ function header(active = "") {
     const href = hasPublishedPage ? groupRoute(group) : section.route + "#" + group.id;
     return '<a class="' + className + '" href="' + escapeHtml(href) + '"' +
       (activeGroupId === group.id ? ' aria-current="page"' : "") + ">" +
-      '<span>' + escapeHtml(group.title) + '</span><span class="nav-submenu-arrow" aria-hidden="true">↗</span></a>';
+      escapeHtml(group.title) + "</a>";
   };
   const desktopNav = site.navigation.map((item) => {
     const section = sectionById[item.sectionId];
