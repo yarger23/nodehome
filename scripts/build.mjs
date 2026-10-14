@@ -553,6 +553,15 @@ function articleBody(article) {
     if (section.bullets) {
       html += "<ul>" + section.bullets.map((item) => "<li>" + escapeHtml(item) + "</li>").join("") + "</ul>";
     }
+    if (section.table) {
+      const headerCells = (section.table.headers || []).map((value) => "<th scope=\"col\">" + escapeHtml(value) + "</th>").join("");
+      const rows = (section.table.rows || []).map((row) =>
+        "<tr>" + row.map((value, index) =>
+          (index === 0 ? "<th scope=\"row\">" : "<td>") + escapeHtml(value) + (index === 0 ? "</th>" : "</td>")
+        ).join("") + "</tr>").join("");
+      html += '<div class="article-table-scroll" role="region" aria-label="Сравнение материалов" tabindex="0"><table class="article-comparison-table"><thead><tr>' +
+        headerCells + "</tr></thead><tbody>" + rows + "</tbody></table></div>";
+    }
     if (section.image) {
       html += '<figure class="article-figure"><img src="/assets/images/' + escapeHtml(section.image) +
         '" alt="' + escapeHtml(section.imageAlt || "") + '" width="1200" height="800" loading="lazy" decoding="async">' +
