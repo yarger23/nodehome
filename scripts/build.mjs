@@ -9,29 +9,43 @@ const BASE_URL = "https://nodehome.ru";
 const readJson = async (file) =>
   JSON.parse(await readFile(path.join(ROOT, "content", file), "utf8"));
 
-const [site, categories, articleRecords] = await Promise.all([
+const [site, categories, articleRecords, sections] = await Promise.all([
   readJson("site.json"),
   readJson("categories.json"),
-  readJson("articles.json")
+  readJson("articles.json"),
+  readJson("sections.json")
 ]);
 
 const articles = articleRecords.filter((item) => item.status === "published");
 const categoryById = Object.fromEntries(categories.map((item) => [item.id, item]));
 const articleById = Object.fromEntries(articles.map((item) => [item.id, item]));
-const missingMenuCategories = site.navigation.flatMap((item) => [
-  ...(item.categoryIds || []),
-  ...(item.desktopCategoryIds || []),
-  ...(item.groups || []).flatMap((group) => group.categoryIds)
-]).filter((id) => !categoryById[id]);
-if (missingMenuCategories.length) {
-  throw new Error("Unknown category ID in navigation: " + missingMenuCategories.join(", "));
+const sectionById = Object.fromEntries(sections.map((item) => [item.id, item]));
+const sectionCategoryIds = sections.flatMap((section) => section.topics
+  .map((topic) => topic.categoryId).filter(Boolean));
+const categorySectionById = Object.fromEntries(sections.flatMap((section) => section.topics
+  .filter((topic) => topic.categoryId).map((topic) => [topic.categoryId, section])));
+const missingSectionCategories = sectionCategoryIds.filter((id) => !categoryById[id]);
+if (missingSectionCategories.length) {
+  throw new Error("Unknown category ID in sections: " + [...new Set(missingSectionCategories)].join(", "));
 }
-const navigationCategoryIds = site.navigation.flatMap((item) => item.categoryIds || []);
-const repeatedNavigationCategories = navigationCategoryIds.filter((id, index) =>
-  navigationCategoryIds.indexOf(id) !== index
+const repeatedSectionCategories = sectionCategoryIds.filter((id, index) =>
+  sectionCategoryIds.indexOf(id) !== index
 );
-if (repeatedNavigationCategories.length) {
-  throw new Error("Duplicate category ID in navigation: " + [...new Set(repeatedNavigationCategories)].join(", "));
+if (repeatedSectionCategories.length) {
+  throw new Error("Duplicate category ID across sections: " + [...new Set(repeatedSectionCategories)].join(", "));
+}
+const unassignedCategories = categories.map((category) => category.id)
+  .filter((id) => !categorySectionById[id]);
+if (unassignedCategories.length) {
+  throw new Error("Categories must belong to a section: " + unassignedCategories.join(", "));
+}
+const missingNavigationSections = site.navigation.map((item) => item.sectionId)
+  .filter((id) => !sectionById[id]);
+if (missingNavigationSections.length) {
+  throw new Error("Unknown section ID in navigation: " + missingNavigationSections.join(", "));
+}
+if (site.navigation.length !== 4 || new Set(site.navigation.map((item) => item.sectionId)).size !== 4) {
+  throw new Error("Navigation must contain four unique main sections.");
 }
 
 function escapeHtml(value = "") {
@@ -94,16 +108,10 @@ function breadcrumbSchema(items, route) {
 function header(active = "") {
   const currentArticle = articles.find((article) => active === "/article/" + article.id + "/");
   const currentCategoryId = active.match(/^\/catalog\/([^/]+)\/$/)?.[1] || "";
-  const itemIsCurrent = (item) => {
-    if (item.categoryIds) {
-      return currentCategoryId === "" && item.showCatalogLink && active === "/catalog/" ||
-        item.categoryIds.includes(currentCategoryId) ||
-        Boolean(currentArticle && currentArticle.categoryIds.some((id) => item.categoryIds.includes(id)));
-    }
-    return (item.activePrefixes || [item.href]).some((prefix) =>
-      active === prefix || active.startsWith(prefix)
-    );
-  };
+  const primaryArticleCategoryId = currentArticle?.categoryIds[0] || "";
+  const sectionIsCurrent = (section) => active === section.route ||
+    section.topics.some((topic) => topic.categoryId === currentCategoryId ||
+      topic.categoryId === primaryArticleCategoryId);
   const navLink = (item, route, className = "nav-link") => {
     const current = (item.activePrefixes || [item.href]).some((prefix) =>
       route === prefix || route.startsWith(prefix)
@@ -111,38 +119,37 @@ function header(active = "") {
     return '<a class="' + className + '" href="' + escapeHtml(item.href) + '"' +
       (current ? ' aria-current="page"' : "") + ">" + escapeHtml(item.label) + "</a>";
   };
-  const categoryLink = (id, route, className) => {
-    const category = categoryById[id];
-    if (!category) return "";
-    const href = "/catalog/" + category.id + "/";
+  const menuLinks = (section, route, className) => section.topics.map((topic) => {
+    const category = topic.categoryId ? categoryById[topic.categoryId] : null;
+    const href = category
+      ? "/catalog/" + category.id + "/"
+      : section.route + "#topic-" + topic.id;
+    const label = category ? category.title : topic.title;
     return '<a class="' + className + '" href="' + escapeHtml(href) + '"' +
       (route === href ? ' aria-current="page"' : "") + ">" +
-      escapeHtml(category.title) + "</a>";
-  };
-  const menuLinks = (item, route, className) => {
-    const allMaterials = item.showCatalogLink
-      ? '<a class="' + className + ' mega-menu-link-all" href="/catalog/"' +
-        (route === "/catalog/" ? ' aria-current="page"' : "") + ">Все материалы</a>"
-      : "";
-    return allMaterials + (item.categoryIds || [])
-      .map((id) => categoryLink(id, route, className)).join("");
-  };
+      '<span>' + escapeHtml(label) + "</span><span class=\"nav-submenu-arrow\" aria-hidden=\"true\">↗</span></a>";
+  }).join("");
   const desktopNav = site.navigation.map((item) => {
-    if (!item.categoryIds) return navLink(item, active, "nav-direct");
-    const current = itemIsCurrent(item);
-    return '<details class="nav-dropdown" name="nodehome-navigation"' +
-      (current ? ' data-current="true"' : "") + ">" +
-      '<summary class="nav-trigger">' + escapeHtml(item.label) +
-      '<span class="nav-chevron" aria-hidden="true"></span></summary>' +
-      '<div class="mega-menu" style="--menu-columns:' + Number(item.menuColumns || 3) + '">' +
-      menuLinks(item, active, "mega-menu-link") + "</div></details>";
+    const section = sectionById[item.sectionId];
+    const current = sectionIsCurrent(section);
+    const exact = active === section.route;
+    const submenuId = "submenu-" + section.id;
+    return '<div class="nav-item"' + (current ? ' data-current="true"' : "") + ">" +
+      '<div class="nav-item-row"><a class="nav-parent" id="nav-parent-' + section.id + '" href="' + escapeHtml(section.route) + '"' +
+      (exact ? ' aria-current="page"' : "") + ">" + escapeHtml(section.title) +
+      '<span class="nav-chevron" aria-hidden="true"></span></a></div>' +
+      '<div class="nav-submenu" id="' + submenuId + '" role="group" aria-labelledby="nav-parent-' + section.id + '">' +
+      menuLinks(section, active, "nav-submenu-link") + "</div></div>";
+  }).join("") + site.navigationTools.map((item) => navLink(item, active, "nav-tool")).join("");
+  const mobileNav = site.navigation.map((item) => {
+    const section = sectionById[item.sectionId];
+    const exact = active === section.route;
+    return '<section class="mobile-nav-group"><h2 class="mobile-nav-heading"><a href="' +
+      escapeHtml(section.route) + '"' + (exact ? ' aria-current="page"' : "") + ">" +
+      escapeHtml(section.title) + "</a></h2><div class=\"mobile-nav-links\">" +
+      menuLinks(section, active, "mobile-nav-link") + "</div></section>";
   }).join("");
-  const mobileNav = site.navigation.filter((item) => item.categoryIds).map((item) => {
-    return '<section class="mobile-nav-group"><h2 class="mobile-nav-heading">' +
-      escapeHtml(item.label) + "</h2><div class=\"mobile-nav-links\">" +
-      menuLinks(item, active, "mobile-nav-link") + "</div></section>";
-  }).join("");
-  const mobileTools = site.navigation.filter((item) => !item.categoryIds)
+  const mobileTools = site.navigationTools
     .map((item) => navLink(item, active, "mobile-nav-tool")).join("");
 
   return '<header class="site-header"><div class="header-inner container">' +
@@ -201,12 +208,30 @@ function sectionHeading(kicker, title, lead = "", headingId = "") {
     (lead ? '<p class="section-lead">' + escapeHtml(lead) + "</p>" : "") + "</div>";
 }
 
-function categoryCard(category, index) {
-  return '<a class="category-card" href="/catalog/' + escapeHtml(category.id) + '/">' +
+function sectionCard(section, index) {
+  return '<a class="category-card section-card" href="' + escapeHtml(section.route) + '">' +
     '<span class="category-number">' + String(index + 1).padStart(2, "0") + "</span>" +
     '<span class="category-arrow" aria-hidden="true">↗</span>' +
-    "<h3>" + escapeHtml(category.cardTitle) + "</h3>" +
-    "<p>" + escapeHtml(category.description) + "</p></a>";
+    "<h3>" + escapeHtml(section.title) + "</h3>" +
+    "<p>" + escapeHtml(section.description) + "</p></a>";
+}
+
+function sectionTopicCard(section, topic, index) {
+  const category = topic.categoryId ? categoryById[topic.categoryId] : null;
+  const title = category ? category.title : topic.title;
+  const description = category ? category.description : topic.description;
+  const number = String(index + 1).padStart(2, "0");
+  if (category) {
+    return '<a class="section-topic-card" href="/catalog/' + escapeHtml(category.id) + '/">' +
+      '<span class="category-number">' + number + "</span>" +
+      '<span class="section-topic-status">Материалы</span>' +
+      "<h2>" + escapeHtml(title) + "</h2><p>" + escapeHtml(description) + "</p>" +
+      '<span class="section-topic-link">Открыть тему <span aria-hidden="true">→</span></span></a>';
+  }
+  return '<article class="section-topic-card section-topic-card-planned" id="topic-' + escapeHtml(topic.id) + '">' +
+    '<span class="category-number">' + number + "</span>" +
+    '<span class="section-topic-status">Материалы готовятся</span>' +
+    "<h2>" + escapeHtml(title) + "</h2><p>" + escapeHtml(description) + "</p></article>";
 }
 
 function articleCard(article) {
@@ -223,7 +248,7 @@ function articleCard(article) {
 }
 
 function homePage() {
-  const categoriesHtml = categories.map(categoryCard).join("");
+  const sectionsHtml = sections.map(sectionCard).join("");
   const featured = site.featuredArticles.map((id) => articleById[id]).filter(Boolean).map(articleCard).join("");
   const faq = site.homeFaq.map((item) =>
     '<details class="faq-item"><summary>' + escapeHtml(item.question) + '</summary><p>' +
@@ -242,8 +267,8 @@ function homePage() {
     '<figure class="hero-visual"><img src="/assets/images/hero-house.webp" alt="Строительство загородного дома: деревянный каркас, материалы и чертёж" width="1200" height="800" fetchpriority="high" decoding="async">' +
     '<figcaption><span class="photo-mark"></span> От участка до готового дома</figcaption></figure></section>' +
     '<section class="section container" aria-labelledby="topics-title">' +
-    sectionHeading("Выберите тему", "С чего начинается ваш проект?", "Откройте нужный раздел и двигайтесь по этапам.", "topics-title") +
-    '<div class="category-grid">' + categoriesHtml + "</div></section>" +
+    sectionHeading("Выберите раздел", "С чего начинается ваш проект?", "Четыре направления каталога: от строительства дома до работ на участке.", "topics-title") +
+    '<div class="category-grid">' + sectionsHtml + "</div></section>" +
     '<section class="section section-muted"><div class="container">' +
     sectionHeading("Полезные материалы", "Разобраться перед началом работ", "Короткие и практичные инструкции с расчётами и проверочными списками.") +
     '<div class="article-grid">' + featured + '</div><div class="section-more"><a class="text-link" href="/catalog/">Все материалы <span aria-hidden="true">→</span></a></div>' +
@@ -280,15 +305,15 @@ function catalogPage() {
   const body = breadcrumb([{ label: "Материалы", href: "/catalog/" }], true) +
     '<section class="page-intro container"><p class="eyebrow">Библиотека Nodehome</p>' +
     "<h1>Материалы о строительстве и ремонте</h1>" +
-    '<p class="page-lead">Выберите этап работ, чтобы найти инструкции, расчёты и список того, что стоит проверить.</p></section>' +
+    '<p class="page-lead">Выберите направление, чтобы перейти к темам и опубликованным инструкциям.</p></section>' +
     '<section class="section container catalog-section"><div class="category-grid">' +
-    categories.map(categoryCard).join("") + "</div></section>" +
+    sections.map(sectionCard).join("") + "</div></section>" +
     '<section class="section section-muted"><div class="container">' +
     sectionHeading("В редакции", "Популярные инструкции", "Проверяйте условия своего объекта и данные на упаковке материала.") +
     '<div class="article-grid">' + site.featuredArticles.map((id) => articleById[id]).filter(Boolean).map(articleCard).join("") + "</div></div></section>";
   return layout({
     title: "Материалы о строительстве и ремонте",
-    description: "Каталог Nodehome: инструкции по участку, фундаменту, стенам и полу, а также строительные калькуляторы.",
+    description: "Четыре раздела каталога Nodehome: строительство дома, ремонт и отделка, инженерные системы, участок и благоустройство.",
     route: "/catalog/",
     body,
     active: "/catalog/",
@@ -296,12 +321,38 @@ function catalogPage() {
   });
 }
 
-function categoryPage(category) {
-  const related = category.articles.map((id) => articleById[id]).filter(Boolean);
+function sectionPage(section) {
+  const topicCards = section.topics.map((topic, index) => sectionTopicCard(section, topic, index)).join("");
   const body = breadcrumb([
     { label: "Материалы", href: "/catalog/" },
-    { label: category.title }
+    { label: section.title }
   ], true) +
+    '<section class="page-intro container"><p class="eyebrow">Раздел Nodehome</p>' +
+    "<h1>" + escapeHtml(section.title) + "</h1>" +
+    '<p class="page-lead">' + escapeHtml(section.intro) + "</p></section>" +
+    '<section class="section container section-topics"><div class="category-grid">' + topicCards + "</div></section>";
+  return layout({
+    title: section.title,
+    description: section.description,
+    route: section.route,
+    body,
+    active: section.route,
+    schema: [breadcrumbSchema([
+      { label: "Материалы", href: "/catalog/" },
+      { label: section.title }
+    ], section.route)]
+  });
+}
+
+function categoryPage(category) {
+  const related = category.articles.map((id) => articleById[id]).filter(Boolean);
+  const parentSection = categorySectionById[category.id];
+  const breadcrumbItems = [
+    { label: "Материалы", href: "/catalog/" },
+    { label: parentSection.title, href: parentSection.route },
+    { label: category.title }
+  ];
+  const body = breadcrumb(breadcrumbItems, true) +
     '<section class="page-intro container"><p class="eyebrow">Раздел материалов</p>' +
     "<h1>" + escapeHtml(category.title) + "</h1>" +
     '<p class="page-lead">' + escapeHtml(category.intro) + "</p></section>" +
@@ -319,10 +370,7 @@ function categoryPage(category) {
     route: "/catalog/" + category.id + "/",
     body,
     active: "/catalog/" + category.id + "/",
-    schema: [breadcrumbSchema([
-      { label: "Материалы", href: "/catalog/" },
-      { label: category.title }
-    ], "/catalog/" + category.id + "/")]
+    schema: [breadcrumbSchema(breadcrumbItems, "/catalog/" + category.id + "/")]
   });
 }
 
@@ -353,6 +401,7 @@ function articleBody(article) {
 
 function articlePage(article) {
   const primaryCategory = categoryById[article.categoryIds[0]];
+  const parentSection = primaryCategory ? categorySectionById[primaryCategory.id] : null;
   const toc = article.sections.map((section) =>
     '<li><a href="#' + escapeHtml(section.id) + '">' + escapeHtml(section.title) + "</a></li>").join("");
   const related = articles.filter((other) => other.id !== article.id &&
@@ -369,6 +418,7 @@ function articlePage(article) {
     : "";
   const pathItems = [
     { label: "Материалы", href: "/catalog/" },
+    ...(parentSection ? [{ label: parentSection.title, href: parentSection.route }] : []),
     { label: primaryCategory ? primaryCategory.title : "Статья", href: primaryCategory ? "/catalog/" + primaryCategory.id + "/" : "/catalog/" },
     { label: article.title }
   ];
@@ -559,6 +609,11 @@ async function main() {
   await writeRoute("/catalog/", catalogPage());
   await writeRoute("/calculators/", calculatorsPage());
   await writeRoute("/search/", searchPage());
+
+  for (const section of sections) {
+    routes.push(section.route);
+    await writeRoute(section.route, sectionPage(section));
+  }
 
   for (const category of categories) {
     const route = "/catalog/" + category.id + "/";
