@@ -635,3 +635,17 @@ button { cursor: pointer; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }
+
+/* Responsive comparison tables within long-form articles */
+.article-table-scroll { max-width: 100%; overflow-x: auto; margin: 22px 0 30px; border: 1px solid var(--line); border-radius: 12px; -webkit-overflow-scrolling: touch; }
+.article-comparison-table { width: 100%; min-width: 690px; border-collapse: collapse; font-size: 13px; line-height: 1.55; }
+.article-comparison-table th, .article-comparison-table td { padding: 13px 15px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+.article-comparison-table thead th { background: #ebe9e3; color: var(--ink); font-weight: 780; white-space: nowrap; }
+.article-comparison-table tbody th { color: var(--ink); font-weight: 740; }
+.article-comparison-table tbody tr:nth-child(even) { background: #f6f4ef; }
+.article-comparison-table tbody tr:last-child > * { border-bottom: 0; }
+@media (max-width: 700px) {
+  .article-table-scroll { margin: 17px 0 22px; border-radius: 9px; }
+  .article-comparison-table { font-size: 12px; }
+  .article-comparison-table th, .article-comparison-table td { padding: 10px 12px; }
+}
