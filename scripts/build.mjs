@@ -20,33 +20,64 @@ const articles = articleRecords.filter((item) => item.status === "published");
 const categoryById = Object.fromEntries(categories.map((item) => [item.id, item]));
 const articleById = Object.fromEntries(articles.map((item) => [item.id, item]));
 const sectionById = Object.fromEntries(sections.map((item) => [item.id, item]));
-const sectionCategoryIds = sections.flatMap((section) => section.topics
-  .map((topic) => topic.categoryId).filter(Boolean));
-const categorySectionById = Object.fromEntries(sections.flatMap((section) => section.topics
-  .filter((topic) => topic.categoryId).map((topic) => [topic.categoryId, section])));
-const missingSectionCategories = sectionCategoryIds.filter((id) => !categoryById[id]);
-if (missingSectionCategories.length) {
-  throw new Error("Unknown category ID in sections: " + [...new Set(missingSectionCategories)].join(", "));
+if (sections.length !== 5) throw new Error("Catalog data must define exactly five main sections.");
+if (new Set(sections.map((section) => section.id)).size !== sections.length) {
+  throw new Error("Main section IDs must be unique.");
 }
-const repeatedSectionCategories = sectionCategoryIds.filter((id, index) =>
-  sectionCategoryIds.indexOf(id) !== index
+if (new Set(categories.map((category) => category.id)).size !== categories.length) {
+  throw new Error("Category IDs must be unique.");
+}
+if (new Set(articles.map((article) => article.id)).size !== articles.length) {
+  throw new Error("Published article IDs must be unique.");
+}
+const categorySectionById = Object.fromEntries(categories.map((category) =>
+  [category.id, sectionById[category.sectionId]]));
+const groupById = Object.fromEntries(sections.flatMap((section) =>
+  section.groups.map((group) => [group.id, { ...group, sectionId: section.id, section }])));
+const sectionGroupIds = sections.flatMap((section) => section.groups.map((group) => group.id));
+const repeatedGroupIds = sectionGroupIds.filter((id, index) => sectionGroupIds.indexOf(id) !== index);
+if (repeatedGroupIds.length) throw new Error("Duplicate group ID: " + [...new Set(repeatedGroupIds)].join(", "));
+const invalidCategories = categories.filter((category) =>
+  !sectionById[category.sectionId] || !groupById[category.groupId] ||
+  groupById[category.groupId]?.sectionId !== category.sectionId
 );
-if (repeatedSectionCategories.length) {
-  throw new Error("Duplicate category ID across sections: " + [...new Set(repeatedSectionCategories)].join(", "));
-}
-const unassignedCategories = categories.map((category) => category.id)
-  .filter((id) => !categorySectionById[id]);
-if (unassignedCategories.length) {
-  throw new Error("Categories must belong to a section: " + unassignedCategories.join(", "));
+if (invalidCategories.length) {
+  throw new Error("Categories must point to an existing group in their section: " +
+    invalidCategories.map((category) => category.id).join(", "));
 }
 const missingNavigationSections = site.navigation.map((item) => item.sectionId)
   .filter((id) => !sectionById[id]);
 if (missingNavigationSections.length) {
   throw new Error("Unknown section ID in navigation: " + missingNavigationSections.join(", "));
 }
-if (site.navigation.length !== 4 || new Set(site.navigation.map((item) => item.sectionId)).size !== 4) {
-  throw new Error("Navigation must contain four unique main sections.");
+if (site.navigation.length !== 5 || new Set(site.navigation.map((item) => item.sectionId)).size !== 5) {
+  throw new Error("Navigation must contain five unique main sections.");
 }
+const invalidPublishedArticles = articles.filter((article) =>
+  !Array.isArray(article.categoryIds) || article.categoryIds.length !== 1 ||
+  !categoryById[article.categoryIds[0]]
+);
+if (invalidPublishedArticles.length) {
+  throw new Error("Each published article must have exactly one existing primary category: " +
+    invalidPublishedArticles.map((article) => article.id).join(", "));
+}
+for (const category of categories) {
+  const expectedArticles = articles.filter((article) => article.categoryIds[0] === category.id).map((article) => article.id);
+  const declaredArticles = category.articles || [];
+  if (expectedArticles.length !== declaredArticles.length ||
+      expectedArticles.some((id) => !declaredArticles.includes(id)) ||
+      declaredArticles.some((id) => !articleById[id])) {
+    throw new Error("Category article list does not match primary article categories: " + category.id);
+  }
+}
+
+const groupRoute = (group) => "/catalog/groups/" + group.id + "/";
+const categoriesForGroup = (group) => categories.filter((category) =>
+  category.groupId === group.id && (category.articles || []).some((id) => articleById[id])
+);
+const sectionHasArticles = (section) => categories.some((category) =>
+  category.sectionId === section.id && (category.articles || []).some((id) => articleById[id])
+);
 
 function escapeHtml(value = "") {
   return String(value).replace(/[&<>"']/g, (character) => ({
@@ -106,12 +137,14 @@ function breadcrumbSchema(items, route) {
 }
 
 function header(active = "") {
-  const currentArticle = articles.find((article) => active === "/article/" + article.id + "/");
+  const currentArticle = articles.find((article) => active === "/article/" + article.slug + "/");
   const currentCategoryId = active.match(/^\/catalog\/([^/]+)\/$/)?.[1] || "";
-  const primaryArticleCategoryId = currentArticle?.categoryIds[0] || "";
-  const sectionIsCurrent = (section) => active === section.route ||
-    section.topics.some((topic) => topic.categoryId === currentCategoryId ||
-      topic.categoryId === primaryArticleCategoryId);
+  const currentGroup = Object.values(groupById).find((group) => groupRoute(group) === active);
+  const articleCategory = currentArticle ? categoryById[currentArticle.categoryIds[0]] : null;
+  const activeCategory = categoryById[currentCategoryId] || articleCategory;
+  const activeSectionId = currentGroup?.sectionId || activeCategory?.sectionId ||
+    sections.find((section) => section.route === active)?.id || "";
+  const sectionIsCurrent = (section) => activeSectionId === section.id;
   const navLink = (item, route, className = "nav-link") => {
     const current = (item.activePrefixes || [item.href]).some((prefix) =>
       route === prefix || route.startsWith(prefix)
@@ -119,35 +152,60 @@ function header(active = "") {
     return '<a class="' + className + '" href="' + escapeHtml(item.href) + '"' +
       (current ? ' aria-current="page"' : "") + ">" + escapeHtml(item.label) + "</a>";
   };
-  const menuLinks = (section, route, className) => section.topics.map((topic) => {
-    const category = topic.categoryId ? categoryById[topic.categoryId] : null;
-    const href = category
-      ? "/catalog/" + category.id + "/"
-      : section.route + "#topic-" + topic.id;
-    const label = category ? category.title : topic.title;
-    return '<a class="' + className + '" href="' + escapeHtml(href) + '"' +
-      (route === href ? ' aria-current="page"' : "") + ">" +
-      '<span>' + escapeHtml(label) + "</span><span class=\"nav-submenu-arrow\" aria-hidden=\"true\">↗</span></a>";
-  }).join("");
+  const menuGroups = (section) => section.groups.map((group) => ({
+    ...group,
+    categories: categoriesForGroup(group)
+  })).filter((group) => group.categories.length);
+  const groupMenuMarkup = (group, className, route) => {
+    const href = groupRoute(group);
+    return '<section class="' + className + '"><h3><a href="' + escapeHtml(href) + '"' +
+      (route === href ? ' aria-current="page"' : "") + ">" + escapeHtml(group.title) + "</a></h3>" +
+      '<ul>' + group.categories.slice(0, 5).map((category) => {
+        const categoryHref = "/catalog/" + category.id + "/";
+        return '<li><a href="' + escapeHtml(categoryHref) + '"' +
+          (route === categoryHref ? ' aria-current="page"' : "") + ">" + escapeHtml(category.title) + "</a></li>";
+      }).join("") + "</ul></section>";
+  };
   const desktopNav = site.navigation.map((item) => {
     const section = sectionById[item.sectionId];
     const current = sectionIsCurrent(section);
     const exact = active === section.route;
     const submenuId = "submenu-" + section.id;
+    const groups = menuGroups(section);
+    const groupContent = groups.length
+      ? '<div class="mega-menu-groups mega-menu-columns-' + Math.min(groups.length, 4) + '">' + groups.slice(0, 4).map((group) =>
+        groupMenuMarkup(group, "mega-menu-group", active)).join("") + "</div>"
+      : '<p class="mega-menu-empty">Материалы по этому направлению будут появляться в каталоге.</p>';
     return '<div class="nav-item"' + (current ? ' data-current="true"' : "") + ">" +
       '<div class="nav-item-row"><a class="nav-parent" id="nav-parent-' + section.id + '" href="' + escapeHtml(section.route) + '"' +
-      (exact ? ' aria-current="page"' : "") + ">" + escapeHtml(section.title) +
-      '<span class="nav-chevron" aria-hidden="true"></span></a></div>' +
-      '<div class="nav-submenu" id="' + submenuId + '" role="group" aria-labelledby="nav-parent-' + section.id + '">' +
-      menuLinks(section, active, "nav-submenu-link") + "</div></div>";
+      (exact ? ' aria-current="page"' : "") + ">" + escapeHtml(section.title) + "</a>" +
+      '<button class="nav-disclosure" type="button" aria-label="Открыть подрубрики: ' + escapeHtml(section.title) +
+      '" aria-expanded="false" aria-controls="' + submenuId + '"><span class="nav-chevron" aria-hidden="true"></span></button></div>' +
+      '<div class="nav-submenu" id="' + submenuId + '" aria-labelledby="nav-parent-' + section.id + '" hidden>' +
+      '<div class="mega-menu-inner">' + groupContent + '<a class="mega-menu-all" href="' + escapeHtml(section.route) +
+      '">Все разделы направления <span aria-hidden="true">→</span></a></div></div></div>';
   }).join("") + site.navigationTools.map((item) => navLink(item, active, "nav-tool")).join("");
   const mobileNav = site.navigation.map((item) => {
     const section = sectionById[item.sectionId];
     const exact = active === section.route;
+    const groups = menuGroups(section);
+    const accordions = groups.map((group) => {
+      const expanded = active === groupRoute(group) || group.categories.some((category) =>
+        category.id === currentCategoryId || category.id === articleCategory?.id
+      );
+      return '<details class="mobile-nav-accordion"' + (expanded ? " open" : "") + "><summary>" +
+        escapeHtml(group.title) + '</summary><div class="mobile-nav-accordion-content">' +
+        '<a class="mobile-nav-group-link" href="' + escapeHtml(groupRoute(group)) + '"' +
+        (active === groupRoute(group) ? ' aria-current="page"' : "") + '>Все материалы по теме <span aria-hidden="true">→</span></a>' +
+        group.categories.map((category) => {
+          const href = "/catalog/" + category.id + "/";
+          return '<a class="mobile-nav-link" href="' + escapeHtml(href) + '"' +
+            (active === href ? ' aria-current="page"' : "") + ">" + escapeHtml(category.title) + "</a>";
+        }).join("") + "</div></details>";
+    }).join("");
     return '<section class="mobile-nav-group"><h2 class="mobile-nav-heading"><a href="' +
       escapeHtml(section.route) + '"' + (exact ? ' aria-current="page"' : "") + ">" +
-      escapeHtml(section.title) + "</a></h2><div class=\"mobile-nav-links\">" +
-      menuLinks(section, active, "mobile-nav-link") + "</div></section>";
+      escapeHtml(section.title) + '</a></h2><div class="mobile-nav-links">' + accordions + "</div></section>";
   }).join("");
   const mobileTools = site.navigationTools
     .map((item) => navLink(item, active, "mobile-nav-tool")).join("");
@@ -171,7 +229,7 @@ function footer() {
   return '<footer class="site-footer"><div class="container footer-main">' +
     '<div class="footer-brand"><a class="brand brand-light" href="/"><span class="brand-mark" aria-hidden="true">N</span><span class="brand-name">NODEHOME</span></a>' +
     '<p>Практический справочник по строительству и ремонту.</p></div>' +
-    '<div class="footer-links"><h2>Материалы</h2><a href="/catalog/">Все разделы</a><a href="/catalog/land/">Участок и подготовка</a><a href="/article/screed/">Стяжка пола</a><a href="/article/plaster/">Расход штукатурки</a></div>' +
+    '<div class="footer-links"><h2>Материалы</h2><a href="/catalog/">Все разделы</a><a href="/catalog/land/">Подготовка участка</a><a href="/article/screed/">Стяжка пола</a><a href="/article/plaster/">Расход штукатурки</a></div>' +
     '<div class="footer-links"><h2>Инструменты</h2><a href="/calculators/">Калькуляторы</a><a href="/calculators/plaster/">Штукатурка</a><a href="/calculators/screed/">Стяжка</a><a href="/search/">Поиск</a></div>' +
     "</div><div class=\"container footer-bottom\"><span>© Nodehome</span><span>Материалы носят справочный характер. Решения по проекту принимайте с профильными специалистами.</span></div></footer>";
 }
@@ -219,22 +277,24 @@ function sectionCard(section, index) {
     "<p>" + escapeHtml(section.description) + "</p></a>";
 }
 
-function sectionTopicCard(section, topic, index) {
-  const category = topic.categoryId ? categoryById[topic.categoryId] : null;
-  const title = category ? category.title : topic.title;
-  const description = category ? category.description : topic.description;
-  const number = String(index + 1).padStart(2, "0");
-  if (category) {
-    return '<a class="section-topic-card" href="/catalog/' + escapeHtml(category.id) + '/">' +
-      '<span class="category-number">' + number + "</span>" +
-      '<span class="section-topic-status">Материалы</span>' +
-      "<h2>" + escapeHtml(title) + "</h2><p>" + escapeHtml(description) + "</p>" +
-      '<span class="section-topic-link">Открыть тему <span aria-hidden="true">→</span></span></a>';
-  }
-  return '<article class="section-topic-card section-topic-card-planned" id="topic-' + escapeHtml(topic.id) + '">' +
-    '<span class="category-number">' + number + "</span>" +
-    '<span class="section-topic-status">Материалы готовятся</span>' +
-    "<h2>" + escapeHtml(title) + "</h2><p>" + escapeHtml(description) + "</p></article>";
+function taxonomyGroupMarkup(section, group, index) {
+  const liveCategories = categoriesForGroup(group);
+  const route = groupRoute(group);
+  const heading = liveCategories.length
+    ? '<a href="' + escapeHtml(route) + '">' + escapeHtml(group.title) + "</a>"
+    : escapeHtml(group.title);
+  const publishedLinks = liveCategories.length
+    ? '<div class="taxonomy-published"><span>Опубликованные рубрики</span><ul>' +
+      liveCategories.map((category) => '<li><a href="/catalog/' + escapeHtml(category.id) + '/">' +
+        escapeHtml(category.title) + "</a></li>").join("") + "</ul></div>"
+    : "";
+  return '<section class="taxonomy-group" id="' + escapeHtml(group.id) + '"><div class="taxonomy-group-heading">' +
+    '<span class="category-number">' + String(index + 1).padStart(2, "0") + "</span>" +
+    '<h2>' + heading + "</h2>" +
+    '<span class="taxonomy-topic-count">' + group.topics.length + ' тем</span></div>' +
+    '<details class="taxonomy-topics"><summary>Список тем</summary><ul>' +
+    group.topics.map((topic) => "<li>" + escapeHtml(topic) + "</li>").join("") +
+    "</ul></details>" + publishedLinks + "</section>";
 }
 
 function articleCard(article) {
@@ -270,7 +330,7 @@ function homePage() {
     '<figure class="hero-visual"><img src="/assets/images/hero-house.webp" alt="Строительство загородного дома: деревянный каркас, материалы и чертёж" width="1200" height="800" fetchpriority="high" decoding="async">' +
     '<figcaption><span class="photo-mark"></span> От участка до готового дома</figcaption></figure></section>' +
     '<section class="section container" aria-labelledby="topics-title">' +
-    sectionHeading("Выберите раздел", "С чего начинается ваш проект?", "Четыре направления каталога: от строительства дома до работ на участке.", "topics-title") +
+    sectionHeading("Выберите раздел", "С чего начинается ваш проект?", "Пять направлений каталога: от строительства дома до инструмента и работ на участке.", "topics-title") +
     '<div class="category-grid">' + sectionsHtml + "</div></section>" +
     '<section class="section section-muted"><div class="container">' +
     sectionHeading("Полезные материалы", "Разобраться перед началом работ", "Короткие и практичные инструкции с расчётами и проверочными списками.") +
@@ -308,15 +368,16 @@ function catalogPage() {
   const body = breadcrumb([{ label: "Материалы", href: "/catalog/" }], true) +
     '<section class="page-intro container"><p class="eyebrow">Библиотека Nodehome</p>' +
     "<h1>Материалы о строительстве и ремонте</h1>" +
-    '<p class="page-lead">Выберите направление, чтобы перейти к темам и опубликованным инструкциям.</p></section>' +
+    '<p class="page-lead">Выберите направление, чтобы открыть тематические группы и опубликованные инструкции.</p></section>' +
     '<section class="section container catalog-section"><div class="category-grid">' +
     sections.map(sectionCard).join("") + "</div></section>" +
+    '<section class="catalog-index container"><p class="eyebrow">Структура каталога</p><p>Полный список тем сгруппирован на страницах направлений. Ссылки ведут только на опубликованные рубрики и материалы.</p></section>' +
     '<section class="section section-muted"><div class="container">' +
     sectionHeading("В редакции", "Популярные инструкции", "Проверяйте условия своего объекта и данные на упаковке материала.") +
     '<div class="article-grid">' + site.featuredArticles.map((id) => articleById[id]).filter(Boolean).map(articleCard).join("") + "</div></div></section>";
   return layout({
     title: "Материалы о строительстве и ремонте",
-    description: "Четыре раздела каталога Nodehome: строительство дома, ремонт и отделка, инженерные системы, участок и благоустройство.",
+    description: "Пять направлений каталога Nodehome: строительство дома, ремонт и отделка, инженерные системы, участок и постройки, инструменты и техника.",
     route: "/catalog/",
     body,
     active: "/catalog/",
@@ -325,7 +386,8 @@ function catalogPage() {
 }
 
 function sectionPage(section) {
-  const topicCards = section.topics.map((topic, index) => sectionTopicCard(section, topic, index)).join("");
+  const topicGroups = section.groups.map((group, index) => taxonomyGroupMarkup(section, group, index)).join("");
+  const hasArticles = sectionHasArticles(section);
   const body = breadcrumb([
     { label: "Материалы", href: "/catalog/" },
     { label: section.title }
@@ -333,13 +395,17 @@ function sectionPage(section) {
     '<section class="page-intro container"><p class="eyebrow">Раздел Nodehome</p>' +
     "<h1>" + escapeHtml(section.title) + "</h1>" +
     '<p class="page-lead">' + escapeHtml(section.intro) + "</p></section>" +
-    '<section class="section container section-topics"><div class="category-grid">' + topicCards + "</div></section>";
+    '<section class="section container section-topics"><div class="section-heading compact"><p class="eyebrow">Полная структура направления</p>' +
+    '<h2>Темы каталога</h2><p class="section-lead">Группы раскрываются по запросу. На страницы рубрик можно перейти, когда в них опубликованы материалы.</p></div>' +
+    '<div class="taxonomy-list">' + topicGroups + '</div></section>' +
+    (!hasArticles ? '<section class="container section-empty-note"><p>Материалы этого направления пополняются. Пока здесь доступен полный план тем.</p></section>' : "");
   return layout({
     title: section.title,
     description: section.description,
     route: section.route,
     body,
     active: section.route,
+    robots: hasArticles ? "index,follow" : "noindex,follow",
     schema: [breadcrumbSchema([
       { label: "Материалы", href: "/catalog/" },
       { label: section.title }
@@ -347,12 +413,48 @@ function sectionPage(section) {
   });
 }
 
+function groupPage(group) {
+  const liveCategories = categoriesForGroup(group);
+  const groupArticles = [...new Set(liveCategories.flatMap((category) => category.articles))]
+    .map((id) => articleById[id]).filter(Boolean);
+  const route = groupRoute(group);
+  const breadcrumbItems = [
+    { label: "Материалы", href: "/catalog/" },
+    { label: group.section.title, href: group.section.route },
+    { label: group.title }
+  ];
+  const categoryCards = liveCategories.map((category) =>
+    '<a class="group-category-link" href="/catalog/' + escapeHtml(category.id) + '/"><strong>' +
+    escapeHtml(category.title) + '</strong><span>' + escapeHtml(category.description) +
+    '</span><span class="group-category-arrow" aria-hidden="true">→</span></a>').join("");
+  const body = breadcrumb(breadcrumbItems, true) +
+    '<section class="page-intro container"><p class="eyebrow">Подборка Nodehome</p><h1>' + escapeHtml(group.title) +
+    '</h1><p class="page-lead">' + escapeHtml(group.section.title) + ': собранные рубрики и опубликованные инструкции по теме.</p></section>' +
+    '<section class="container group-categories"><div class="section-heading compact"><p class="eyebrow">Рубрики</p><h2>Материалы по теме</h2></div>' +
+    '<div class="group-category-list">' + categoryCards + '</div></section>' +
+    '<section class="section container group-topic-section"><div class="section-heading compact"><p class="eyebrow">Содержание направления</p><h2>Что входит в тему</h2></div>' +
+    '<ul class="group-topic-list">' + group.topics.map((topic) => "<li>" + escapeHtml(topic) + "</li>").join("") + "</ul></section>" +
+    '<section class="section section-muted"><div class="container"><div class="section-heading compact"><p class="eyebrow">Инструкции</p><h2>Опубликованные материалы</h2></div>' +
+    '<div class="article-grid">' + groupArticles.map(articleCard).join("") + "</div></div></section>";
+  return layout({
+    title: group.title,
+    description: "Материалы по теме «" + group.title + "»: тематические рубрики и опубликованные инструкции Nodehome.",
+    route,
+    body,
+    active: route,
+    schema: [breadcrumbSchema(breadcrumbItems, route)]
+  });
+}
+
 function categoryPage(category) {
   const related = category.articles.map((id) => articleById[id]).filter(Boolean);
   const parentSection = categorySectionById[category.id];
+  const parentGroup = groupById[category.groupId];
+  const groupHasPublishedPage = categoriesForGroup(parentGroup).length > 0;
   const breadcrumbItems = [
     { label: "Материалы", href: "/catalog/" },
     { label: parentSection.title, href: parentSection.route },
+    ...(groupHasPublishedPage ? [{ label: parentGroup.title, href: groupRoute(parentGroup) }] : []),
     { label: category.title }
   ];
   const body = breadcrumb(breadcrumbItems, true) +
@@ -373,6 +475,7 @@ function categoryPage(category) {
     route: "/catalog/" + category.id + "/",
     body,
     active: "/catalog/" + category.id + "/",
+    robots: related.length ? "index,follow" : "noindex,follow",
     schema: [breadcrumbSchema(breadcrumbItems, "/catalog/" + category.id + "/")]
   });
 }
@@ -405,6 +508,7 @@ function articleBody(article) {
 function articlePage(article) {
   const primaryCategory = categoryById[article.categoryIds[0]];
   const parentSection = primaryCategory ? categorySectionById[primaryCategory.id] : null;
+  const parentGroup = primaryCategory ? groupById[primaryCategory.groupId] : null;
   const toc = article.sections.map((section) =>
     '<li><a href="#' + escapeHtml(section.id) + '">' + escapeHtml(section.title) + "</a></li>").join("");
   const related = articles.filter((other) => other.id !== article.id &&
@@ -422,6 +526,8 @@ function articlePage(article) {
   const pathItems = [
     { label: "Материалы", href: "/catalog/" },
     ...(parentSection ? [{ label: parentSection.title, href: parentSection.route }] : []),
+    ...(parentGroup && categoriesForGroup(parentGroup).length
+      ? [{ label: parentGroup.title, href: groupRoute(parentGroup) }] : []),
     { label: primaryCategory ? primaryCategory.title : "Статья", href: primaryCategory ? "/catalog/" + primaryCategory.id + "/" : "/catalog/" },
     { label: article.title }
   ];
@@ -562,7 +668,7 @@ function calculatorPage(id, data) {
 
 function searchPage() {
   const searchable = [
-    ...categories.map((category) => ({
+    ...categories.filter((category) => (category.articles || []).some((id) => articleById[id])).map((category) => ({
       title: category.title,
       description: category.description,
       href: "/catalog/" + category.id + "/",
@@ -609,6 +715,7 @@ async function main() {
   await cp(path.join(ROOT, "assets", "favicon.ico"), path.join(OUTPUT, "favicon.ico"));
 
   const routes = ["/", "/catalog/", "/calculators/", "/search/"];
+  const sitemapRoutes = ["/", "/catalog/", "/calculators/"];
   await writeRoute("/", homePage());
   await writeRoute("/catalog/", catalogPage());
   await writeRoute("/calculators/", calculatorsPage());
@@ -616,26 +723,39 @@ async function main() {
 
   for (const section of sections) {
     routes.push(section.route);
+    if (sectionHasArticles(section)) sitemapRoutes.push(section.route);
     await writeRoute(section.route, sectionPage(section));
+  }
+
+  for (const group of Object.values(groupById).filter((item) => categoriesForGroup(item).length)) {
+    const route = groupRoute(group);
+    routes.push(route);
+    sitemapRoutes.push(route);
+    await writeRoute(route, groupPage(group));
   }
 
   for (const category of categories) {
     const route = "/catalog/" + category.id + "/";
     routes.push(route);
+    if ((category.articles || []).some((id) => articleById[id])) sitemapRoutes.push(route);
     await writeRoute(route, categoryPage(category));
   }
 
   for (const article of articles) {
     const route = "/article/" + article.slug + "/";
     routes.push(route);
+    sitemapRoutes.push(route);
     await writeRoute(route, articlePage(article));
   }
 
   for (const [id, data] of Object.entries(calculatorData)) {
     const route = "/calculators/" + id + "/";
     routes.push(route);
+    sitemapRoutes.push(route);
     await writeRoute(route, calculatorPage(id, data));
   }
+
+  if (new Set(routes).size !== routes.length) throw new Error("Generated page routes must be unique.");
 
   await writeFile(path.join(OUTPUT, "404.html"), layout({
     title: "Страница не найдена",
@@ -649,7 +769,7 @@ async function main() {
 
   const sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n' +
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
-    routes.filter((route) => route !== "/search/").map((route) =>
+    sitemapRoutes.map((route) =>
       "  <url><loc>" + BASE_URL + route + "</loc></url>").join("\n") +
     "\n</urlset>\n";
   await writeFile(path.join(OUTPUT, "sitemap.xml"), sitemap, "utf8");

@@ -7,16 +7,29 @@
   "heroLead": "Разбираемся в материалах, этапах работ и расчётах: от подготовки участка до отделки.",
   "searchHref": "/search/",
   "navigation": [
-    { "sectionId": "construction" },
-    { "sectionId": "renovation" },
-    { "sectionId": "engineering" },
-    { "sectionId": "landscape" }
+    {
+      "sectionId": "construction"
+    },
+    {
+      "sectionId": "renovation"
+    },
+    {
+      "sectionId": "engineering"
+    },
+    {
+      "sectionId": "landscape"
+    },
+    {
+      "sectionId": "tools"
+    }
   ],
   "navigationTools": [
     {
       "label": "Калькуляторы",
       "href": "/calculators/",
-      "activePrefixes": ["/calculators/"]
+      "activePrefixes": [
+        "/calculators/"
+      ]
     }
   ],
   "featuredArticles": [

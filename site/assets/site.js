@@ -34,6 +34,63 @@
     });
   }
 
+  const desktopItems = Array.from(document.querySelectorAll(".nav-item"));
+  const closeDesktopItems = (returnFocus = false) => {
+    desktopItems.forEach((item) => {
+      item.removeAttribute("data-open");
+      const button = item.querySelector(".nav-disclosure");
+      const panel = item.querySelector(".nav-submenu");
+      if (button) button.setAttribute("aria-expanded", "false");
+      if (panel) panel.hidden = true;
+    });
+    if (returnFocus) desktopItems.find((item) => item.contains(document.activeElement))
+      ?.querySelector(".nav-disclosure")?.focus();
+  };
+  const setDesktopItemOpen = (item, open) => {
+    if (!item) return;
+    if (open) closeDesktopItems();
+    item.toggleAttribute("data-open", open);
+    const button = item.querySelector(".nav-disclosure");
+    const panel = item.querySelector(".nav-submenu");
+    if (button) button.setAttribute("aria-expanded", String(open));
+    if (panel) panel.hidden = !open;
+  };
+  if (desktopItems.length) {
+    desktopItems.forEach((item) => {
+      const disclosure = item.querySelector(".nav-disclosure");
+      item.addEventListener("pointerenter", (event) => {
+        if (event.pointerType !== "touch" && window.matchMedia("(min-width: 1121px)").matches) {
+          setDesktopItemOpen(item, true);
+        }
+      });
+      item.addEventListener("pointerleave", () => {
+        if (window.matchMedia("(min-width: 1121px)").matches) setDesktopItemOpen(item, false);
+      });
+      item.addEventListener("focusin", () => {
+        if (window.matchMedia("(min-width: 1121px)").matches) setDesktopItemOpen(item, true);
+      });
+      item.addEventListener("focusout", (event) => {
+        if (!item.contains(event.relatedTarget)) setDesktopItemOpen(item, false);
+      });
+      disclosure?.addEventListener("click", () => {
+        const isOpen = disclosure.getAttribute("aria-expanded") === "true";
+        setDesktopItemOpen(item, !isOpen);
+      });
+    });
+    document.addEventListener("pointerdown", (event) => {
+      if (!event.target.closest(".nav-item")) closeDesktopItems();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && desktopItems.some((item) => item.dataset.open === "true")) {
+        closeDesktopItems(true);
+      }
+    });
+    window.addEventListener("resize", () => {
+      if (!window.matchMedia("(min-width: 1121px)").matches) closeDesktopItems();
+      else closeMobileNav();
+    });
+  }
+
   const getNumber = (form, name) => {
     const field = form.elements.namedItem(name);
     return field ? Number(field.value) : 0;
