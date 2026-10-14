@@ -144,6 +144,7 @@ function header(active = "") {
   const activeCategory = categoryById[currentCategoryId] || articleCategory;
   const activeSectionId = currentGroup?.sectionId || activeCategory?.sectionId ||
     sections.find((section) => section.route === active)?.id || "";
+  const activeGroupId = currentGroup?.id || activeCategory?.groupId || "";
   const sectionIsCurrent = (section) => activeSectionId === section.id;
   const navLink = (item, route, className = "nav-link") => {
     const current = (item.activePrefixes || [item.href]).some((prefix) =>
@@ -152,60 +153,37 @@ function header(active = "") {
     return '<a class="' + className + '" href="' + escapeHtml(item.href) + '"' +
       (current ? ' aria-current="page"' : "") + ">" + escapeHtml(item.label) + "</a>";
   };
-  const menuGroups = (section) => section.groups.map((group) => ({
-    ...group,
-    categories: categoriesForGroup(group)
-  })).filter((group) => group.categories.length);
-  const groupMenuMarkup = (group, className, route) => {
-    const href = groupRoute(group);
-    return '<section class="' + className + '"><h3><a href="' + escapeHtml(href) + '"' +
-      (route === href ? ' aria-current="page"' : "") + ">" + escapeHtml(group.title) + "</a></h3>" +
-      '<ul>' + group.categories.slice(0, 5).map((category) => {
-        const categoryHref = "/catalog/" + category.id + "/";
-        return '<li><a href="' + escapeHtml(categoryHref) + '"' +
-          (route === categoryHref ? ' aria-current="page"' : "") + ">" + escapeHtml(category.title) + "</a></li>";
-      }).join("") + "</ul></section>";
+  const groupLinkMarkup = (section, group, className) => {
+    const hasPublishedPage = categoriesForGroup(group).length > 0;
+    const href = hasPublishedPage ? groupRoute(group) : section.route + "#" + group.id;
+    return '<a class="' + className + '" href="' + escapeHtml(href) + '"' +
+      (activeGroupId === group.id ? ' aria-current="page"' : "") + ">" +
+      '<span>' + escapeHtml(group.title) + '</span><span class="nav-submenu-arrow" aria-hidden="true">↗</span></a>';
   };
   const desktopNav = site.navigation.map((item) => {
     const section = sectionById[item.sectionId];
     const current = sectionIsCurrent(section);
     const exact = active === section.route;
     const submenuId = "submenu-" + section.id;
-    const groups = menuGroups(section);
-    const groupContent = groups.length
-      ? '<div class="mega-menu-groups mega-menu-columns-' + Math.min(groups.length, 4) + '">' + groups.slice(0, 4).map((group) =>
-        groupMenuMarkup(group, "mega-menu-group", active)).join("") + "</div>"
-      : '<p class="mega-menu-empty">Материалы по этому направлению будут появляться в каталоге.</p>';
+    const groupLinks = section.groups.map((group) => groupLinkMarkup(section, group, "nav-submenu-link")).join("");
     return '<div class="nav-item"' + (current ? ' data-current="true"' : "") + ">" +
       '<div class="nav-item-row"><a class="nav-parent" id="nav-parent-' + section.id + '" href="' + escapeHtml(section.route) + '"' +
       (exact ? ' aria-current="page"' : "") + ">" + escapeHtml(section.title) + "</a>" +
       '<button class="nav-disclosure" type="button" aria-label="Открыть подрубрики: ' + escapeHtml(section.title) +
       '" aria-expanded="false" aria-controls="' + submenuId + '"><span class="nav-chevron" aria-hidden="true"></span></button></div>' +
       '<div class="nav-submenu" id="' + submenuId + '" aria-labelledby="nav-parent-' + section.id + '" hidden>' +
-      '<div class="mega-menu-inner">' + groupContent + '<a class="mega-menu-all" href="' + escapeHtml(section.route) +
-      '">Все разделы направления <span aria-hidden="true">→</span></a></div></div></div>';
+      groupLinks + '</div></div>';
   }).join("") + site.navigationTools.map((item) => navLink(item, active, "nav-tool")).join("");
   const mobileNav = site.navigation.map((item) => {
     const section = sectionById[item.sectionId];
     const exact = active === section.route;
-    const groups = menuGroups(section);
-    const accordions = groups.map((group) => {
-      const expanded = active === groupRoute(group) || group.categories.some((category) =>
-        category.id === currentCategoryId || category.id === articleCategory?.id
-      );
-      return '<details class="mobile-nav-accordion"' + (expanded ? " open" : "") + "><summary>" +
-        escapeHtml(group.title) + '</summary><div class="mobile-nav-accordion-content">' +
-        '<a class="mobile-nav-group-link" href="' + escapeHtml(groupRoute(group)) + '"' +
-        (active === groupRoute(group) ? ' aria-current="page"' : "") + '>Все материалы по теме <span aria-hidden="true">→</span></a>' +
-        group.categories.map((category) => {
-          const href = "/catalog/" + category.id + "/";
-          return '<a class="mobile-nav-link" href="' + escapeHtml(href) + '"' +
-            (active === href ? ' aria-current="page"' : "") + ">" + escapeHtml(category.title) + "</a>";
-        }).join("") + "</div></details>";
-    }).join("");
+    const groupLinks = section.groups.map((group) => groupLinkMarkup(section, group, "mobile-nav-link")).join("");
+    const expanded = activeSectionId === section.id;
     return '<section class="mobile-nav-group"><h2 class="mobile-nav-heading"><a href="' +
       escapeHtml(section.route) + '"' + (exact ? ' aria-current="page"' : "") + ">" +
-      escapeHtml(section.title) + '</a></h2><div class="mobile-nav-links">' + accordions + "</div></section>";
+      escapeHtml(section.title) + '</a></h2><div class="mobile-nav-links"><details class="mobile-nav-accordion"' +
+      (expanded ? " open" : "") + '><summary>Рубрики направления</summary><div class="mobile-nav-accordion-content">' +
+      groupLinks + "</div></details></div></section>";
   }).join("");
   const mobileTools = site.navigationTools
     .map((item) => navLink(item, active, "mobile-nav-tool")).join("");
