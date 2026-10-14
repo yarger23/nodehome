@@ -195,6 +195,9 @@ function layout(options) {
     '<meta property="og:url" content="' + canonical + '">\n<meta property="og:image" content="' + socialImage + '">\n' +
     '<title>' + escapeHtml(title) + "</title>\n" +
     (options.preload ? '<link rel="preload" as="image" href="/assets/images/' + escapeHtml(options.preload) + '" fetchpriority="high">\n' : "") +
+        '<link rel="icon" href="/favicon.ico" sizes="32x32">\n' +
+    '<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">\n' +
+    '<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" sizes="180x180">\n' +
     '<link rel="stylesheet" href="/assets/site.css">\n' +
     schemaScript(options.schema) + '\n' +
     '<script src="/assets/site.js" defer></script>\n</head>\n<body>\n' +
@@ -603,6 +606,7 @@ async function main() {
   await rm(OUTPUT, { recursive: true, force: true });
   await mkdir(OUTPUT, { recursive: true });
   await cp(path.join(ROOT, "assets"), path.join(OUTPUT, "assets"), { recursive: true });
+  await cp(path.join(ROOT, "assets", "favicon.ico"), path.join(OUTPUT, "favicon.ico"));
 
   const routes = ["/", "/catalog/", "/calculators/", "/search/"];
   await writeRoute("/", homePage());
