@@ -8,33 +8,17 @@
   "searchHref": "/search/",
   "navigation": [
     {
-      "label": "Каталог статей",
+      "label": "Материалы",
       "href": "/catalog/",
       "activePrefixes": [
         "/catalog/",
         "/article/"
       ],
-      "desktopCategoryIds": [
+      "categoryIds": [
         "land",
         "foundation",
         "walls",
         "floors"
-      ],
-      "groups": [
-        {
-          "label": "До начала работ",
-          "categoryIds": [
-            "land",
-            "foundation"
-          ]
-        },
-        {
-          "label": "Конструкции и отделка",
-          "categoryIds": [
-            "walls",
-            "floors"
-          ]
-        }
       ]
     },
     {
