@@ -647,8 +647,8 @@
     "categoryIds": [
       "walls"
     ],
-    "image": "wall-tile-installation.webp",
-    "imageAlt": "Облицовка стены керамической плиткой в ванной комнате во время ремонта",
+    "image": "wall-tiles.webp",
+    "imageAlt": "Мастер устанавливает крупноформатную плитку на стену ванной комнаты",
     "minutes": 7,
     "sections": [
       {
@@ -712,7 +712,10 @@
             "href": "https://ceresit.ru/ru/products/tiling/tile-adhesives/cm-16",
             "label": "Пример технических требований производителя к плиточному клею"
           }
-        ]
+        ],
+        "image": "wall-tiles-row.webp",
+        "imageAlt": "Мастер выравнивает первый ряд настенной плитки по лазерной линии",
+        "imageCaption": "Первый ряд задаёт направление облицовке — проверьте его до продолжения работ."
       },
       {
         "id": "grouting",
