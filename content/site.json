@@ -8,15 +8,18 @@
   "searchHref": "/search/",
   "navigation": [
     {
-      "label": "Материалы",
-      "href": "/catalog/",
-      "activePrefixes": [
-        "/catalog/",
-        "/article/"
-      ],
+      "label": "Строим дом",
+      "showCatalogLink": true,
+      "menuColumns": 3,
       "categoryIds": [
         "land",
-        "foundation",
+        "foundation"
+      ]
+    },
+    {
+      "label": "Ремонт и отделка",
+      "menuColumns": 2,
+      "categoryIds": [
         "walls",
         "floors"
       ]

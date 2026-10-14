@@ -26,6 +26,13 @@ const missingMenuCategories = site.navigation.flatMap((item) => [
 if (missingMenuCategories.length) {
   throw new Error("Unknown category ID in navigation: " + missingMenuCategories.join(", "));
 }
+const navigationCategoryIds = site.navigation.flatMap((item) => item.categoryIds || []);
+const repeatedNavigationCategories = navigationCategoryIds.filter((id, index) =>
+  navigationCategoryIds.indexOf(id) !== index
+);
+if (repeatedNavigationCategories.length) {
+  throw new Error("Duplicate category ID in navigation: " + [...new Set(repeatedNavigationCategories)].join(", "));
+}
 
 function escapeHtml(value = "") {
   return String(value).replace(/[&<>"']/g, (character) => ({
@@ -85,38 +92,72 @@ function breadcrumbSchema(items, route) {
 }
 
 function header(active = "") {
-  const isCurrent = (item, route) => (item.activePrefixes || [item.href])
-    .some((prefix) => route === prefix || route.startsWith(prefix));
-  const navLink = (item, route, className = "nav-link") =>
-    '<a class="' + className + '" href="' + escapeHtml(item.href) + '"' +
-    (isCurrent(item, route) ? ' aria-current="page"' : "") + ">" +
-    escapeHtml(item.label) + "</a>";
-  const catalogItem = site.navigation.find((item) => item.categoryIds);
-  const categoryLinks = (item, route, className) => (item.categoryIds || [])
-    .map((id) => categoryById[id]).filter(Boolean).map((category) => {
-      const href = "/catalog/" + category.id + "/";
-      return '<a class="' + className + '" href="' + escapeHtml(href) + '"' +
-        (route === href ? ' aria-current="page"' : "") + ">" +
-        escapeHtml(category.cardTitle || category.title) + "</a>";
-    }).join("");
-  const nav = site.navigation.map((item) => {
-    return navLink(item, active) + categoryLinks(item, active, "nav-link nav-category-link");
+  const currentArticle = articles.find((article) => active === "/article/" + article.id + "/");
+  const currentCategoryId = active.match(/^\/catalog\/([^/]+)\/$/)?.[1] || "";
+  const itemIsCurrent = (item) => {
+    if (item.categoryIds) {
+      return currentCategoryId === "" && item.showCatalogLink && active === "/catalog/" ||
+        item.categoryIds.includes(currentCategoryId) ||
+        Boolean(currentArticle && currentArticle.categoryIds.some((id) => item.categoryIds.includes(id)));
+    }
+    return (item.activePrefixes || [item.href]).some((prefix) =>
+      active === prefix || active.startsWith(prefix)
+    );
+  };
+  const navLink = (item, route, className = "nav-link") => {
+    const current = (item.activePrefixes || [item.href]).some((prefix) =>
+      route === prefix || route.startsWith(prefix)
+    );
+    return '<a class="' + className + '" href="' + escapeHtml(item.href) + '"' +
+      (current ? ' aria-current="page"' : "") + ">" + escapeHtml(item.label) + "</a>";
+  };
+  const categoryLink = (id, route, className) => {
+    const category = categoryById[id];
+    if (!category) return "";
+    const href = "/catalog/" + category.id + "/";
+    return '<a class="' + className + '" href="' + escapeHtml(href) + '"' +
+      (route === href ? ' aria-current="page"' : "") + ">" +
+      escapeHtml(category.title) + "</a>";
+  };
+  const menuLinks = (item, route, className) => {
+    const allMaterials = item.showCatalogLink
+      ? '<a class="' + className + ' mega-menu-link-all" href="/catalog/"' +
+        (route === "/catalog/" ? ' aria-current="page"' : "") + ">Все материалы</a>"
+      : "";
+    return allMaterials + (item.categoryIds || [])
+      .map((id) => categoryLink(id, route, className)).join("");
+  };
+  const desktopNav = site.navigation.map((item) => {
+    if (!item.categoryIds) return navLink(item, active, "nav-direct");
+    const current = itemIsCurrent(item);
+    return '<details class="nav-dropdown" name="nodehome-navigation"' +
+      (current ? ' data-current="true"' : "") + ">" +
+      '<summary class="nav-trigger">' + escapeHtml(item.label) +
+      '<span class="nav-chevron" aria-hidden="true"></span></summary>' +
+      '<div class="mega-menu" style="--menu-columns:' + Number(item.menuColumns || 3) + '">' +
+      menuLinks(item, active, "mega-menu-link") + "</div></details>";
   }).join("");
-  const mobileLinks = site.navigation.map((item) => navLink(item, active, "mobile-nav-link") +
-    categoryLinks(item, active, "mobile-nav-link")).join("");
+  const mobileNav = site.navigation.filter((item) => item.categoryIds).map((item) => {
+    return '<section class="mobile-nav-group"><h2 class="mobile-nav-heading">' +
+      escapeHtml(item.label) + "</h2><div class=\"mobile-nav-links\">" +
+      menuLinks(item, active, "mobile-nav-link") + "</div></section>";
+  }).join("");
+  const mobileTools = site.navigation.filter((item) => !item.categoryIds)
+    .map((item) => navLink(item, active, "mobile-nav-tool")).join("");
 
   return '<header class="site-header"><div class="header-inner container">' +
     '<a class="brand" href="/" aria-label="Nodehome — главная страница">' +
     '<span class="brand-mark" aria-hidden="true">N</span>' +
     '<span class="brand-name">NODEHOME</span></a>' +
-    '<nav class="desktop-nav" aria-label="Главная навигация">' + nav + "</nav>" +
     '<a class="header-search" href="' + escapeHtml(site.searchHref || "/search/") + '" aria-label="Поиск по сайту">' +
     '<svg class="search-icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.3"></circle><path d="m15.5 15.5 4.2 4.2"></path></svg>' +
     '<span>Поиск</span></a>' +
     '<button class="mobile-menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav">' +
     '<span class="menu-icon" aria-hidden="true"></span><span>Меню</span></button>' +
-    '</div><nav class="mobile-nav container" id="mobile-nav" aria-label="Мобильная навигация" hidden>' +
-    mobileLinks + '<a class="mobile-nav-link" href="' + escapeHtml(site.searchHref || "/search/") + '">Поиск</a></nav></header>';
+    '</div><div class="nav-band"><nav class="desktop-nav container" aria-label="Разделы сайта">' +
+    desktopNav + '</nav></div><nav class="mobile-nav container" id="mobile-nav" aria-label="Мобильная навигация" hidden>' +
+    mobileNav + '<div class="mobile-nav-tools">' + mobileTools + '<a class="mobile-nav-tool" href="' +
+    escapeHtml(site.searchHref || "/search/") + '"><svg class="search-icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.3"></circle><path d="m15.5 15.5 4.2 4.2"></path></svg><span>Поиск</span></a></div></nav></header>';
 }
 
 function footer() {

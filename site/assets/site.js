@@ -7,6 +7,10 @@
 
   const menuToggle = document.querySelector(".mobile-menu-toggle");
   const mobileNav = document.querySelector("#mobile-nav");
+  const desktopNav = document.querySelector(".desktop-nav");
+  const desktopDropdowns = desktopNav
+    ? Array.from(desktopNav.querySelectorAll(".nav-dropdown"))
+    : [];
   const closeMobileNav = () => {
     if (!menuToggle || !mobileNav) return;
     mobileNav.hidden = true;
@@ -22,6 +26,13 @@
       if (event.target.closest("a")) closeMobileNav();
     });
     document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        const openDropdown = desktopDropdowns.find((dropdown) => dropdown.open);
+        if (openDropdown) {
+          openDropdown.open = false;
+          openDropdown.querySelector("summary")?.focus();
+        }
+      }
       if (event.key === "Escape" && !mobileNav.hidden) {
         closeMobileNav();
         menuToggle.focus();
@@ -31,6 +42,12 @@
       if (!mobileNav.hidden && !mobileNav.contains(event.target) && !menuToggle.contains(event.target)) {
         closeMobileNav();
       }
+    });
+  }
+  if (desktopDropdowns.length) {
+    document.addEventListener("pointerdown", (event) => {
+      if (desktopNav.contains(event.target)) return;
+      desktopDropdowns.forEach((dropdown) => { dropdown.open = false; });
     });
   }
 
