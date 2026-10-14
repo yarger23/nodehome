@@ -37,6 +37,31 @@ const groupById = Object.fromEntries(sections.flatMap((section) =>
 const sectionGroupIds = sections.flatMap((section) => section.groups.map((group) => group.id));
 const repeatedGroupIds = sectionGroupIds.filter((id, index) => sectionGroupIds.indexOf(id) !== index);
 if (repeatedGroupIds.length) throw new Error("Duplicate group ID: " + [...new Set(repeatedGroupIds)].join(", "));
+const invalidGroupIds = Object.values(groupById).filter((group) =>
+  !group.id.startsWith(group.sectionId + "-")
+);
+if (invalidGroupIds.length) {
+  throw new Error("Group IDs must start with their section ID: " + invalidGroupIds.map((group) => group.id).join(", "));
+}
+const groupSlug = (group) => group.id.slice(group.sectionId.length + 1);
+const groupRoute = (group) => group.section.route + groupSlug(group) + "/";
+const legacyGroupRoute = (group) => "/catalog/groups/" + group.id + "/";
+const topicRoute = (group, topic) => groupRoute(group) + topic.id + "/";
+const topicRecords = Object.values(groupById).flatMap((group) =>
+  group.topics.map((topic) => ({ topic, group })));
+const invalidTopicIds = topicRecords.filter(({ topic }) =>
+  !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(topic.id)
+);
+if (invalidTopicIds.length) {
+  throw new Error("Topic IDs must be stable URL slugs: " +
+    invalidTopicIds.map(({ group, topic }) => group.id + "/" + topic.id).join(", "));
+}
+const topicRoutes = topicRecords.map(({ group, topic }) => topicRoute(group, topic));
+if (new Set(topicRoutes).size !== topicRoutes.length) {
+  throw new Error("Generated topic routes must be unique.");
+}
+const topicByRoute = Object.fromEntries(topicRecords.map((record) =>
+  [topicRoute(record.group, record.topic), record]));
 const invalidCategories = categories.filter((category) =>
   !sectionById[category.sectionId] || !groupById[category.groupId] ||
   groupById[category.groupId]?.sectionId !== category.sectionId
@@ -61,6 +86,16 @@ if (invalidPublishedArticles.length) {
   throw new Error("Each published article must have exactly one existing primary category: " +
     invalidPublishedArticles.map((article) => article.id).join(", "));
 }
+const invalidTopicAssignments = articles.filter((article) => {
+  if (!article.topicId) return false;
+  const category = categoryById[article.categoryIds[0]];
+  const group = category && groupById[category.groupId];
+  return !group?.topics.some((topic) => topic.id === article.topicId);
+});
+if (invalidTopicAssignments.length) {
+  throw new Error("Article topic IDs must belong to the article's primary category group: " +
+    invalidTopicAssignments.map((article) => article.id).join(", "));
+}
 for (const category of categories) {
   const expectedArticles = articles.filter((article) => article.categoryIds[0] === category.id).map((article) => article.id);
   const declaredArticles = category.articles || [];
@@ -71,9 +106,11 @@ for (const category of categories) {
   }
 }
 
-const groupRoute = (group) => "/catalog/groups/" + group.id + "/";
 const categoriesForGroup = (group) => categories.filter((category) =>
   category.groupId === group.id && (category.articles || []).some((id) => articleById[id])
+);
+const articlesForGroup = (group) => articles.filter((article) =>
+  categoryById[article.categoryIds[0]]?.groupId === group.id
 );
 const sectionHasArticles = (section) => categories.some((category) =>
   category.sectionId === section.id && (category.articles || []).some((id) => articleById[id])
@@ -139,7 +176,9 @@ function breadcrumbSchema(items, route) {
 function header(active = "") {
   const currentArticle = articles.find((article) => active === "/article/" + article.slug + "/");
   const currentCategoryId = active.match(/^\/catalog\/([^/]+)\/$/)?.[1] || "";
-  const currentGroup = Object.values(groupById).find((group) => groupRoute(group) === active);
+  const currentTopic = topicByRoute[active];
+  const currentGroup = currentTopic?.group ||
+    Object.values(groupById).find((group) => groupRoute(group) === active);
   const articleCategory = currentArticle ? categoryById[currentArticle.categoryIds[0]] : null;
   const activeCategory = categoryById[currentCategoryId] || articleCategory;
   const activeSectionId = currentGroup?.sectionId || activeCategory?.sectionId ||
@@ -153,9 +192,8 @@ function header(active = "") {
     return '<a class="' + className + '" href="' + escapeHtml(item.href) + '"' +
       (current ? ' aria-current="page"' : "") + ">" + escapeHtml(item.label) + "</a>";
   };
-  const groupLinkMarkup = (section, group, className) => {
-    const hasPublishedPage = categoriesForGroup(group).length > 0;
-    const href = hasPublishedPage ? groupRoute(group) : section.route + "#" + group.id;
+  const groupLinkMarkup = (group, className) => {
+    const href = groupRoute(groupById[group.id]);
     return '<a class="' + className + '" href="' + escapeHtml(href) + '"' +
       (activeGroupId === group.id ? ' aria-current="page"' : "") + ">" +
       escapeHtml(group.title) + "</a>";
@@ -165,7 +203,7 @@ function header(active = "") {
     const current = sectionIsCurrent(section);
     const exact = active === section.route;
     const submenuId = "submenu-" + section.id;
-    const groupLinks = section.groups.map((group) => groupLinkMarkup(section, group, "nav-submenu-link")).join("");
+    const groupLinks = section.groups.map((group) => groupLinkMarkup(group, "nav-submenu-link")).join("");
     return '<div class="nav-item"' + (current ? ' data-current="true"' : "") + ">" +
       '<div class="nav-item-row"><a class="nav-parent" id="nav-parent-' + section.id + '" href="' + escapeHtml(section.route) + '"' +
       (exact ? ' aria-current="page"' : "") + ">" + escapeHtml(section.title) + "</a>" +
@@ -177,7 +215,7 @@ function header(active = "") {
   const mobileNav = site.navigation.map((item) => {
     const section = sectionById[item.sectionId];
     const exact = active === section.route;
-    const groupLinks = section.groups.map((group) => groupLinkMarkup(section, group, "mobile-nav-link")).join("");
+    const groupLinks = section.groups.map((group) => groupLinkMarkup(group, "mobile-nav-link")).join("");
     const expanded = activeSectionId === section.id;
     return '<section class="mobile-nav-group"><h2 class="mobile-nav-heading"><a href="' +
       escapeHtml(section.route) + '"' + (exact ? ' aria-current="page"' : "") + ">" +
@@ -216,15 +254,18 @@ function layout(options) {
   const title = options.title === site.siteName
     ? site.siteName + " — строительство и ремонт"
     : options.title + " — Nodehome";
-  const canonical = BASE_URL + options.route;
+  const canonical = options.canonicalUrl || BASE_URL + options.route;
   const image = options.image ? BASE_URL + "/assets/images/" + options.image : "";
   const socialImage = image || BASE_URL + "/assets/images/hero-house.webp";
   const robots = options.robots || "index,follow";
+  const redirect = options.redirectTo
+    ? '<meta http-equiv="refresh" content="0;url=' + escapeHtml(options.redirectTo) + '">\n'
+    : "";
 
   return '<!doctype html>\n<html lang="ru">\n<head>\n' +
     '<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n' +
     '<meta name="theme-color" content="#f6f5f2">\n<meta name="description" content="' + escapeHtml(options.description) + '">\n' +
-    '<meta name="robots" content="' + robots + '">\n<link rel="canonical" href="' + canonical + '">\n' +
+    '<meta name="robots" content="' + robots + '">\n' + redirect + '<link rel="canonical" href="' + canonical + '">\n' +
     '<meta property="og:type" content="' + (options.ogType || "website") + '">\n' +
     '<meta property="og:site_name" content="Nodehome">\n<meta property="og:title" content="' + escapeHtml(title) + '">\n' +
     '<meta property="og:description" content="' + escapeHtml(options.description) + '">\n' +
@@ -255,24 +296,13 @@ function sectionCard(section, index) {
     "<p>" + escapeHtml(section.description) + "</p></a>";
 }
 
-function taxonomyGroupMarkup(section, group, index) {
-  const liveCategories = categoriesForGroup(group);
-  const route = groupRoute(group);
-  const heading = liveCategories.length
-    ? '<a href="' + escapeHtml(route) + '">' + escapeHtml(group.title) + "</a>"
-    : escapeHtml(group.title);
-  const publishedLinks = liveCategories.length
-    ? '<div class="taxonomy-published"><span>Опубликованные рубрики</span><ul>' +
-      liveCategories.map((category) => '<li><a href="/catalog/' + escapeHtml(category.id) + '/">' +
-        escapeHtml(category.title) + "</a></li>").join("") + "</ul></div>"
-    : "";
-  return '<section class="taxonomy-group" id="' + escapeHtml(group.id) + '"><div class="taxonomy-group-heading">' +
+function groupCard(group, index) {
+  const route = groupRoute(groupById[group.id]);
+  return '<a class="category-card section-card" href="' + escapeHtml(route) + '">' +
     '<span class="category-number">' + String(index + 1).padStart(2, "0") + "</span>" +
-    '<h2>' + heading + "</h2>" +
-    '<span class="taxonomy-topic-count">' + group.topics.length + ' тем</span></div>' +
-    '<details class="taxonomy-topics"><summary>Список тем</summary><ul>' +
-    group.topics.map((topic) => "<li>" + escapeHtml(topic) + "</li>").join("") +
-    "</ul></details>" + publishedLinks + "</section>";
+    '<span class="category-arrow" aria-hidden="true">↗</span>' +
+    "<h3>" + escapeHtml(group.title) + "</h3>" +
+    "<p>" + group.topics.length + " тем</p></a>";
 }
 
 function articleCard(article) {
@@ -364,7 +394,7 @@ function catalogPage() {
 }
 
 function sectionPage(section) {
-  const topicGroups = section.groups.map((group, index) => taxonomyGroupMarkup(section, group, index)).join("");
+  const groupCards = section.groups.map((group, index) => groupCard(group, index)).join("");
   const hasArticles = sectionHasArticles(section);
   const body = breadcrumb([
     { label: "Материалы", href: "/catalog/" },
@@ -373,10 +403,10 @@ function sectionPage(section) {
     '<section class="page-intro container"><p class="eyebrow">Раздел Nodehome</p>' +
     "<h1>" + escapeHtml(section.title) + "</h1>" +
     '<p class="page-lead">' + escapeHtml(section.intro) + "</p></section>" +
-    '<section class="section container section-topics"><div class="section-heading compact"><p class="eyebrow">Полная структура направления</p>' +
-    '<h2>Темы каталога</h2><p class="section-lead">Группы раскрываются по запросу. На страницы рубрик можно перейти, когда в них опубликованы материалы.</p></div>' +
-    '<div class="taxonomy-list">' + topicGroups + '</div></section>' +
-    (!hasArticles ? '<section class="container section-empty-note"><p>Материалы этого направления пополняются. Пока здесь доступен полный план тем.</p></section>' : "");
+    '<section class="section container section-topics"><div class="section-heading compact"><p class="eyebrow">Основные рубрики</p>' +
+    '<h2>Выберите тему</h2><p class="section-lead">Каждая рубрика открывает отдельную страницу со списком подтем и материалов.</p></div>' +
+    '<div class="category-grid section-group-grid">' + groupCards + '</div></section>' +
+    (!hasArticles ? '<section class="container section-empty-note"><p>Раздел уже доступен. Материалы будут добавляться по мере подготовки публикаций.</p></section>' : "");
   return layout({
     title: section.title,
     description: section.description,
@@ -393,8 +423,8 @@ function sectionPage(section) {
 
 function groupPage(group) {
   const liveCategories = categoriesForGroup(group);
-  const groupArticles = [...new Set(liveCategories.flatMap((category) => category.articles))]
-    .map((id) => articleById[id]).filter(Boolean);
+  const groupArticles = articlesForGroup(group);
+  const unassignedArticles = groupArticles.filter((article) => !article.topicId);
   const route = groupRoute(group);
   const breadcrumbItems = [
     { label: "Материалы", href: "/catalog/" },
@@ -405,22 +435,80 @@ function groupPage(group) {
     '<a class="group-category-link" href="/catalog/' + escapeHtml(category.id) + '/"><strong>' +
     escapeHtml(category.title) + '</strong><span>' + escapeHtml(category.description) +
     '</span><span class="group-category-arrow" aria-hidden="true">→</span></a>').join("");
+  const topicLinks = group.topics.map((topic) =>
+    '<li><a href="' + escapeHtml(topicRoute(group, topic)) + '">' +
+    escapeHtml(topic.title) + "</a></li>").join("");
+  const categorySection = liveCategories.length
+    ? '<section class="container group-categories"><div class="section-heading compact"><p class="eyebrow">Опубликованные рубрики</p><h2>Материалы раздела</h2></div>' +
+      '<div class="group-category-list">' + categoryCards + '</div></section>'
+    : "";
+  const unassignedSection = unassignedArticles.length
+    ? '<section class="section section-muted"><div class="container"><div class="section-heading compact"><p class="eyebrow">Материалы направления</p><h2>Инструкции</h2></div>' +
+      '<div class="article-grid">' + unassignedArticles.map(articleCard).join("") + "</div></div></section>"
+    : "";
   const body = breadcrumb(breadcrumbItems, true) +
-    '<section class="page-intro container"><p class="eyebrow">Подборка Nodehome</p><h1>' + escapeHtml(group.title) +
-    '</h1><p class="page-lead">' + escapeHtml(group.section.title) + ': собранные рубрики и опубликованные инструкции по теме.</p></section>' +
-    '<section class="container group-categories"><div class="section-heading compact"><p class="eyebrow">Рубрики</p><h2>Материалы по теме</h2></div>' +
-    '<div class="group-category-list">' + categoryCards + '</div></section>' +
-    '<section class="section container group-topic-section"><div class="section-heading compact"><p class="eyebrow">Содержание направления</p><h2>Что входит в тему</h2></div>' +
-    '<ul class="group-topic-list">' + group.topics.map((topic) => "<li>" + escapeHtml(topic) + "</li>").join("") + "</ul></section>" +
-    '<section class="section section-muted"><div class="container"><div class="section-heading compact"><p class="eyebrow">Инструкции</p><h2>Опубликованные материалы</h2></div>' +
-    '<div class="article-grid">' + groupArticles.map(articleCard).join("") + "</div></div></section>";
+    '<section class="page-intro container"><p class="eyebrow">' + escapeHtml(group.section.title) +
+    '</p><h1>' + escapeHtml(group.title) +
+    '</h1><p class="page-lead">Выберите подтему, чтобы открыть отдельную страницу с относящимися к ней материалами.</p></section>' +
+    categorySection +
+    '<section class="section container group-topic-section"><div class="section-heading compact"><p class="eyebrow">Подтемы</p><h2>Темы раздела</h2></div>' +
+    '<ul class="group-topic-list">' + topicLinks + "</ul></section>" +
+    unassignedSection;
   return layout({
     title: group.title,
-    description: "Материалы по теме «" + group.title + "»: тематические рубрики и опубликованные инструкции Nodehome.",
+    description: "Подтемы раздела «" + group.title + "» и опубликованные материалы Nodehome.",
     route,
     body,
     active: route,
+    robots: groupArticles.length ? "index,follow" : "noindex,follow",
     schema: [breadcrumbSchema(breadcrumbItems, route)]
+  });
+}
+
+function topicPage(group, topic) {
+  const route = topicRoute(group, topic);
+  const related = articlesForGroup(group).filter((article) => article.topicId === topic.id);
+  const breadcrumbItems = [
+    { label: "Материалы", href: "/catalog/" },
+    { label: group.section.title, href: group.section.route },
+    { label: group.title, href: groupRoute(group) },
+    { label: topic.title }
+  ];
+  const content = related.length
+    ? '<section class="section container topic-articles"><div class="section-heading compact"><p class="eyebrow">Инструкции</p><h2>Материалы по теме</h2></div>' +
+      '<div class="article-grid">' + related.map(articleCard).join("") + "</div></section>"
+    : '<section class="container topic-empty"><div class="empty-note"><strong>Материалы по этой теме ещё готовятся.</strong>' +
+      '<p>Откройте страницу раздела, чтобы посмотреть соседние темы и уже опубликованные инструкции.</p>' +
+      '<a class="text-link" href="' + escapeHtml(groupRoute(group)) + '">Все темы раздела <span aria-hidden="true">→</span></a></div></section>';
+  const body = breadcrumb(breadcrumbItems, true) +
+    '<section class="page-intro container"><p class="eyebrow">' + escapeHtml(group.title) + '</p><h1>' +
+    escapeHtml(topic.title) + '</h1><p class="page-lead">Инструкции и разборы Nodehome по теме «' +
+    escapeHtml(topic.title) + '».</p></section>' + content;
+  return layout({
+    title: topic.title,
+    description: "Статьи и инструкции Nodehome по теме «" + topic.title + "».",
+    route,
+    body,
+    active: route,
+    robots: related.length ? "index,follow" : "noindex,follow",
+    schema: [breadcrumbSchema(breadcrumbItems, route)]
+  });
+}
+
+function redirectPage(route, destination, label) {
+  const body = '<section class="page-intro container error-page"><p class="eyebrow">Адрес раздела обновлён</p>' +
+    "<h1>" + escapeHtml(label) + "</h1>" +
+    '<p class="page-lead">Страница теперь доступна по новому адресу.</p>' +
+    '<a class="button button-dark" href="' + escapeHtml(destination) + '">Перейти в раздел</a></section>';
+  return layout({
+    title: label,
+    description: label + " доступен по новому адресу Nodehome.",
+    route,
+    canonicalUrl: BASE_URL + destination,
+    redirectTo: destination,
+    robots: "noindex,follow",
+    active: destination,
+    body
   });
 }
 
@@ -487,6 +575,7 @@ function articlePage(article) {
   const primaryCategory = categoryById[article.categoryIds[0]];
   const parentSection = primaryCategory ? categorySectionById[primaryCategory.id] : null;
   const parentGroup = primaryCategory ? groupById[primaryCategory.groupId] : null;
+  const articleTopic = parentGroup?.topics.find((topic) => topic.id === article.topicId);
   const toc = article.sections.map((section) =>
     '<li><a href="#' + escapeHtml(section.id) + '">' + escapeHtml(section.title) + "</a></li>").join("");
   const related = articles.filter((other) => other.id !== article.id &&
@@ -504,8 +593,8 @@ function articlePage(article) {
   const pathItems = [
     { label: "Материалы", href: "/catalog/" },
     ...(parentSection ? [{ label: parentSection.title, href: parentSection.route }] : []),
-    ...(parentGroup && categoriesForGroup(parentGroup).length
-      ? [{ label: parentGroup.title, href: groupRoute(parentGroup) }] : []),
+    ...(parentGroup ? [{ label: parentGroup.title, href: groupRoute(parentGroup) }] : []),
+    ...(articleTopic ? [{ label: articleTopic.title, href: topicRoute(parentGroup, articleTopic) }] : []),
     { label: primaryCategory ? primaryCategory.title : "Статья", href: primaryCategory ? "/catalog/" + primaryCategory.id + "/" : "/catalog/" },
     { label: article.title }
   ];
@@ -703,13 +792,29 @@ async function main() {
     routes.push(section.route);
     if (sectionHasArticles(section)) sitemapRoutes.push(section.route);
     await writeRoute(section.route, sectionPage(section));
+    const legacyRoute = "/catalog/" + section.id + "/";
+    routes.push(legacyRoute);
+    await writeRoute(legacyRoute, redirectPage(legacyRoute, section.route, section.title));
   }
 
-  for (const group of Object.values(groupById).filter((item) => categoriesForGroup(item).length)) {
+  for (const group of Object.values(groupById)) {
     const route = groupRoute(group);
     routes.push(route);
-    sitemapRoutes.push(route);
+    if (articlesForGroup(group).length) sitemapRoutes.push(route);
     await writeRoute(route, groupPage(group));
+    if (categoriesForGroup(group).length) {
+      const legacyRoute = legacyGroupRoute(group);
+      routes.push(legacyRoute);
+      await writeRoute(legacyRoute, redirectPage(legacyRoute, route, group.title));
+    }
+  }
+
+  for (const { group, topic } of topicRecords) {
+    const route = topicRoute(group, topic);
+    const hasArticles = articlesForGroup(group).some((article) => article.topicId === topic.id);
+    routes.push(route);
+    if (hasArticles) sitemapRoutes.push(route);
+    await writeRoute(route, topicPage(group, topic));
   }
 
   for (const category of categories) {

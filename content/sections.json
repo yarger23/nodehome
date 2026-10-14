@@ -2,7 +2,7 @@
   {
     "id": "construction",
     "title": "Строительство дома",
-    "route": "/catalog/construction/",
+    "route": "/construction/",
     "description": "Проектирование и основные конструкции частного дома — от исходных данных до реконструкции.",
     "intro": "Соберите исходные данные, изучите строительные системы и переходите от проекта к конструкциям дома по этапам.",
     "groups": [
@@ -10,102 +10,264 @@
         "id": "construction-proektirovanie-i-podgotovka",
         "title": "Проектирование и подготовка",
         "topics": [
-          "Проекты домов и планировки",
-          "Архитектура и конструктивные решения",
-          "Строительные нормы и документы",
-          "Сметы и стоимость строительства",
-          "Организация строительных работ"
+          {
+            "id": "proekty-domov-i-planirovki",
+            "title": "Проекты домов и планировки"
+          },
+          {
+            "id": "arkhitektura-i-konstruktivnye-resheniya",
+            "title": "Архитектура и конструктивные решения"
+          },
+          {
+            "id": "stroitelnye-normy-i-dokumenty",
+            "title": "Строительные нормы и документы"
+          },
+          {
+            "id": "smety-i-stoimost-stroitelstva",
+            "title": "Сметы и стоимость строительства"
+          },
+          {
+            "id": "organizatsiya-stroitelnykh-rabot",
+            "title": "Организация строительных работ"
+          }
         ]
       },
       {
         "id": "construction-fundamenty-i-osnovaniya",
         "title": "Фундаменты и основания",
         "topics": [
-          "Ленточные фундаменты",
-          "Плитные фундаменты",
-          "Свайные и столбчатые фундаменты",
-          "Грунтовые основания",
-          "Бетонные и арматурные работы",
-          "Гидроизоляция и утепление фундамента",
-          "Цоколи и подвалы"
+          {
+            "id": "lentochnye-fundamenty",
+            "title": "Ленточные фундаменты"
+          },
+          {
+            "id": "plitnye-fundamenty",
+            "title": "Плитные фундаменты"
+          },
+          {
+            "id": "svaynye-i-stolbchatye-fundamenty",
+            "title": "Свайные и столбчатые фундаменты"
+          },
+          {
+            "id": "gruntovye-osnovaniya",
+            "title": "Грунтовые основания"
+          },
+          {
+            "id": "betonnye-i-armaturnye-raboty",
+            "title": "Бетонные и арматурные работы"
+          },
+          {
+            "id": "gidroizolyatsiya-i-uteplenie-fundamenta",
+            "title": "Гидроизоляция и утепление фундамента"
+          },
+          {
+            "id": "tsokoli-i-podvaly",
+            "title": "Цоколи и подвалы"
+          }
         ]
       },
       {
         "id": "construction-steny-i-nesushchie-konstruktsii",
         "title": "Стены и несущие конструкции",
         "topics": [
-          "Кирпичные дома",
-          "Газобетон и пеноблоки",
-          "Керамические и другие строительные блоки",
-          "Каркасные дома",
-          "Дома из бруса и бревна",
-          "СИП-панели и модульное строительство",
-          "Монолитные конструкции",
-          "Металлоконструкции"
+          {
+            "id": "kirpichnye-doma",
+            "title": "Кирпичные дома"
+          },
+          {
+            "id": "gazobeton-i-penobloki",
+            "title": "Газобетон и пеноблоки"
+          },
+          {
+            "id": "keramicheskie-i-drugie-stroitelnye-bloki",
+            "title": "Керамические и другие строительные блоки"
+          },
+          {
+            "id": "karkasnye-doma",
+            "title": "Каркасные дома"
+          },
+          {
+            "id": "doma-iz-brusa-i-brevna",
+            "title": "Дома из бруса и бревна"
+          },
+          {
+            "id": "sip-paneli-i-modulnoe-stroitelstvo",
+            "title": "СИП-панели и модульное строительство"
+          },
+          {
+            "id": "monolitnye-konstruktsii",
+            "title": "Монолитные конструкции"
+          },
+          {
+            "id": "metallokonstruktsii",
+            "title": "Металлоконструкции"
+          }
         ]
       },
       {
         "id": "construction-perekrytiya-i-lestnitsy",
         "title": "Перекрытия и лестницы",
         "topics": [
-          "Железобетонные перекрытия",
-          "Деревянные перекрытия",
-          "Металлические перекрытия",
-          "Конструктивные узлы",
-          "Бетонные лестницы",
-          "Деревянные и металлические лестницы"
+          {
+            "id": "zhelezobetonnye-perekrytiya",
+            "title": "Железобетонные перекрытия"
+          },
+          {
+            "id": "derevyannye-perekrytiya",
+            "title": "Деревянные перекрытия"
+          },
+          {
+            "id": "metallicheskie-perekrytiya",
+            "title": "Металлические перекрытия"
+          },
+          {
+            "id": "konstruktivnye-uzly",
+            "title": "Конструктивные узлы"
+          },
+          {
+            "id": "betonnye-lestnitsy",
+            "title": "Бетонные лестницы"
+          },
+          {
+            "id": "derevyannye-i-metallicheskie-lestnitsy",
+            "title": "Деревянные и металлические лестницы"
+          }
         ]
       },
       {
         "id": "construction-krysha-i-krovlya",
         "title": "Крыша и кровля",
         "topics": [
-          "Стропильные системы",
-          "Скатные и плоские крыши",
-          "Металлочерепица и профнастил",
-          "Гибкая и натуральная черепица",
-          "Фальцевая и мембранная кровля",
-          "Кровельная изоляция",
-          "Мансарды и чердаки",
-          "Водостоки и снегозадержатели"
+          {
+            "id": "stropilnye-sistemy",
+            "title": "Стропильные системы"
+          },
+          {
+            "id": "skatnye-i-ploskie-kryshi",
+            "title": "Скатные и плоские крыши"
+          },
+          {
+            "id": "metallocherepitsa-i-profnastil",
+            "title": "Металлочерепица и профнастил"
+          },
+          {
+            "id": "gibkaya-i-naturalnaya-cherepitsa",
+            "title": "Гибкая и натуральная черепица"
+          },
+          {
+            "id": "faltsevaya-i-membrannaya-krovlya",
+            "title": "Фальцевая и мембранная кровля"
+          },
+          {
+            "id": "krovelnaya-izolyatsiya",
+            "title": "Кровельная изоляция"
+          },
+          {
+            "id": "mansardy-i-cherdaki",
+            "title": "Мансарды и чердаки"
+          },
+          {
+            "id": "vodostoki-i-snegozaderzhateli",
+            "title": "Водостоки и снегозадержатели"
+          }
         ]
       },
       {
         "id": "construction-fasady-i-uteplenie",
         "title": "Фасады и утепление",
         "topics": [
-          "Штукатурные фасады",
-          "Вентилируемые фасады",
-          "Облицовка кирпичом и панелями",
-          "Сайдинг",
-          "Утепление стен",
-          "Теплоизоляционные материалы",
-          "Пароизоляция и ветрозащита",
-          "Герметизация конструкций"
+          {
+            "id": "shtukaturnye-fasady",
+            "title": "Штукатурные фасады"
+          },
+          {
+            "id": "ventiliruemye-fasady",
+            "title": "Вентилируемые фасады"
+          },
+          {
+            "id": "oblitsovka-kirpichom-i-panelyami",
+            "title": "Облицовка кирпичом и панелями"
+          },
+          {
+            "id": "sayding",
+            "title": "Сайдинг"
+          },
+          {
+            "id": "uteplenie-sten",
+            "title": "Утепление стен"
+          },
+          {
+            "id": "teploizolyatsionnye-materialy",
+            "title": "Теплоизоляционные материалы"
+          },
+          {
+            "id": "paroizolyatsiya-i-vetrozashchita",
+            "title": "Пароизоляция и ветрозащита"
+          },
+          {
+            "id": "germetizatsiya-konstruktsiy",
+            "title": "Герметизация конструкций"
+          }
         ]
       },
       {
         "id": "construction-okna-i-naruzhnye-dveri",
         "title": "Окна и наружные двери",
         "topics": [
-          "Пластиковые окна",
-          "Деревянные и алюминиевые окна",
-          "Панорамное остекление",
-          "Мансардные окна",
-          "Входные двери",
-          "Монтаж окон и дверей"
+          {
+            "id": "plastikovye-okna",
+            "title": "Пластиковые окна"
+          },
+          {
+            "id": "derevyannye-i-alyuminievye-okna",
+            "title": "Деревянные и алюминиевые окна"
+          },
+          {
+            "id": "panoramnoe-osteklenie",
+            "title": "Панорамное остекление"
+          },
+          {
+            "id": "mansardnye-okna",
+            "title": "Мансардные окна"
+          },
+          {
+            "id": "vkhodnye-dveri",
+            "title": "Входные двери"
+          },
+          {
+            "id": "montazh-okon-i-dverey",
+            "title": "Монтаж окон и дверей"
+          }
         ]
       },
       {
         "id": "construction-rekonstruktsiya-i-ekspluatatsiya",
         "title": "Реконструкция и эксплуатация",
         "topics": [
-          "Пристройки и надстройки",
-          "Усиление фундаментов и стен",
-          "Реконструкция старых домов",
-          "Диагностика строительных конструкций",
-          "Ремонт фасадов и кровли",
-          "Обслуживание частного дома"
+          {
+            "id": "pristroyki-i-nadstroyki",
+            "title": "Пристройки и надстройки"
+          },
+          {
+            "id": "usilenie-fundamentov-i-sten",
+            "title": "Усиление фундаментов и стен"
+          },
+          {
+            "id": "rekonstruktsiya-starykh-domov",
+            "title": "Реконструкция старых домов"
+          },
+          {
+            "id": "diagnostika-stroitelnykh-konstruktsiy",
+            "title": "Диагностика строительных конструкций"
+          },
+          {
+            "id": "remont-fasadov-i-krovli",
+            "title": "Ремонт фасадов и кровли"
+          },
+          {
+            "id": "obsluzhivanie-chastnogo-doma",
+            "title": "Обслуживание частного дома"
+          }
         ]
       }
     ]
@@ -113,7 +275,7 @@
   {
     "id": "renovation",
     "title": "Ремонт и отделка",
-    "route": "/catalog/renovation/",
+    "route": "/renovation/",
     "description": "Планирование ремонта, подготовка поверхностей и отделка помещений.",
     "intro": "Разбирайте ремонт по помещениям и этапам: от сметы и подготовки основания до чистовой отделки и проверки результата.",
     "groups": [
@@ -121,112 +283,286 @@
         "id": "renovation-planirovanie-remonta",
         "title": "Планирование ремонта",
         "topics": [
-          "Виды ремонта",
-          "Планирование и сметы",
-          "Перепланировка помещений",
-          "Демонтажные работы",
-          "Подготовка помещений",
-          "Контроль качества ремонта"
+          {
+            "id": "vidy-remonta",
+            "title": "Виды ремонта"
+          },
+          {
+            "id": "planirovanie-i-smety",
+            "title": "Планирование и сметы"
+          },
+          {
+            "id": "pereplanirovka-pomeshcheniy",
+            "title": "Перепланировка помещений"
+          },
+          {
+            "id": "demontazhnye-raboty",
+            "title": "Демонтажные работы"
+          },
+          {
+            "id": "podgotovka-pomeshcheniy",
+            "title": "Подготовка помещений"
+          },
+          {
+            "id": "kontrol-kachestva-remonta",
+            "title": "Контроль качества ремонта"
+          }
         ]
       },
       {
         "id": "renovation-steny-i-peregorodki",
         "title": "Стены и перегородки",
         "topics": [
-          "Межкомнатные перегородки",
-          "Гипсокартон",
-          "Штукатурка стен",
-          "Шпаклёвка",
-          "Грунтовка",
-          "Выравнивание поверхностей"
+          {
+            "id": "mezhkomnatnye-peregorodki",
+            "title": "Межкомнатные перегородки"
+          },
+          {
+            "id": "gipsokarton",
+            "title": "Гипсокартон"
+          },
+          {
+            "id": "shtukaturka-sten",
+            "title": "Штукатурка стен"
+          },
+          {
+            "id": "shpaklyovka",
+            "title": "Шпаклёвка"
+          },
+          {
+            "id": "gruntovka",
+            "title": "Грунтовка"
+          },
+          {
+            "id": "vyravnivanie-poverkhnostey",
+            "title": "Выравнивание поверхностей"
+          }
         ]
       },
       {
         "id": "renovation-otdelka-sten",
         "title": "Отделка стен",
         "topics": [
-          "Покраска стен",
-          "Обои",
-          "Декоративная штукатурка",
-          "Стеновые панели",
-          "Декоративный камень",
-          "Молдинги и декоративные элементы"
+          {
+            "id": "pokraska-sten",
+            "title": "Покраска стен"
+          },
+          {
+            "id": "oboi",
+            "title": "Обои"
+          },
+          {
+            "id": "dekorativnaya-shtukaturka",
+            "title": "Декоративная штукатурка"
+          },
+          {
+            "id": "stenovye-paneli",
+            "title": "Стеновые панели"
+          },
+          {
+            "id": "dekorativnyy-kamen",
+            "title": "Декоративный камень"
+          },
+          {
+            "id": "moldingi-i-dekorativnye-elementy",
+            "title": "Молдинги и декоративные элементы"
+          }
         ]
       },
       {
         "id": "renovation-plitochnye-raboty",
         "title": "Плиточные работы",
         "topics": [
-          "Керамическая плитка",
-          "Керамогранит",
-          "Мозаика",
-          "Плиточный клей",
-          "Подготовка оснований",
-          "Технология укладки плитки",
-          "Затирка швов"
+          {
+            "id": "keramicheskaya-plitka",
+            "title": "Керамическая плитка"
+          },
+          {
+            "id": "keramogranit",
+            "title": "Керамогранит"
+          },
+          {
+            "id": "mozaika",
+            "title": "Мозаика"
+          },
+          {
+            "id": "plitochnyy-kley",
+            "title": "Плиточный клей"
+          },
+          {
+            "id": "podgotovka-osnovaniy",
+            "title": "Подготовка оснований"
+          },
+          {
+            "id": "tekhnologiya-ukladki-plitki",
+            "title": "Технология укладки плитки"
+          },
+          {
+            "id": "zatirka-shvov",
+            "title": "Затирка швов"
+          }
         ]
       },
       {
         "id": "renovation-poly-i-napolnye-pokrytiya",
         "title": "Полы и напольные покрытия",
         "topics": [
-          "Цементная и полусухая стяжка",
-          "Сухая стяжка",
-          "Наливные полы",
-          "Полы по лагам",
-          "Ламинат",
-          "Паркет и деревянные покрытия",
-          "Линолеум и кварцвинил",
-          "Пробковые и ковровые покрытия"
+          {
+            "id": "tsementnaya-i-polusukhaya-styazhka",
+            "title": "Цементная и полусухая стяжка"
+          },
+          {
+            "id": "sukhaya-styazhka",
+            "title": "Сухая стяжка"
+          },
+          {
+            "id": "nalivnye-poly",
+            "title": "Наливные полы"
+          },
+          {
+            "id": "poly-po-lagam",
+            "title": "Полы по лагам"
+          },
+          {
+            "id": "laminat",
+            "title": "Ламинат"
+          },
+          {
+            "id": "parket-i-derevyannye-pokrytiya",
+            "title": "Паркет и деревянные покрытия"
+          },
+          {
+            "id": "linoleum-i-kvartsvinil",
+            "title": "Линолеум и кварцвинил"
+          },
+          {
+            "id": "probkovye-i-kovrovye-pokrytiya",
+            "title": "Пробковые и ковровые покрытия"
+          }
         ]
       },
       {
         "id": "renovation-potolki",
         "title": "Потолки",
         "topics": [
-          "Штукатурка и шпаклёвка потолков",
-          "Покраска потолков",
-          "Натяжные потолки",
-          "Подвесные потолки",
-          "Гипсокартонные потолки",
-          "Потолочные декоративные конструкции"
+          {
+            "id": "shtukaturka-i-shpaklyovka-potolkov",
+            "title": "Штукатурка и шпаклёвка потолков"
+          },
+          {
+            "id": "pokraska-potolkov",
+            "title": "Покраска потолков"
+          },
+          {
+            "id": "natyazhnye-potolki",
+            "title": "Натяжные потолки"
+          },
+          {
+            "id": "podvesnye-potolki",
+            "title": "Подвесные потолки"
+          },
+          {
+            "id": "gipsokartonnye-potolki",
+            "title": "Гипсокартонные потолки"
+          },
+          {
+            "id": "potolochnye-dekorativnye-konstruktsii",
+            "title": "Потолочные декоративные конструкции"
+          }
         ]
       },
       {
         "id": "renovation-dveri-i-elementy-interera",
         "title": "Двери и элементы интерьера",
         "topics": [
-          "Межкомнатные двери",
-          "Раздвижные и скрытые двери",
-          "Дверная фурнитура",
-          "Откосы и подоконники",
-          "Плинтусы и пороги",
-          "Столярные и декоративные работы"
+          {
+            "id": "mezhkomnatnye-dveri",
+            "title": "Межкомнатные двери"
+          },
+          {
+            "id": "razdvizhnye-i-skrytye-dveri",
+            "title": "Раздвижные и скрытые двери"
+          },
+          {
+            "id": "dvernaya-furnitura",
+            "title": "Дверная фурнитура"
+          },
+          {
+            "id": "otkosy-i-podokonniki",
+            "title": "Откосы и подоконники"
+          },
+          {
+            "id": "plintusy-i-porogi",
+            "title": "Плинтусы и пороги"
+          },
+          {
+            "id": "stolyarnye-i-dekorativnye-raboty",
+            "title": "Столярные и декоративные работы"
+          }
         ]
       },
       {
         "id": "renovation-izolyatsiya-i-vosstanovlenie",
         "title": "Изоляция и восстановление",
         "topics": [
-          "Гидроизоляция мокрых зон",
-          "Звукоизоляция стен",
-          "Звукоизоляция полов и потолков",
-          "Ремонт трещин",
-          "Борьба с плесенью и сыростью",
-          "Восстановление отделочных покрытий"
+          {
+            "id": "gidroizolyatsiya-mokrykh-zon",
+            "title": "Гидроизоляция мокрых зон"
+          },
+          {
+            "id": "zvukoizolyatsiya-sten",
+            "title": "Звукоизоляция стен"
+          },
+          {
+            "id": "zvukoizolyatsiya-polov-i-potolkov",
+            "title": "Звукоизоляция полов и потолков"
+          },
+          {
+            "id": "remont-treshchin",
+            "title": "Ремонт трещин"
+          },
+          {
+            "id": "borba-s-plesenyu-i-syrostyu",
+            "title": "Борьба с плесенью и сыростью"
+          },
+          {
+            "id": "vosstanovlenie-otdelochnykh-pokrytiy",
+            "title": "Восстановление отделочных покрытий"
+          }
         ]
       },
       {
         "id": "renovation-remont-pomeshcheniy",
         "title": "Ремонт помещений",
         "topics": [
-          "Ванные комнаты",
-          "Санузлы",
-          "Кухни",
-          "Спальни и гостиные",
-          "Прихожие и коридоры",
-          "Балконы и лоджии",
-          "Ремонт старых квартир"
+          {
+            "id": "vannye-komnaty",
+            "title": "Ванные комнаты"
+          },
+          {
+            "id": "sanuzly",
+            "title": "Санузлы"
+          },
+          {
+            "id": "kukhni",
+            "title": "Кухни"
+          },
+          {
+            "id": "spalni-i-gostinye",
+            "title": "Спальни и гостиные"
+          },
+          {
+            "id": "prikhozhie-i-koridory",
+            "title": "Прихожие и коридоры"
+          },
+          {
+            "id": "balkony-i-lodzhii",
+            "title": "Балконы и лоджии"
+          },
+          {
+            "id": "remont-starykh-kvartir",
+            "title": "Ремонт старых квартир"
+          }
         ]
       }
     ]
@@ -234,7 +570,7 @@
   {
     "id": "engineering",
     "title": "Инженерные системы",
-    "route": "/catalog/engineering/",
+    "route": "/engineering/",
     "description": "Отопление, вода, электроснабжение, вентиляция и другие системы дома.",
     "intro": "Собирайте решения для инженерных систем дома. Работы с газом, электрикой и несущими системами требуют проекта и профильных специалистов.",
     "groups": [
@@ -242,128 +578,332 @@
         "id": "engineering-otoplenie",
         "title": "Отопление",
         "topics": [
-          "Проектирование и расчёты отопления",
-          "Газовые и электрические котлы",
-          "Твердотопливные котлы",
-          "Радиаторы и конвекторы",
-          "Водяные тёплые полы",
-          "Трубы, коллекторы и насосы",
-          "Тепловые насосы",
-          "Автоматика отопления"
+          {
+            "id": "proektirovanie-i-raschyoty-otopleniya",
+            "title": "Проектирование и расчёты отопления"
+          },
+          {
+            "id": "gazovye-i-elektricheskie-kotly",
+            "title": "Газовые и электрические котлы"
+          },
+          {
+            "id": "tverdotoplivnye-kotly",
+            "title": "Твердотопливные котлы"
+          },
+          {
+            "id": "radiatory-i-konvektory",
+            "title": "Радиаторы и конвекторы"
+          },
+          {
+            "id": "vodyanye-tyoplye-poly",
+            "title": "Водяные тёплые полы"
+          },
+          {
+            "id": "truby-kollektory-i-nasosy",
+            "title": "Трубы, коллекторы и насосы"
+          },
+          {
+            "id": "teplovye-nasosy",
+            "title": "Тепловые насосы"
+          },
+          {
+            "id": "avtomatika-otopleniya",
+            "title": "Автоматика отопления"
+          }
         ]
       },
       {
         "id": "engineering-pechi-kaminy-i-dymohody",
         "title": "Печи, камины и дымоходы",
         "topics": [
-          "Отопительные печи",
-          "Камины",
-          "Печи-камины",
-          "Дымоходы",
-          "Дымоудаление",
-          "Монтаж и обслуживание"
+          {
+            "id": "otopitelnye-pechi",
+            "title": "Отопительные печи"
+          },
+          {
+            "id": "kaminy",
+            "title": "Камины"
+          },
+          {
+            "id": "pechi-kaminy",
+            "title": "Печи-камины"
+          },
+          {
+            "id": "dymokhody",
+            "title": "Дымоходы"
+          },
+          {
+            "id": "dymoudalenie",
+            "title": "Дымоудаление"
+          },
+          {
+            "id": "montazh-i-obsluzhivanie",
+            "title": "Монтаж и обслуживание"
+          }
         ]
       },
       {
         "id": "engineering-vodosnabzhenie",
         "title": "Водоснабжение",
         "topics": [
-          "Скважины и колодцы",
-          "Насосы и насосные станции",
-          "Ввод воды в дом",
-          "Водопроводные трубы и фитинги",
-          "Разводка водоснабжения",
-          "Фильтры и водоподготовка",
-          "Бойлеры и водонагреватели"
+          {
+            "id": "skvazhiny-i-kolodtsy",
+            "title": "Скважины и колодцы"
+          },
+          {
+            "id": "nasosy-i-nasosnye-stantsii",
+            "title": "Насосы и насосные станции"
+          },
+          {
+            "id": "vvod-vody-v-dom",
+            "title": "Ввод воды в дом"
+          },
+          {
+            "id": "vodoprovodnye-truby-i-fitingi",
+            "title": "Водопроводные трубы и фитинги"
+          },
+          {
+            "id": "razvodka-vodosnabzheniya",
+            "title": "Разводка водоснабжения"
+          },
+          {
+            "id": "filtry-i-vodopodgotovka",
+            "title": "Фильтры и водоподготовка"
+          },
+          {
+            "id": "boylery-i-vodonagrevateli",
+            "title": "Бойлеры и водонагреватели"
+          }
         ]
       },
       {
         "id": "engineering-kanalizatsiya-i-santehnika",
         "title": "Канализация и сантехника",
         "topics": [
-          "Внутренняя канализация",
-          "Наружная канализация",
-          "Септики",
-          "Локальные очистные сооружения",
-          "Канализационные насосы",
-          "Унитазы и инсталляции",
-          "Смесители, раковины и душевые системы"
+          {
+            "id": "vnutrennyaya-kanalizatsiya",
+            "title": "Внутренняя канализация"
+          },
+          {
+            "id": "naruzhnaya-kanalizatsiya",
+            "title": "Наружная канализация"
+          },
+          {
+            "id": "septiki",
+            "title": "Септики"
+          },
+          {
+            "id": "lokalnye-ochistnye-sooruzheniya",
+            "title": "Локальные очистные сооружения"
+          },
+          {
+            "id": "kanalizatsionnye-nasosy",
+            "title": "Канализационные насосы"
+          },
+          {
+            "id": "unitazy-i-installyatsii",
+            "title": "Унитазы и инсталляции"
+          },
+          {
+            "id": "smesiteli-rakoviny-i-dushevye-sistemy",
+            "title": "Смесители, раковины и душевые системы"
+          }
         ]
       },
       {
         "id": "engineering-elektrosnabzhenie",
         "title": "Электроснабжение",
         "topics": [
-          "Подключение электричества",
-          "Электропроводка",
-          "Кабели и провода",
-          "Электрические щиты",
-          "Автоматы, УЗО и дифавтоматы",
-          "Розетки и выключатели",
-          "Освещение",
-          "Заземление и молниезащита"
+          {
+            "id": "podklyuchenie-elektrichestva",
+            "title": "Подключение электричества"
+          },
+          {
+            "id": "elektroprovodka",
+            "title": "Электропроводка"
+          },
+          {
+            "id": "kabeli-i-provoda",
+            "title": "Кабели и провода"
+          },
+          {
+            "id": "elektricheskie-shchity",
+            "title": "Электрические щиты"
+          },
+          {
+            "id": "avtomaty-uzo-i-difavtomaty",
+            "title": "Автоматы, УЗО и дифавтоматы"
+          },
+          {
+            "id": "rozetki-i-vyklyuchateli",
+            "title": "Розетки и выключатели"
+          },
+          {
+            "id": "osveshchenie",
+            "title": "Освещение"
+          },
+          {
+            "id": "zazemlenie-i-molniezashchita",
+            "title": "Заземление и молниезащита"
+          }
         ]
       },
       {
         "id": "engineering-avtonomnoe-elektrosnabzhenie",
         "title": "Автономное электроснабжение",
         "topics": [
-          "Генераторы",
-          "Источники бесперебойного питания",
-          "Аккумуляторные системы",
-          "Солнечные панели",
-          "Инверторы",
-          "Автоматический ввод резерва"
+          {
+            "id": "generatory",
+            "title": "Генераторы"
+          },
+          {
+            "id": "istochniki-bespereboynogo-pitaniya",
+            "title": "Источники бесперебойного питания"
+          },
+          {
+            "id": "akkumulyatornye-sistemy",
+            "title": "Аккумуляторные системы"
+          },
+          {
+            "id": "solnechnye-paneli",
+            "title": "Солнечные панели"
+          },
+          {
+            "id": "invertory",
+            "title": "Инверторы"
+          },
+          {
+            "id": "avtomaticheskiy-vvod-rezerva",
+            "title": "Автоматический ввод резерва"
+          }
         ]
       },
       {
         "id": "engineering-ventilyatsiya-i-klimat",
         "title": "Вентиляция и климат",
         "topics": [
-          "Естественная вентиляция",
-          "Приточная и вытяжная вентиляция",
-          "Рекуператоры",
-          "Воздуховоды",
-          "Кондиционеры",
-          "Осушение и увлажнение воздуха",
-          "Управление микроклиматом"
+          {
+            "id": "estestvennaya-ventilyatsiya",
+            "title": "Естественная вентиляция"
+          },
+          {
+            "id": "pritochnaya-i-vytyazhnaya-ventilyatsiya",
+            "title": "Приточная и вытяжная вентиляция"
+          },
+          {
+            "id": "rekuperatory",
+            "title": "Рекуператоры"
+          },
+          {
+            "id": "vozdukhovody",
+            "title": "Воздуховоды"
+          },
+          {
+            "id": "konditsionery",
+            "title": "Кондиционеры"
+          },
+          {
+            "id": "osushenie-i-uvlazhnenie-vozdukha",
+            "title": "Осушение и увлажнение воздуха"
+          },
+          {
+            "id": "upravlenie-mikroklimatom",
+            "title": "Управление микроклиматом"
+          }
         ]
       },
       {
         "id": "engineering-gazosnabzhenie",
         "title": "Газоснабжение",
         "topics": [
-          "Газификация дома",
-          "Газопроводы",
-          "Газовое оборудование",
-          "Требования к газовым помещениям",
-          "Эксплуатация и обслуживание"
+          {
+            "id": "gazifikatsiya-doma",
+            "title": "Газификация дома"
+          },
+          {
+            "id": "gazoprovody",
+            "title": "Газопроводы"
+          },
+          {
+            "id": "gazovoe-oborudovanie",
+            "title": "Газовое оборудование"
+          },
+          {
+            "id": "trebovaniya-k-gazovym-pomeshcheniyam",
+            "title": "Требования к газовым помещениям"
+          },
+          {
+            "id": "ekspluatatsiya-i-obsluzhivanie",
+            "title": "Эксплуатация и обслуживание"
+          }
         ]
       },
       {
         "id": "engineering-umnyy-dom-i-bezopasnost",
         "title": "Умный дом и безопасность",
         "topics": [
-          "Автоматизация дома",
-          "Датчики и контроллеры",
-          "Домашние сети и Wi-Fi",
-          "Видеонаблюдение",
-          "Охранная сигнализация",
-          "Пожарная сигнализация",
-          "Системы защиты от протечек"
+          {
+            "id": "avtomatizatsiya-doma",
+            "title": "Автоматизация дома"
+          },
+          {
+            "id": "datchiki-i-kontrollery",
+            "title": "Датчики и контроллеры"
+          },
+          {
+            "id": "domashnie-seti-i-wi-fi",
+            "title": "Домашние сети и Wi-Fi"
+          },
+          {
+            "id": "videonablyudenie",
+            "title": "Видеонаблюдение"
+          },
+          {
+            "id": "okhrannaya-signalizatsiya",
+            "title": "Охранная сигнализация"
+          },
+          {
+            "id": "pozharnaya-signalizatsiya",
+            "title": "Пожарная сигнализация"
+          },
+          {
+            "id": "sistemy-zashchity-ot-protechek",
+            "title": "Системы защиты от протечек"
+          }
         ]
       },
       {
         "id": "engineering-obsluzhivanie-inzhenernyh-sistem",
         "title": "Обслуживание инженерных систем",
         "topics": [
-          "Диагностика отопления",
-          "Обслуживание котлов",
-          "Промывка отопительных систем",
-          "Устранение протечек",
-          "Проверка электросетей",
-          "Обслуживание вентиляции",
-          "Поиск и устранение неисправностей"
+          {
+            "id": "diagnostika-otopleniya",
+            "title": "Диагностика отопления"
+          },
+          {
+            "id": "obsluzhivanie-kotlov",
+            "title": "Обслуживание котлов"
+          },
+          {
+            "id": "promyvka-otopitelnykh-sistem",
+            "title": "Промывка отопительных систем"
+          },
+          {
+            "id": "ustranenie-protechek",
+            "title": "Устранение протечек"
+          },
+          {
+            "id": "proverka-elektrosetey",
+            "title": "Проверка электросетей"
+          },
+          {
+            "id": "obsluzhivanie-ventilyatsii",
+            "title": "Обслуживание вентиляции"
+          },
+          {
+            "id": "poisk-i-ustranenie-neispravnostey",
+            "title": "Поиск и устранение неисправностей"
+          }
         ]
       }
     ]
@@ -371,7 +911,7 @@
   {
     "id": "landscape",
     "title": "Участок и постройки",
-    "route": "/catalog/landscape/",
+    "route": "/landscape/",
     "description": "Подготовка участка, земляные работы, благоустройство и хозяйственные постройки.",
     "intro": "Планируйте работы на участке с учётом рельефа, грунта, отвода воды, подъезда и будущих построек.",
     "groups": [
@@ -379,103 +919,268 @@
         "id": "landscape-vybor-i-podgotovka-uchastka",
         "title": "Выбор и подготовка участка",
         "topics": [
-          "Выбор земельного участка",
-          "Земельные документы и ограничения",
-          "Межевание и границы",
-          "Геология и исследование грунтов",
-          "Геодезия и разметка",
-          "Расчистка участка"
+          {
+            "id": "vybor-zemelnogo-uchastka",
+            "title": "Выбор земельного участка"
+          },
+          {
+            "id": "zemelnye-dokumenty-i-ogranicheniya",
+            "title": "Земельные документы и ограничения"
+          },
+          {
+            "id": "mezhevanie-i-granitsy",
+            "title": "Межевание и границы"
+          },
+          {
+            "id": "geologiya-i-issledovanie-gruntov",
+            "title": "Геология и исследование грунтов"
+          },
+          {
+            "id": "geodeziya-i-razmetka",
+            "title": "Геодезия и разметка"
+          },
+          {
+            "id": "raschistka-uchastka",
+            "title": "Расчистка участка"
+          }
         ]
       },
       {
         "id": "landscape-zemlyanye-raboty",
         "title": "Земляные работы",
         "topics": [
-          "Разработка грунта",
-          "Выравнивание территории",
-          "Отсыпка участка",
-          "Уплотнение грунта",
-          "Вертикальная планировка",
-          "Укрепление склонов",
-          "Подпорные стены"
+          {
+            "id": "razrabotka-grunta",
+            "title": "Разработка грунта"
+          },
+          {
+            "id": "vyravnivanie-territorii",
+            "title": "Выравнивание территории"
+          },
+          {
+            "id": "otsypka-uchastka",
+            "title": "Отсыпка участка"
+          },
+          {
+            "id": "uplotnenie-grunta",
+            "title": "Уплотнение грунта"
+          },
+          {
+            "id": "vertikalnaya-planirovka",
+            "title": "Вертикальная планировка"
+          },
+          {
+            "id": "ukreplenie-sklonov",
+            "title": "Укрепление склонов"
+          },
+          {
+            "id": "podpornye-steny",
+            "title": "Подпорные стены"
+          }
         ]
       },
       {
         "id": "landscape-drenazh-i-vodootvedenie",
         "title": "Дренаж и водоотведение",
         "topics": [
-          "Дренаж участка",
-          "Ливневая канализация",
-          "Поверхностный водоотвод",
-          "Дренажные колодцы",
-          "Отмостка",
-          "Защита участка от подтопления"
+          {
+            "id": "drenazh-uchastka",
+            "title": "Дренаж участка"
+          },
+          {
+            "id": "livnevaya-kanalizatsiya",
+            "title": "Ливневая канализация"
+          },
+          {
+            "id": "poverkhnostnyy-vodootvod",
+            "title": "Поверхностный водоотвод"
+          },
+          {
+            "id": "drenazhnye-kolodtsy",
+            "title": "Дренажные колодцы"
+          },
+          {
+            "id": "otmostka",
+            "title": "Отмостка"
+          },
+          {
+            "id": "zashchita-uchastka-ot-podtopleniya",
+            "title": "Защита участка от подтопления"
+          }
         ]
       },
       {
         "id": "landscape-dorozhki-i-ploshchadki",
         "title": "Дорожки и площадки",
         "topics": [
-          "Тротуарная плитка",
-          "Брусчатка",
-          "Бетонные дорожки",
-          "Садовые дорожки",
-          "Подъездные дороги",
-          "Парковочные площадки",
-          "Бордюры и основания покрытий"
+          {
+            "id": "trotuarnaya-plitka",
+            "title": "Тротуарная плитка"
+          },
+          {
+            "id": "bruschatka",
+            "title": "Брусчатка"
+          },
+          {
+            "id": "betonnye-dorozhki",
+            "title": "Бетонные дорожки"
+          },
+          {
+            "id": "sadovye-dorozhki",
+            "title": "Садовые дорожки"
+          },
+          {
+            "id": "podezdnye-dorogi",
+            "title": "Подъездные дороги"
+          },
+          {
+            "id": "parkovochnye-ploshchadki",
+            "title": "Парковочные площадки"
+          },
+          {
+            "id": "bordyury-i-osnovaniya-pokrytiy",
+            "title": "Бордюры и основания покрытий"
+          }
         ]
       },
       {
         "id": "landscape-zabory-i-ograzhdeniya",
         "title": "Заборы и ограждения",
         "topics": [
-          "Заборы из профнастила",
-          "Деревянные заборы",
-          "Металлические ограждения",
-          "Кирпичные и бетонные заборы",
-          "Откатные ворота",
-          "Распашные ворота",
-          "Калитки и автоматика"
+          {
+            "id": "zabory-iz-profnastila",
+            "title": "Заборы из профнастила"
+          },
+          {
+            "id": "derevyannye-zabory",
+            "title": "Деревянные заборы"
+          },
+          {
+            "id": "metallicheskie-ograzhdeniya",
+            "title": "Металлические ограждения"
+          },
+          {
+            "id": "kirpichnye-i-betonnye-zabory",
+            "title": "Кирпичные и бетонные заборы"
+          },
+          {
+            "id": "otkatnye-vorota",
+            "title": "Откатные ворота"
+          },
+          {
+            "id": "raspashnye-vorota",
+            "title": "Распашные ворота"
+          },
+          {
+            "id": "kalitki-i-avtomatika",
+            "title": "Калитки и автоматика"
+          }
         ]
       },
       {
         "id": "landscape-hozyaystvennye-postroyki",
         "title": "Хозяйственные постройки",
         "topics": [
-          "Гаражи",
-          "Навесы",
-          "Бани и сауны",
-          "Сараи и хозблоки",
-          "Мастерские",
-          "Беседки",
-          "Теплицы",
-          "Погреба"
+          {
+            "id": "garazhi",
+            "title": "Гаражи"
+          },
+          {
+            "id": "navesy",
+            "title": "Навесы"
+          },
+          {
+            "id": "bani-i-sauny",
+            "title": "Бани и сауны"
+          },
+          {
+            "id": "sarai-i-khozbloki",
+            "title": "Сараи и хозблоки"
+          },
+          {
+            "id": "masterskie",
+            "title": "Мастерские"
+          },
+          {
+            "id": "besedki",
+            "title": "Беседки"
+          },
+          {
+            "id": "teplitsy",
+            "title": "Теплицы"
+          },
+          {
+            "id": "pogreba",
+            "title": "Погреба"
+          }
         ]
       },
       {
         "id": "landscape-landshaft-i-ozelenenie",
         "title": "Ландшафт и озеленение",
         "topics": [
-          "Ландшафтный дизайн",
-          "Газоны",
-          "Деревья и кустарники",
-          "Клумбы и цветники",
-          "Системы полива",
-          "Наружное освещение",
-          "Уход за территорией"
+          {
+            "id": "landshaftnyy-dizayn",
+            "title": "Ландшафтный дизайн"
+          },
+          {
+            "id": "gazony",
+            "title": "Газоны"
+          },
+          {
+            "id": "derevya-i-kustarniki",
+            "title": "Деревья и кустарники"
+          },
+          {
+            "id": "klumby-i-tsvetniki",
+            "title": "Клумбы и цветники"
+          },
+          {
+            "id": "sistemy-poliva",
+            "title": "Системы полива"
+          },
+          {
+            "id": "naruzhnoe-osveshchenie",
+            "title": "Наружное освещение"
+          },
+          {
+            "id": "ukhod-za-territoriey",
+            "title": "Уход за территорией"
+          }
         ]
       },
       {
         "id": "landscape-terrasy-i-zony-otdyha",
         "title": "Террасы и зоны отдыха",
         "topics": [
-          "Террасы",
-          "Патио",
-          "Зоны барбекю",
-          "Летние кухни",
-          "Бассейны",
-          "Декоративные водоёмы",
-          "Детские и спортивные площадки"
+          {
+            "id": "terrasy",
+            "title": "Террасы"
+          },
+          {
+            "id": "patio",
+            "title": "Патио"
+          },
+          {
+            "id": "zony-barbekyu",
+            "title": "Зоны барбекю"
+          },
+          {
+            "id": "letnie-kukhni",
+            "title": "Летние кухни"
+          },
+          {
+            "id": "basseyny",
+            "title": "Бассейны"
+          },
+          {
+            "id": "dekorativnye-vodoyomy",
+            "title": "Декоративные водоёмы"
+          },
+          {
+            "id": "detskie-i-sportivnye-ploshchadki",
+            "title": "Детские и спортивные площадки"
+          }
         ]
       }
     ]
@@ -483,7 +1188,7 @@
   {
     "id": "tools",
     "title": "Инструменты и техника",
-    "route": "/catalog/tools/",
+    "route": "/tools/",
     "description": "Ручной инструмент, техника, оснастка, обслуживание оборудования и безопасность работ.",
     "intro": "Выбирайте инструмент под задачу, обслуживайте оборудование по инструкции и заранее учитывайте требования безопасности.",
     "groups": [
@@ -491,89 +1196,230 @@
         "id": "tools-ruchnoy-instrument",
         "title": "Ручной инструмент",
         "topics": [
-          "Слесарный инструмент",
-          "Столярный инструмент",
-          "Штукатурный инструмент",
-          "Малярный инструмент",
-          "Плиточный инструмент",
-          "Режущий и монтажный инструмент"
+          {
+            "id": "slesarnyy-instrument",
+            "title": "Слесарный инструмент"
+          },
+          {
+            "id": "stolyarnyy-instrument",
+            "title": "Столярный инструмент"
+          },
+          {
+            "id": "shtukaturnyy-instrument",
+            "title": "Штукатурный инструмент"
+          },
+          {
+            "id": "malyarnyy-instrument",
+            "title": "Малярный инструмент"
+          },
+          {
+            "id": "plitochnyy-instrument",
+            "title": "Плиточный инструмент"
+          },
+          {
+            "id": "rezhushchiy-i-montazhnyy-instrument",
+            "title": "Режущий и монтажный инструмент"
+          }
         ]
       },
       {
         "id": "tools-elektroinstrument",
         "title": "Электроинструмент",
         "topics": [
-          "Дрели и шуруповёрты",
-          "Перфораторы",
-          "Угловые шлифовальные машины",
-          "Дисковые и торцовочные пилы",
-          "Электролобзики",
-          "Фрезеры",
-          "Шлифовальные машины",
-          "Аккумуляторный инструмент"
+          {
+            "id": "dreli-i-shurupovyorty",
+            "title": "Дрели и шуруповёрты"
+          },
+          {
+            "id": "perforatory",
+            "title": "Перфораторы"
+          },
+          {
+            "id": "uglovye-shlifovalnye-mashiny",
+            "title": "Угловые шлифовальные машины"
+          },
+          {
+            "id": "diskovye-i-tortsovochnye-pily",
+            "title": "Дисковые и торцовочные пилы"
+          },
+          {
+            "id": "elektrolobziki",
+            "title": "Электролобзики"
+          },
+          {
+            "id": "frezery",
+            "title": "Фрезеры"
+          },
+          {
+            "id": "shlifovalnye-mashiny",
+            "title": "Шлифовальные машины"
+          },
+          {
+            "id": "akkumulyatornyy-instrument",
+            "title": "Аккумуляторный инструмент"
+          }
         ]
       },
       {
         "id": "tools-izmeritelnye-pribory",
         "title": "Измерительные приборы",
         "topics": [
-          "Лазерные уровни",
-          "Нивелиры",
-          "Дальномеры",
-          "Тепловизоры",
-          "Влагомеры",
-          "Электроизмерительные приборы",
-          "Детекторы скрытой проводки"
+          {
+            "id": "lazernye-urovni",
+            "title": "Лазерные уровни"
+          },
+          {
+            "id": "niveliry",
+            "title": "Нивелиры"
+          },
+          {
+            "id": "dalnomery",
+            "title": "Дальномеры"
+          },
+          {
+            "id": "teplovizory",
+            "title": "Тепловизоры"
+          },
+          {
+            "id": "vlagomery",
+            "title": "Влагомеры"
+          },
+          {
+            "id": "elektroizmeritelnye-pribory",
+            "title": "Электроизмерительные приборы"
+          },
+          {
+            "id": "detektory-skrytoy-provodki",
+            "title": "Детекторы скрытой проводки"
+          }
         ]
       },
       {
         "id": "tools-stroitelnoe-oborudovanie",
         "title": "Строительное оборудование",
         "topics": [
-          "Бетономешалки",
-          "Вибраторы для бетона",
-          "Виброплиты",
-          "Штукатурные станции",
-          "Компрессоры",
-          "Сварочное оборудование",
-          "Строительные леса и вышки-туры"
+          {
+            "id": "betonomeshalki",
+            "title": "Бетономешалки"
+          },
+          {
+            "id": "vibratory-dlya-betona",
+            "title": "Вибраторы для бетона"
+          },
+          {
+            "id": "vibroplity",
+            "title": "Виброплиты"
+          },
+          {
+            "id": "shtukaturnye-stantsii",
+            "title": "Штукатурные станции"
+          },
+          {
+            "id": "kompressory",
+            "title": "Компрессоры"
+          },
+          {
+            "id": "svarochnoe-oborudovanie",
+            "title": "Сварочное оборудование"
+          },
+          {
+            "id": "stroitelnye-lesa-i-vyshki-tury",
+            "title": "Строительные леса и вышки-туры"
+          }
         ]
       },
       {
         "id": "tools-stroitelnaya-tehnika",
         "title": "Строительная техника",
         "topics": [
-          "Экскаваторы",
-          "Мини-экскаваторы",
-          "Погрузчики",
-          "Самосвалы",
-          "Автокраны",
-          "Бетононасосы",
-          "Подъёмное оборудование"
+          {
+            "id": "ekskavatory",
+            "title": "Экскаваторы"
+          },
+          {
+            "id": "mini-ekskavatory",
+            "title": "Мини-экскаваторы"
+          },
+          {
+            "id": "pogruzchiki",
+            "title": "Погрузчики"
+          },
+          {
+            "id": "samosvaly",
+            "title": "Самосвалы"
+          },
+          {
+            "id": "avtokrany",
+            "title": "Автокраны"
+          },
+          {
+            "id": "betononasosy",
+            "title": "Бетононасосы"
+          },
+          {
+            "id": "podyomnoe-oborudovanie",
+            "title": "Подъёмное оборудование"
+          }
         ]
       },
       {
         "id": "tools-osnastka-i-rashodniki",
         "title": "Оснастка и расходники",
         "topics": [
-          "Свёрла и буры",
-          "Пильные диски",
-          "Абразивные круги",
-          "Пильные полотна",
-          "Шлифовальные материалы",
-          "Аккумуляторы и зарядные устройства"
+          {
+            "id": "svyorla-i-bury",
+            "title": "Свёрла и буры"
+          },
+          {
+            "id": "pilnye-diski",
+            "title": "Пильные диски"
+          },
+          {
+            "id": "abrazivnye-krugi",
+            "title": "Абразивные круги"
+          },
+          {
+            "id": "pilnye-polotna",
+            "title": "Пильные полотна"
+          },
+          {
+            "id": "shlifovalnye-materialy",
+            "title": "Шлифовальные материалы"
+          },
+          {
+            "id": "akkumulyatory-i-zaryadnye-ustroystva",
+            "title": "Аккумуляторы и зарядные устройства"
+          }
         ]
       },
       {
         "id": "tools-obsluzhivanie-i-bezopasnost",
         "title": "Обслуживание и безопасность",
         "topics": [
-          "Ремонт электроинструмента",
-          "Обслуживание оборудования",
-          "Средства индивидуальной защиты",
-          "Защитная одежда",
-          "Безопасность работы на высоте",
-          "Правила безопасной эксплуатации"
+          {
+            "id": "remont-elektroinstrumenta",
+            "title": "Ремонт электроинструмента"
+          },
+          {
+            "id": "obsluzhivanie-oborudovaniya",
+            "title": "Обслуживание оборудования"
+          },
+          {
+            "id": "sredstva-individualnoy-zashchity",
+            "title": "Средства индивидуальной защиты"
+          },
+          {
+            "id": "zashchitnaya-odezhda",
+            "title": "Защитная одежда"
+          },
+          {
+            "id": "bezopasnost-raboty-na-vysote",
+            "title": "Безопасность работы на высоте"
+          },
+          {
+            "id": "pravila-bezopasnoy-ekspluatatsii",
+            "title": "Правила безопасной эксплуатации"
+          }
         ]
       }
     ]

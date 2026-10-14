@@ -281,26 +281,7 @@ button { cursor: pointer; }
 .section-topics { padding-top: 36px; padding-bottom: 72px; }
 .section-heading.compact h2 { font-size: clamp(25px, 2.7vw, 34px); }
 .section-heading.compact .section-lead { margin-top: 9px; }
-.taxonomy-list { display: grid; gap: 11px; }
-.taxonomy-group { min-width: 0; padding: 16px 19px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); }
-.taxonomy-group-heading { display: flex; align-items: center; gap: 13px; min-width: 0; }
-.taxonomy-group-heading .category-number { width: 34px; height: 34px; flex: none; border-radius: 9px; font-size: 11px; }
-.taxonomy-group-heading h2 { flex: 1; min-width: 0; margin: 0; font-size: 16px; font-weight: 780; letter-spacing: -.025em; line-height: 1.35; }
-.taxonomy-group-heading h2 a:hover { color: var(--accent-dark); }
-.taxonomy-topic-count { flex: none; color: var(--muted-light); font-size: 11px; font-weight: 650; }
-.taxonomy-topics { margin: 8px 0 0 47px; border-top: 1px solid var(--line); }
-.taxonomy-topics summary { display: flex; min-height: 41px; align-items: center; justify-content: space-between; gap: 12px; color: var(--ink-soft); cursor: pointer; font-size: 12px; font-weight: 700; list-style: none; }
-.taxonomy-topics summary::-webkit-details-marker { display: none; }
-.taxonomy-topics summary::after { width: 6px; height: 6px; flex: none; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; content: ""; transform: translateY(-2px) rotate(45deg); transition: transform .16s ease; }
-.taxonomy-topics[open] summary::after { transform: translateY(2px) rotate(225deg); }
-.taxonomy-topics ul, .group-topic-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 28px; margin: 0; padding: 0 0 13px; list-style: none; }
-.taxonomy-topics li, .group-topic-list li { position: relative; padding-left: 14px; color: var(--muted); font-size: 12px; line-height: 1.55; }
-.taxonomy-topics li::before, .group-topic-list li::before { position: absolute; top: .65em; left: 0; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); content: ""; }
-.taxonomy-published { display: flex; flex-wrap: wrap; align-items: baseline; gap: 7px 13px; margin: 0 0 0 47px; padding-top: 8px; border-top: 1px solid var(--line); }
-.taxonomy-published > span { color: var(--muted); font-size: 11px; font-weight: 700; }
-.taxonomy-published ul { display: flex; flex-wrap: wrap; gap: 7px; margin: 0; padding: 0; list-style: none; }
-.taxonomy-published a { color: var(--accent-dark); font-size: 12px; font-weight: 760; }
-.taxonomy-published a:hover { color: var(--ink); }
+.section-group-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .section-empty-note { padding-bottom: 72px; color: var(--muted); font-size: 13px; }
 .section-empty-note p { margin: 0; }
 .group-categories { padding-top: 26px; padding-bottom: 22px; }
@@ -311,7 +292,11 @@ button { cursor: pointer; }
 .group-category-link span:not(.group-category-arrow) { color: var(--muted); font-size: 12px; }
 .group-category-arrow { position: absolute; top: 50%; right: 17px; color: var(--accent-dark); transform: translateY(-50%); }
 .group-topic-section { padding-top: 45px; padding-bottom: 70px; }
-.group-topic-list { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 9px 25px; }
+.group-topic-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 5px 24px; margin: 0; padding: 0; list-style: none; }
+.group-topic-list li { min-width: 0; border-bottom: 1px solid var(--line); }
+.group-topic-list a { display: flex; min-height: 45px; align-items: center; padding: 7px 4px; color: var(--ink-soft); font-size: 13px; line-height: 1.4; transition: color .14s ease; }
+.group-topic-list a:hover { color: var(--accent-dark); }
+.topic-empty { padding-top: 5px; padding-bottom: 72px; }
 
 .article-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: 1fr; gap: 16px; }
 .article-card {
@@ -539,14 +524,9 @@ button { cursor: pointer; }
   .section-lead { font-size: 13px; }
   .category-grid { gap: 10px; }
   .category-card { min-height: 150px; padding: 15px; border-radius: 12px; }
-  .taxonomy-group { padding: 13px 14px; }
-  .taxonomy-group-heading { gap: 9px; }
-  .taxonomy-group-heading h2 { font-size: 14px; }
-  .taxonomy-topic-count { font-size: 10px; }
-  .taxonomy-topics, .taxonomy-published { margin-left: 43px; }
-  .taxonomy-topics ul, .group-topic-list { grid-template-columns: minmax(0, 1fr); }
+  .group-topic-list { grid-template-columns: minmax(0, 1fr); }
   .group-category-list { grid-template-columns: minmax(0, 1fr); }
-  .group-topic-list { gap: 8px; }
+  .group-topic-list { gap: 0; }
   .category-number { width: 34px; height: 34px; border-radius: 9px; font-size: 11px; }
   .category-arrow { top: 15px; right: 15px; font-size: 16px; }
   .category-card h3 { margin-top: 13px; font-size: 15px; }
@@ -627,6 +607,7 @@ button { cursor: pointer; }
   .mobile-nav:not([hidden]) { grid-template-columns: minmax(0, 1fr); }
   .mobile-nav-tools { grid-column: auto; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .section[aria-labelledby="topics-title"] .category-grid, .catalog-section .category-grid { grid-template-columns: minmax(0, 1fr); }
+  .section-group-grid { grid-template-columns: minmax(0, 1fr); }
 }
 
 @media (max-width: 420px) {
