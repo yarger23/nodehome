@@ -10,20 +10,46 @@
     {
       "label": "Каталог статей",
       "href": "/catalog/",
-      "activePrefixes": ["/catalog/", "/article/"],
-      "desktopCategoryIds": ["land", "foundation", "walls", "floors"],
+      "activePrefixes": [
+        "/catalog/",
+        "/article/"
+      ],
+      "desktopCategoryIds": [
+        "land",
+        "foundation",
+        "walls",
+        "floors"
+      ],
       "groups": [
-        { "label": "До начала работ", "categoryIds": ["land", "foundation"] },
-        { "label": "Конструкции и отделка", "categoryIds": ["walls", "floors"] }
+        {
+          "label": "До начала работ",
+          "categoryIds": [
+            "land",
+            "foundation"
+          ]
+        },
+        {
+          "label": "Конструкции и отделка",
+          "categoryIds": [
+            "walls",
+            "floors"
+          ]
+        }
       ]
     },
     {
       "label": "Калькуляторы",
       "href": "/calculators/",
-      "activePrefixes": ["/calculators/"]
+      "activePrefixes": [
+        "/calculators/"
+      ]
     }
   ],
-  "featuredArticles": ["foundation", "screed", "plaster"],
+  "featuredArticles": [
+    "site-preparation",
+    "screed",
+    "plaster"
+  ],
   "homeFaq": [
     {
       "question": "С чего начать строительство дома?",
