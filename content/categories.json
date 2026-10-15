@@ -103,7 +103,8 @@
       "bath-ventilation",
       "bath-water-drain",
       "bath-ceiling-insulation",
-      "bath-interior-cladding"
+      "bath-interior-cladding",
+      "sauna-stove-wood-or-electric"
     ],
     "sectionId": "landscape",
     "groupId": "landscape-hozyaystvennye-postroyki"
