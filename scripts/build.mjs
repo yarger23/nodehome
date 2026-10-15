@@ -1,10 +1,15 @@
 import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const OUTPUT = path.join(ROOT, "site");
 const BASE_URL = "https://nodehome.ru";
+const CSS_VERSION = createHash("sha256")
+  .update(await readFile(path.join(ROOT, "assets", "site.css")))
+  .digest("hex")
+  .slice(0, 12);
 
 const readJson = async (file) =>
   JSON.parse(await readFile(path.join(ROOT, "content", file), "utf8"));
@@ -308,7 +313,7 @@ function layout(options) {
         '<link rel="icon" href="/favicon.ico" sizes="32x32">\n' +
     '<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">\n' +
     '<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" sizes="180x180">\n' +
-    '<link rel="stylesheet" href="/assets/site.css">\n' +
+    '<link rel="stylesheet" href="/assets/site.css?v=' + CSS_VERSION + '">\n' +
     schemaScript(options.schema) + '\n' +
     '<script src="/assets/site.js" defer></script>\n</head>\n<body>\n' +
     header(options.active || options.route || "") + '<main id="main-content">' + options.body + "</main>" +
