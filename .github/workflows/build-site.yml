@@ -22,6 +22,7 @@ jobs:
           curl --fail --location --retry 3 'https://images.unsplash.com/photo-1757937176646-d943553b5f09?fm=jpg&fit=crop&w=1500&h=1000&q=83' -o assets/images/bath-photo-cover.jpg
           curl --fail --location --retry 3 'https://images.unsplash.com/photo-1774876549571-32d7b9051ddf?fm=jpg&fit=crop&w=1500&h=1000&q=83' -o assets/images/bath-photo-inside.jpg
           file assets/images/bath-photo-cover.jpg assets/images/bath-photo-inside.jpg
+          curl --fail --location --retry 3 'https://images.unsplash.com/photo-1770625467514-f072c8a64a8c?fm=jpg&fit=crop&w=1500&h=1000&q=83' -o assets/images/bath-ceiling-insulation.jpg
       - name: Validate and generate
         run: |
           node --check scripts/build.mjs
@@ -31,7 +32,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A site/ assets/images/bath-photo-cover.jpg assets/images/bath-photo-inside.jpg
+          git add -A site/ assets/images/bath-photo-cover.jpg assets/images/bath-photo-inside.jpg assets/images/bath-ceiling-insulation.jpg
           if ! git diff --cached --quiet; then
             git commit -m "build: regenerate published Nodehome pages"
             git push origin HEAD:main
