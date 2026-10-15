@@ -21,7 +21,6 @@ jobs:
         run: |
           curl --fail --location --retry 3 'https://images.unsplash.com/photo-1757937176646-d943553b5f09?fm=jpg&fit=crop&w=1500&h=1000&q=83' -o assets/images/bath-photo-cover.jpg
           curl --fail --location --retry 3 'https://images.unsplash.com/photo-1774876549571-32d7b9051ddf?fm=jpg&fit=crop&w=1500&h=1000&q=83' -o assets/images/bath-photo-inside.jpg
-          curl --fail --location --retry 3 'https://images.unsplash.com/photo-1759302354553-cf87ceb9135c?fm=jpg&fit=crop&w=1500&h=1000&q=83' -o assets/images/sauna-stove-wood-electric-cover.jpg
           file assets/images/sauna-stove-wood-electric-cover.jpg assets/images/bath-photo-cover.jpg assets/images/bath-photo-inside.jpg
           curl --fail --location --retry 3 'https://images.unsplash.com/photo-1770625467514-f072c8a64a8c?fm=jpg&fit=crop&w=1500&h=1000&q=83' -o assets/images/bath-ceiling-insulation.jpg
       - name: Download vapor barrier photo
