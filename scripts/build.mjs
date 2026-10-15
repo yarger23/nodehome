@@ -602,13 +602,6 @@ function articlePage(article) {
   const faqs = article.faqs.map((item) =>
     '<details class="faq-item"><summary>' + escapeHtml(item.question) + '</summary><p>' +
     escapeHtml(item.answer) + "</p></details>").join("");
-  const sources = (article.sources || []).map((source) =>
-    '<li><a href="' + escapeHtml(source.url) + '" target="_blank" rel="noopener noreferrer">' +
-    escapeHtml(source.title) + '</a><span>' + escapeHtml(source.note) + '</span><small>Проверено: ' +
-    escapeHtml(source.checkedAt) + "</small></li>").join("");
-  const sourcesHtml = sources
-    ? '<section class="article-sources"><h2>Источники и техническая документация</h2><ol>' + sources + "</ol></section>"
-    : "";
   const pathItems = [
     { label: "Материалы", href: "/catalog/" },
     ...(parentSection ? [{ label: parentSection.title, href: parentSection.route }] : []),
@@ -626,7 +619,6 @@ function articlePage(article) {
     '<details class="article-toc"><summary>Содержание статьи <span>' + article.sections.length + " раздела</span></summary><ol>" + toc + "</ol></details>" +
     '<div class="article-reading"><div class="article-content">' + articleBody(article) +
     (faqs ? '<section class="article-faq"><h2>Частые вопросы</h2>' + faqs + "</section>" : "") +
-    sourcesHtml +
     '<p class="source-note">Материал носит справочный характер. Условия работ, допустимые слои и сроки проверяйте по проекту и инструкции производителя.</p>' +
     "</div></div></article>" +
     (related.length ? '<section class="section section-muted related-section"><div class="container">' +

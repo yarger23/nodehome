@@ -350,31 +350,5 @@
       "question": "Нужен ли тёплый пол в бане?",
       "answer": "Не обязателен, но повышает комфорт зимой. Он не заменяет утепление, слив и гидроизоляцию; системы должны быть защищены от промерзания."
     }
-  ],
-  "sources": [
-    {
-      "title": "СП 29.13330.2011 «Полы», п. 4.5",
-      "url": "https://xn--e1ahdbdflckekkc.xn--p1ai/rntd/paragraph/351311",
-      "note": "Действующие диапазоны уклонов для полов, подвергающихся воздействию жидкостей.",
-      "checkedAt": "15.10.2026"
-    },
-    {
-      "title": "СП 30.13330.2020 — разъяснение п. 17.3, NormaCS",
-      "url": "https://support.normacs.info/answers/6215",
-      "note": "Уклоны внутренних присоединительных канализационных труб.",
-      "checkedAt": "15.10.2026"
-    },
-    {
-      "title": "Schlüter — Tiled Shower Waterproofing Systems",
-      "url": "https://www.schluter.com/schluter-us/en_US/article-tiled-shower-waterproofing",
-      "note": "Гидроизоляция плиточных полов, примыкания и трапы.",
-      "checkedAt": "15.10.2026"
-    },
-    {
-      "title": "Saunologia — Designing a Great Wooden Sauna Floor",
-      "url": "https://saunologia.fi/designing-a-great-wooden-sauna-floor-drainage-and-airflow-explained/",
-      "note": "Устройство и просушка деревянного пола в сауне.",
-      "checkedAt": "15.10.2026"
-    }
   ]
 }
