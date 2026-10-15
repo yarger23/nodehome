@@ -478,10 +478,10 @@ function sectionPage(section, page = 1, route = section.route) {
     { label: "Материалы", href: "/catalog/" },
     { label: section.title }
   ], true) +
-    '<section class="page-intro container"><p class="eyebrow">Раздел Nodehome</p>' +
+    '<section class="page-intro section-page-intro container"><p class="eyebrow">Раздел Nodehome</p>' +
     "<h1>" + escapeHtml(section.title) + "</h1>" +
     '<p class="page-lead">' + escapeHtml(section.intro) + "</p></section>" +
-    '<section class="section container section-topics"><div class="section-heading compact"><p class="eyebrow">Основные рубрики</p>' +
+    '<section class="section container section-topics section-page-topics"><div class="section-heading compact"><p class="eyebrow">Основные рубрики</p>' +
     '<h2>Выберите тему</h2><p class="section-lead">Каждая рубрика открывает отдельную страницу со списком подтем и материалов.</p></div>' +
     '<nav class="section-topic-navigation" aria-label="Темы раздела">' + groupTopics + '</nav></section>' +
     articleListing(route, articlesForSection(section), page, "Последние материалы раздела") +
