@@ -334,13 +334,10 @@ function sectionCard(section, index) {
     "<p>" + escapeHtml(section.description) + "</p></a>";
 }
 
-function groupCard(group, index) {
+function groupTopicLink(group) {
   const route = groupRoute(groupById[group.id]);
-  return '<a class="category-card section-card" href="' + escapeHtml(route) + '">' +
-    '<span class="category-number">' + String(index + 1).padStart(2, "0") + "</span>" +
-    '<span class="category-arrow" aria-hidden="true">↗</span>' +
-    "<h3>" + escapeHtml(group.title) + "</h3>" +
-    "<p>" + group.topics.length + " тем</p></a>";
+  return '<a class="topic-chip section-topic-chip" href="' + escapeHtml(route) + '"><span>' +
+    escapeHtml(group.title) + '</span><span class="section-topic-count">' + group.topics.length + " тем</span></a>";
 }
 
 function articleCard(article) {
@@ -475,7 +472,7 @@ function catalogPage() {
 }
 
 function sectionPage(section, page = 1, route = section.route) {
-  const groupCards = section.groups.map((group, index) => groupCard(group, index)).join("");
+  const groupTopics = section.groups.map(groupTopicLink).join("");
   const hasArticles = sectionHasArticles(section);
   const body = breadcrumb([
     { label: "Материалы", href: "/catalog/" },
@@ -486,7 +483,7 @@ function sectionPage(section, page = 1, route = section.route) {
     '<p class="page-lead">' + escapeHtml(section.intro) + "</p></section>" +
     '<section class="section container section-topics"><div class="section-heading compact"><p class="eyebrow">Основные рубрики</p>' +
     '<h2>Выберите тему</h2><p class="section-lead">Каждая рубрика открывает отдельную страницу со списком подтем и материалов.</p></div>' +
-    '<div class="category-grid section-group-grid">' + groupCards + '</div></section>' +
+    '<nav class="section-topic-navigation" aria-label="Темы раздела">' + groupTopics + '</nav></section>' +
     articleListing(route, articlesForSection(section), page, "Последние материалы раздела") +
     (!hasArticles ? '<section class="container section-empty-note"><p>Раздел уже доступен. Материалы будут добавляться по мере подготовки публикаций.</p></section>' : "");
   return layout({
