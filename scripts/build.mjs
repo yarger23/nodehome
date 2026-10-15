@@ -1,4 +1,4 @@
-import { cp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
+import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -16,7 +16,17 @@ const [site, categories, articleRecords, sections] = await Promise.all([
   readJson("sections.json")
 ]);
 
-const articles = articleRecords.filter((item) => item.status === "published");
+// Independent articles live in content/articles/, alongside the original catalog.
+const articlesDirectory = path.join(ROOT, "content", "articles");
+const articleFiles = await readdir(articlesDirectory).catch((error) => {
+  if (error.code === "ENOENT") return [];
+  throw error;
+});
+const extraArticleRecords = await Promise.all(articleFiles
+  .filter((name) => name.endsWith(".json"))
+  .sort()
+  .map((name) => readJson(path.join("articles", name))));
+const articles = [...articleRecords, ...extraArticleRecords].filter((item) => item.status === "published");
 const categoryById = Object.fromEntries(categories.map((item) => [item.id, item]));
 const articleById = Object.fromEntries(articles.map((item) => [item.id, item]));
 const sectionById = Object.fromEntries(sections.map((item) => [item.id, item]));
