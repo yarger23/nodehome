@@ -178,7 +178,18 @@
     "intro": "Крышу выбирают по архитектуре дома, климату, конструкции, водоотведению и условиям обслуживания.",
     "articles": [
       "flat-or-pitched-roof",
-      "roof-pitch-calculation",
+      "roof-pitch-calculation"
+    ],
+    "sectionId": "construction",
+    "groupId": "construction-krysha-i-krovlya"
+  },
+  {
+    "id": "roof-insulation",
+    "title": "Кровельная изоляция",
+    "cardTitle": "Крыша",
+    "description": "Утепление и защита скатных и плоских кровель от теплопотерь и влаги.",
+    "intro": "Состав кровельной изоляции зависит от назначения крыши, утеплителя, мембран и режима эксплуатации. Проверьте слои и вентиляцию до закрытия конструкции.",
+    "articles": [
       "pitched-roof-insulation"
     ],
     "sectionId": "construction",
