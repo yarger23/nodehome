@@ -134,7 +134,8 @@
       "bathrooms-private-house-count-placement",
       "storage-private-house-planning",
       "kitchen-living-room-planning",
-      "guest-room-private-house"
+      "guest-room-private-house",
+      "multigenerational-house-planning"
     ],
     "sectionId": "construction",
     "groupId": "construction-proektirovanie-i-podgotovka"
