@@ -501,26 +501,17 @@ function sectionPage(section, page = 1, route = section.route) {
 }
 
 function groupPage(group, page = 1, route = groupRoute(group)) {
-  const liveCategories = categoriesForGroup(group);
   const groupArticles = articlesForGroup(group);
   const breadcrumbItems = [
     { label: "Материалы", href: "/catalog/" },
     { label: group.section.title, href: group.section.route },
     { label: group.title }
   ];
-  const categoryCards = liveCategories.map((category) =>
-    '<a class="group-category-link" href="/catalog/' + escapeHtml(category.id) + '/"><strong>' +
-    escapeHtml(category.title) + '</strong><span>' + escapeHtml(category.description) +
-    '</span><span class="group-category-arrow" aria-hidden="true">→</span></a>').join("");
-  const categorySection = liveCategories.length
-    ? '<section class="container group-categories"><div class="section-heading compact"><p class="eyebrow">Опубликованные рубрики</p><h2>Материалы раздела</h2></div>' +
-      '<div class="group-category-list">' + categoryCards + '</div></section>'
-    : "";
   const body = breadcrumb(breadcrumbItems, true) +
     '<section class="page-intro container"><p class="eyebrow">' + escapeHtml(group.section.title) +
     '</p><h1>' + escapeHtml(group.title) +
     '</h1><p class="page-lead">Выберите тему или откройте последние опубликованные материалы этого направления.</p></section>' +
-    topicNavigation(group) + categorySection +
+    topicNavigation(group) +
     articleListing(route, groupArticles, page, "Последние материалы раздела", "Опубликованные материалы");
   return layout({
     title: group.title,
