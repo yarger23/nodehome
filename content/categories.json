@@ -132,7 +132,8 @@
       "dom-na-uzkom-uchastke",
       "home-office-room",
       "bathrooms-private-house-count-placement",
-      "storage-private-house-planning"
+      "storage-private-house-planning",
+      "kitchen-living-room-planning"
     ],
     "sectionId": "construction",
     "groupId": "construction-proektirovanie-i-podgotovka"
