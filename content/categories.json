@@ -133,7 +133,8 @@
       "home-office-room",
       "bathrooms-private-house-count-placement",
       "storage-private-house-planning",
-      "kitchen-living-room-planning"
+      "kitchen-living-room-planning",
+      "guest-room-private-house"
     ],
     "sectionId": "construction",
     "groupId": "construction-proektirovanie-i-podgotovka"
