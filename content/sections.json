@@ -428,6 +428,10 @@
             "title": "Полы по лагам"
           },
           {
+            "id": "teploizolyatsiya-pola",
+            "title": "Утепление пола"
+          },
+          {
             "id": "laminat",
             "title": "Ламинат"
           },
