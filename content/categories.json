@@ -254,5 +254,17 @@
     ],
     "sectionId": "engineering",
     "groupId": "engineering-otoplenie"
+  },
+  {
+    "id": "septic-vs-treatment-station",
+    "title": "Автономная канализация",
+    "cardTitle": "Септик и станция",
+    "description": "Выбор автономной канализации с учетом грунта, уровня воды, проживания и отвода стоков.",
+    "intro": "Сравните не только оборудование, но и способ доочистки или отвода воды, условия участка, электропитание, обслуживание и расходы за весь срок эксплуатации.",
+    "articles": [
+      "septic-tank-or-treatment-plant"
+    ],
+    "sectionId": "engineering",
+    "groupId": "engineering-kanalizatsiya-i-santehnika"
   }
 ]
