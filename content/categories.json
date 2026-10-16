@@ -202,7 +202,8 @@
     "description": "Архитектурные решения частного дома: пропорции, высота помещений и связь с инженерными системами.",
     "intro": "Архитектурные и конструктивные решения должны учитывать нормы, технологию строительства и повседневные сценарии семьи.",
     "articles": [
-      "ceiling-height-private-house"
+      "ceiling-height-private-house",
+      "tambour-private-house"
     ],
     "sectionId": "construction",
     "groupId": "construction-proektirovanie-i-podgotovka"
