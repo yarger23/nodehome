@@ -218,5 +218,17 @@
     ],
     "sectionId": "engineering",
     "groupId": "engineering-gazosnabzhenie"
+  },
+  {
+    "id": "windows-selection",
+    "title": "Окна для частного дома",
+    "cardTitle": "Окна",
+    "description": "Выбор окон для частного дома: профиль, стеклопакет, солнцезащита и монтаж.",
+    "intro": "Сравнивайте окна по задачам комнат и характеристикам всего блока. До заказа проверьте открывание, безопасность остекления и устройство монтажного шва.",
+    "articles": [
+      "private-house-window-selection"
+    ],
+    "sectionId": "construction",
+    "groupId": "construction-okna-i-naruzhnye-dveri"
   }
 ]
