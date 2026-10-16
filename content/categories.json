@@ -11,7 +11,8 @@
       "Отметьте подъезд, места хранения материалов и точки подключения коммуникаций."
     ],
     "articles": [
-      "site-preparation"
+      "site-preparation",
+      "house-placement-on-plot"
     ],
     "sectionId": "landscape",
     "groupId": "landscape-vybor-i-podgotovka-uchastka"
