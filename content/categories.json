@@ -266,5 +266,17 @@
     ],
     "sectionId": "engineering",
     "groupId": "engineering-kanalizatsiya-i-santehnika"
+  },
+  {
+    "id": "water-source-choice",
+    "title": "Скважины и колодцы",
+    "cardTitle": "Источник воды",
+    "description": "Выбор автономного источника водоснабжения для частного дома.",
+    "intro": "Колодец или скважину выбирают по геологии участка, водопотреблению, качеству воды, доступности обслуживания и действующим условиям пользования недрами.",
+    "articles": [
+      "well-or-borehole-for-private-house"
+    ],
+    "sectionId": "engineering",
+    "groupId": "engineering-vodosnabzhenie"
   }
 ]
