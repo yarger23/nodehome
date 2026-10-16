@@ -244,7 +244,12 @@
       "roof-covering-choice"
     ],
     "sectionId": "construction",
-    "groupId": "construction-krysha-i-krovlya"
+    "groupId": "construction-krysha-i-krovlya",
+    "start": [
+      "Сверьте форму крыши и допустимый уклон с проектом и требованиями выбранной системы.",
+      "Сравните полную конструкцию: покрытие, основание, доборные элементы и монтаж.",
+      "Уточните устройство вентиляции, водоотвода и узлов примыканий."
+    ]
   },
   {
     "id": "roof-insulation",
