@@ -177,7 +177,8 @@
     "description": "Выбор конструкции крыши, кровельных систем и водоотведения частного дома.",
     "intro": "Крышу выбирают по архитектуре дома, климату, конструкции, водоотведению и условиям обслуживания.",
     "articles": [
-      "flat-or-pitched-roof"
+      "flat-or-pitched-roof",
+      "roof-pitch-calculation"
     ],
     "sectionId": "construction",
     "groupId": "construction-krysha-i-krovlya"
