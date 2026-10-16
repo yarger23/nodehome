@@ -230,5 +230,17 @@
     ],
     "sectionId": "construction",
     "groupId": "construction-okna-i-naruzhnye-dveri"
+  },
+  {
+    "id": "staircases",
+    "title": "Лестницы в частном доме",
+    "cardTitle": "Лестницы",
+    "description": "Выбор места, формы и размеров лестницы между этажами частного дома.",
+    "intro": "Планируйте лестницу одновременно с этажами, перекрытием и мебелью. Сначала проверьте высоту между чистовыми полами и доступное место, затем рассчитайте ступени и проём.",
+    "articles": [
+      "staircase-dimensions-placement"
+    ],
+    "sectionId": "construction",
+    "groupId": "construction-perekrytiya-i-lestnitsy"
   }
 ]
