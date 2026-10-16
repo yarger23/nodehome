@@ -242,5 +242,17 @@
     ],
     "sectionId": "construction",
     "groupId": "construction-perekrytiya-i-lestnitsy"
+  },
+  {
+    "id": "floor-heating-choice",
+    "title": "Тёплые полы в частном доме",
+    "cardTitle": "Тёплый пол",
+    "description": "Сравнение водяного и электрического тёплого пола для частного дома.",
+    "intro": "Выбор зависит от площади обогрева, источника тепла, конструкции пола и доступной мощности. Сравните не только оборудование, но и монтаж, автоматику и расходы на эксплуатацию.",
+    "articles": [
+      "water-or-electric-underfloor-heating"
+    ],
+    "sectionId": "engineering",
+    "groupId": "engineering-otoplenie"
   }
 ]
