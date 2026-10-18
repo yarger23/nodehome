@@ -294,7 +294,7 @@ function layout(options) {
     : options.title + " — Nodehome";
   const canonical = options.canonicalUrl || BASE_URL + options.route;
   const image = options.image ? BASE_URL + "/assets/images/" + options.image : "";
-  const socialImage = image || BASE_URL + "/assets/images/hero-house.webp";
+  const socialImage = image || (options.ogType === "article" ? "" : BASE_URL + "/assets/images/hero-house.webp");
   const robots = options.robots || "index,follow";
   const redirect = options.redirectTo
     ? '<meta http-equiv="refresh" content="0;url=' + escapeHtml(options.redirectTo) + '">\n'
@@ -307,7 +307,8 @@ function layout(options) {
     '<meta property="og:type" content="' + (options.ogType || "website") + '">\n' +
     '<meta property="og:site_name" content="Nodehome">\n<meta property="og:title" content="' + escapeHtml(title) + '">\n' +
     '<meta property="og:description" content="' + escapeHtml(options.description) + '">\n' +
-    '<meta property="og:url" content="' + canonical + '">\n<meta property="og:image" content="' + socialImage + '">\n' +
+    '<meta property="og:url" content="' + canonical + '">\n' +
+    (socialImage ? '<meta property="og:image" content="' + socialImage + '">\n' : "") +
     '<title>' + escapeHtml(title) + "</title>\n" +
     (options.preload ? '<link rel="preload" as="image" href="/assets/images/' + escapeHtml(options.preload) + '" fetchpriority="high">\n' : "") +
         '<link rel="icon" href="/favicon.ico" sizes="32x32">\n' +
@@ -342,9 +343,13 @@ function groupTopicLink(group) {
 
 function articleCard(article) {
   const primaryCategory = categoryById[article.categoryIds[0]];
-  return '<article class="article-card"><a class="article-card-image" href="/article/' +
-    escapeHtml(article.slug) + '/" tabindex="-1" aria-hidden="true">' +
-    '<img src="/assets/images/' + escapeHtml(article.image) + '" alt="" width="1200" height="800" loading="lazy" decoding="async"></a>' +
+  const imageMarkup = article.image
+    ? '<a class="article-card-image" href="/article/' + escapeHtml(article.slug) +
+      '/" tabindex="-1" aria-hidden="true"><img src="/assets/images/' + escapeHtml(article.image) +
+      '" alt="" width="1200" height="800" loading="lazy" decoding="async"></a>'
+    : "";
+  return '<article class="article-card' + (article.image ? '' : ' article-card--text-only') + '">' +
+    imageMarkup +
     '<div class="article-card-body"><div class="article-card-meta"><span>' +
     escapeHtml(primaryCategory ? primaryCategory.cardTitle : "Материал") + "</span><span>" +
     escapeHtml(article.minutes) + " мин</span></div>" +
@@ -657,8 +662,9 @@ function articlePage(article) {
     '<header class="article-head"><p class="eyebrow">' + escapeHtml(primaryCategory ? primaryCategory.title : "Инструкция") + "</p>" +
     "<h1>" + escapeHtml(article.title) + "</h1><p class=\"article-lead\">" + escapeHtml(article.intro) + "</p>" +
     '<div class="article-meta"><span>' + escapeHtml(article.minutes) + " минут чтения</span><span>Практическая инструкция</span></div></header>" +
-    '<img class="article-cover" src="/assets/images/' + escapeHtml(article.image) + '" alt="' + escapeHtml(article.imageAlt) +
-    '" width="1200" height="800" fetchpriority="high" decoding="async">' +
+    (article.image ? '<img class="article-cover" src="/assets/images/' + escapeHtml(article.image) +
+      '" alt="' + escapeHtml(article.imageAlt || "") +
+      '" width="1200" height="800" fetchpriority="high" decoding="async">' : "") +
     '<details class="article-toc"><summary>Содержание статьи <span>' + article.sections.length + " раздела</span></summary><ol>" + toc + "</ol></details>" +
     '<div class="article-reading"><div class="article-content">' + articleBody(article) +
     (faqs ? '<section class="article-faq"><h2>Частые вопросы</h2>' + faqs + "</section>" : "") +
@@ -674,7 +680,7 @@ function articlePage(article) {
       "@type": "Article",
       headline: article.title,
       description: article.description,
-      image: BASE_URL + "/assets/images/" + article.image,
+      ...(article.image ? { image: BASE_URL + "/assets/images/" + article.image } : {}),
       ...(article.publishedAt ? { datePublished: article.publishedAt } : {}),
       mainEntityOfPage: BASE_URL + "/article/" + article.slug + "/",
       inLanguage: "ru-RU",
