@@ -685,3 +685,6 @@ button { cursor: pointer; }
   .section-page-topics .section-topic-chip { min-height: 32px; padding: 5px 9px; font-size: 10px; }
   .section-page-topics + .listing-section { padding-top: 10px; }
 }
+
+/* Text-only article cards use the full width on narrow screens. */
+.article-card--text-only { grid-template-columns: minmax(0, 1fr); }
