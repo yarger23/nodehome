@@ -156,7 +156,10 @@
       "storage-private-house-planning",
       "kitchen-living-room-planning",
       "guest-room-private-house",
-      "multigenerational-house-planning"
+      "multigenerational-house-planning",
+      "l-shaped-house-layout",
+      "house-window-orientation-cardinal",
+      "private-house-bedroom-layout"
     ],
     "sectionId": "construction",
     "groupId": "construction-proektirovanie-i-podgotovka"
@@ -242,7 +245,8 @@
     "articles": [
       "flat-or-pitched-roof",
       "roof-pitch-calculation",
-      "roof-covering-choice"
+      "roof-covering-choice",
+      "mansard-or-full-second-floor"
     ],
     "sectionId": "construction",
     "groupId": "construction-krysha-i-krovlya",
@@ -296,7 +300,8 @@
     "articles": [
       "ceiling-height-private-house",
       "tambour-private-house",
-      "pantry-laundry-planning"
+      "pantry-laundry-planning",
+      "private-house-porch-design"
     ],
     "sectionId": "construction",
     "groupId": "construction-proektirovanie-i-podgotovka"
@@ -593,5 +598,90 @@
     ],
     "sectionId": "construction",
     "groupId": "construction-okna-i-naruzhnye-dveri"
+  },
+  {
+    "id": "facade-cladding-choice",
+    "title": "Отделка фасада",
+    "cardTitle": "Фасад",
+    "description": "Штукатурка, сайдинг, кирпич и фасадные панели: как подобрать внешнюю отделку по стене, климату и бюджету.",
+    "intro": "Сравните варианты отделки фасада, требования к основанию, водоотводу и уходу.",
+    "start": [
+      "Проверьте материал и состояние наружных стен.",
+      "Сравните готовые фасадные системы с утеплением и монтажом.",
+      "Уточните узлы окон, цоколя и водостока."
+    ],
+    "articles": [
+      "private-house-facade-finish-choice"
+    ],
+    "sectionId": "construction",
+    "groupId": "construction-fasady-i-uteplenie"
+  },
+  {
+    "id": "plinth-finishing",
+    "title": "Отделка цоколя",
+    "cardTitle": "Цоколь",
+    "description": "Выбор материалов отделки цоколя частного дома с учётом влаги, морозов, нагрузки и ухода.",
+    "intro": "Цоколь защищают от воды и повреждений, а не просто украшают плиткой или штукатуркой.",
+    "start": [
+      "Устраните причины увлажнения и оцените основание.",
+      "Выберите материал, разрешённый для наружных условий.",
+      "Проверьте сопряжение с отмосткой и отливы."
+    ],
+    "articles": [
+      "private-house-plinth-cladding-choice"
+    ],
+    "sectionId": "construction",
+    "groupId": "construction-fundamenty-i-osnovaniya"
+  },
+  {
+    "id": "ceiling-finish-choice",
+    "title": "Выбор отделки потолка",
+    "cardTitle": "Потолки",
+    "description": "Выбор натяжного, гипсокартонного и оштукатуренного потолка с учётом высоты, освещения и ремонта.",
+    "intro": "Сопоставьте потерю высоты, неровности основания, стоимость и ремонтопригодность вариантов потолка.",
+    "start": [
+      "Проверьте высоту и перепады основания.",
+      "Зафиксируйте схему светильников и ревизий.",
+      "Сравните сметы с одинаковым финишным результатом."
+    ],
+    "articles": [
+      "ceiling-finish-options-comparison"
+    ],
+    "sectionId": "renovation",
+    "groupId": "renovation-potolki"
+  },
+  {
+    "id": "wall-finish-comparison",
+    "title": "Выбор отделки стен",
+    "cardTitle": "Отделка стен",
+    "description": "Покраска, обои или декоративная штукатурка: сравнение материалов для комнат дома.",
+    "intro": "Подберите отделку стен по условиям комнаты, уходу, стоимости и фактуре.",
+    "start": [
+      "Оцените состояние и ровность стен.",
+      "Уточните допустимую чистку покрытия.",
+      "Сделайте образец при дневном и вечернем свете."
+    ],
+    "articles": [
+      "paint-wallpaper-plaster-comparison"
+    ],
+    "sectionId": "renovation",
+    "groupId": "renovation-otdelka-sten"
+  },
+  {
+    "id": "tile-material-comparison",
+    "title": "Плитка и керамогранит",
+    "cardTitle": "Плитка и керамогранит",
+    "description": "Сравнение керамической плитки и керамогранита для пола, ванной, кухни и наружных площадок.",
+    "intro": "Выбирайте плитное покрытие по назначению, скольжению, водопоглощению и условиям основания.",
+    "start": [
+      "Проверьте назначение материала и нагрузку.",
+      "Уточните требования к поверхности во влажных зонах.",
+      "Согласуйте основание и систему укладки."
+    ],
+    "articles": [
+      "ceramic-tile-or-porcelain-stoneware"
+    ],
+    "sectionId": "renovation",
+    "groupId": "renovation-plitochnye-raboty"
   }
 ]
