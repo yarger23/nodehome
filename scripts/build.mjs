@@ -11,6 +11,20 @@ const CSS_VERSION = createHash("sha256")
   .digest("hex")
   .slice(0, 12);
 
+const YANDEX_METRIKA_HEAD = `<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=113679491', 'ym');
+
+    ym(113679491, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<!-- /Yandex.Metrika counter -->`;
+const YANDEX_METRIKA_NOSCRIPT = `<noscript><div><img src="https://mc.yandex.ru/watch/113679491" style="position:absolute; left:-9999px;" alt="" /></div></noscript>`;
+
 const readJson = async (file) =>
   JSON.parse(await readFile(path.join(ROOT, "content", file), "utf8"));
 
@@ -316,7 +330,9 @@ function layout(options) {
     '<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" sizes="180x180">\n' +
     '<link rel="stylesheet" href="/assets/site.css?v=' + CSS_VERSION + '">\n' +
     schemaScript(options.schema) + '\n' +
+    YANDEX_METRIKA_HEAD + '\n' +
     '<script src="/assets/site.js" defer></script>\n</head>\n<body>\n' +
+    YANDEX_METRIKA_NOSCRIPT + '\n' +
     header(options.active || options.route || "") + '<main id="main-content">' + options.body + "</main>" +
     footer() + '\n</body>\n</html>';
 }
