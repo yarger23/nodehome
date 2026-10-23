@@ -668,9 +668,10 @@ function articlePage(article) {
     ...(parentSection ? [{ label: parentSection.title, href: parentSection.route }] : []),
     ...(parentGroup ? [{ label: parentGroup.title, href: groupRoute(parentGroup) }] : []),
     ...(articleTopic ? [{ label: articleTopic.title, href: topicRoute(parentGroup, articleTopic) }] : []),
-    ...(primaryCategory && !(articleTopic && categoryRoute(primaryCategory) === topicRoute(parentGroup, articleTopic))
-      ? [{ label: primaryCategory.title, href: categoryRoute(primaryCategory) }]
-      : []),
+    ...(primaryCategory && !(articleTopic && (
+      categoryRoute(primaryCategory) === topicRoute(parentGroup, articleTopic) ||
+      primaryCategory.title === articleTopic.title
+    )) ? [{ label: primaryCategory.title, href: categoryRoute(primaryCategory) }] : []),
     ...(!primaryCategory ? [{ label: "Статья", href: "/catalog/" }] : []),
     { label: article.title }
   ];

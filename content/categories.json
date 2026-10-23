@@ -163,7 +163,6 @@
       "private-house-bedroom-layout",
       "storage-narrow-entryway-2026",
       "kids-room-toy-storage-2026",
-      "small-living-room-layout-2026",
       "home-library-book-storage-2026",
       "bathroom-storage-without-renovation-2026",
       "bedroom-curtains-selection-2026",
@@ -696,5 +695,22 @@
     ],
     "sectionId": "renovation",
     "groupId": "renovation-plitochnye-raboty"
+  },
+  {
+    "id": "living-room-organization",
+    "title": "Обустройство гостиной",
+    "cardTitle": "Гостиная",
+    "description": "Расстановка мебели, хранение и оформление гостиной для удобной повседневной жизни.",
+    "intro": "Практичные идеи для комфортной гостиной: мебель, проходы, хранение и зонирование.",
+    "start": [
+      "Определите ежедневные сценарии использования комнаты.",
+      "Сравните несколько вариантов расстановки мебели.",
+      "Проверьте свободное пространство и удобство проходов."
+    ],
+    "articles": [
+      "small-living-room-layout-2026"
+    ],
+    "sectionId": "renovation",
+    "groupId": "renovation-remont-pomeshcheniy"
   }
 ]
