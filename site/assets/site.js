@@ -163,13 +163,19 @@
     const status = searchPage.querySelector(".search-status");
     const items = Array.from(searchPage.querySelectorAll("[data-search-item]"));
     const query = new URLSearchParams(window.location.search).get("q") || "";
-    const normalizedQuery = query.trim().toLocaleLowerCase("ru");
+    const normalizedQuery = query.trim().toLocaleLowerCase("ru").replace(/ё/g, "е");
+    const queryWords = normalizedQuery.match(/[а-яa-z0-9]+/g) || [];
+    const stopWords = new Set(["в", "во", "на", "и", "или", "для", "по", "с", "со", "из", "о", "об", "как"]);
+    const terms = queryWords.filter((word) => !stopWords.has(word));
     if (input) input.value = query;
 
     let visibleCount = 0;
     items.forEach((item) => {
-      const matches = !normalizedQuery ||
-        (item.dataset.searchText || "").includes(normalizedQuery);
+      const searchText = (item.dataset.searchText || "").toLocaleLowerCase("ru").replace(/ё/g, "е");
+      const words = searchText.match(/[а-яa-z0-9]+/g) || [];
+      const matches = terms.length === 0 || terms.every((term) =>
+        words.some((word) => word === term || (term.length >= 5 && word.startsWith(term.slice(0, 5))))
+      );
       item.hidden = !matches;
       if (matches) visibleCount += 1;
     });
