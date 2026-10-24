@@ -713,5 +713,22 @@
     ],
     "sectionId": "renovation",
     "groupId": "renovation-remont-pomeshcheniy"
+  },
+  {
+    "id": "bedroom-furniture",
+    "title": "Мебель и обустройство спальни",
+    "cardTitle": "Мебель для спальни",
+    "description": "Выбор мебели и организация удобного пространства в спальне без сложного ремонта.",
+    "intro": "Практичные решения для кровати, прикроватной зоны и хранения с учётом размеров комнаты.",
+    "start": [
+      "Измерьте свободное пространство рядом с кроватью.",
+      "Проверьте ежедневные сценарии использования.",
+      "Сопоставьте размеры, хранение и уход."
+    ],
+    "articles": [
+      "bedroom-bedside-table-2026"
+    ],
+    "sectionId": "renovation",
+    "groupId": "renovation-remont-pomeshcheniy"
   }
 ]
