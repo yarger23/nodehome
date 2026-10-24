@@ -747,5 +747,22 @@
     ],
     "sectionId": "renovation",
     "groupId": "renovation-remont-pomeshcheniy"
+  },
+  {
+    "id": "kitchen-textiles",
+    "title": "Текстиль и оформление кухни",
+    "cardTitle": "Текстиль для кухни",
+    "description": "Подбор штор, текстиля и декоративных решений для кухни с учётом света и ухода.",
+    "intro": "Практичный текстиль для кухни: свет, размеры, фактура и уход.",
+    "start": [
+      "Оцените естественный свет и приватность.",
+      "Снимите размеры окна.",
+      "Сравните ткани и уход."
+    ],
+    "articles": [
+      "kitchen-roman-blinds-2026"
+    ],
+    "sectionId": "renovation",
+    "groupId": "renovation-remont-pomeshcheniy"
   }
 ]
