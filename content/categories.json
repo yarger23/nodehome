@@ -730,5 +730,22 @@
     ],
     "sectionId": "renovation",
     "groupId": "renovation-remont-pomeshcheniy"
+  },
+  {
+    "id": "hallway-decor",
+    "title": "Обустройство и декор прихожей",
+    "cardTitle": "Прихожая",
+    "description": "Выбор мебели, зеркал и аксессуаров для удобной и аккуратной прихожей.",
+    "intro": "Подбирайте зеркала, хранение и декоративные детали с учётом проходов и реальных привычек.",
+    "start": [
+      "Измерьте стены и свободные проходы.",
+      "Определите, что должно быть под рукой у входа.",
+      "Проверьте сочетаемость предметов с мебелью."
+    ],
+    "articles": [
+      "hallway-mirror-selection-2026"
+    ],
+    "sectionId": "renovation",
+    "groupId": "renovation-remont-pomeshcheniy"
   }
 ]
