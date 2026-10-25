@@ -769,5 +769,22 @@
     ],
     "sectionId": "renovation",
     "groupId": "renovation-remont-pomeshcheniy"
+  },
+  {
+    "id": "kitchen-drawer-organization",
+    "title": "Организация хранения на кухне",
+    "cardTitle": "Хранение на кухне",
+    "description": "Практичные решения для порядка в кухонных ящиках, шкафах и аксессуарах.",
+    "intro": "Организация кухонного хранения с учётом размеров мебели и повседневных привычек.",
+    "start": [
+      "Разберите содержимое ящиков по назначению.",
+      "Измерьте внутренние размеры и полезную высоту.",
+      "Подберите лотки и разделители с учётом ухода."
+    ],
+    "articles": [
+      "kitchen-drawer-organizers-2026"
+    ],
+    "sectionId": "renovation",
+    "groupId": "renovation-remont-pomeshcheniy"
   }
 ]
