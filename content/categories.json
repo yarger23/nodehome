@@ -803,5 +803,22 @@
     ],
     "sectionId": "renovation",
     "groupId": "renovation-remont-pomeshcheniy"
+  },
+  {
+    "id": "bathroom-laundry-accessories",
+    "title": "Аксессуары для ванной и белья",
+    "cardTitle": "Аксессуары для ванной",
+    "description": "Выбор корзин для белья, хранения и бытовых аксессуаров для ванной.",
+    "intro": "Практичные решения для порядка в ванной с учётом размеров и ухода.",
+    "start": [
+      "Оцените свободное место и маршруты.",
+      "Сравните материалы и удобство очистки.",
+      "Проверьте размеры и переноску вещей."
+    ],
+    "articles": [
+      "laundry-basket-selection-2026"
+    ],
+    "sectionId": "renovation",
+    "groupId": "renovation-remont-pomeshcheniy"
   }
 ]
