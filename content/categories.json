@@ -786,5 +786,22 @@
     ],
     "sectionId": "renovation",
     "groupId": "renovation-remont-pomeshcheniy"
+  },
+  {
+    "id": "kitchen-dining-furniture",
+    "title": "Мебель для обеденной зоны",
+    "cardTitle": "Обеденная зона",
+    "description": "Выбор стульев и другой мебели для компактной обеденной зоны кухни.",
+    "intro": "Мебель для удобных завтраков и семейных ужинов: посадка, размеры и уход.",
+    "start": [
+      "Измерьте свободное место вокруг стола.",
+      "Проверьте высоту и удобство посадки.",
+      "Сравните материалы и уход."
+    ],
+    "articles": [
+      "small-kitchen-dining-chairs-2026"
+    ],
+    "sectionId": "renovation",
+    "groupId": "renovation-remont-pomeshcheniy"
   }
 ]
