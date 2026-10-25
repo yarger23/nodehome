@@ -820,5 +820,22 @@
     ],
     "sectionId": "renovation",
     "groupId": "renovation-remont-pomeshcheniy"
+  },
+  {
+    "id": "indoor-plants-decor",
+    "title": "Растения и кашпо в интерьере",
+    "cardTitle": "Растения в интерьере",
+    "description": "Выбор декоративных кашпо, горшков и оформления комнатных растений.",
+    "intro": "Растения в интерьере: сочетание кашпо, фактур, света и удобного ухода.",
+    "start": [
+      "Проверьте требования растения к освещению.",
+      "Измерьте посадочный горшок и место.",
+      "Сравните материалы и защиту от влаги."
+    ],
+    "articles": [
+      "houseplant-cachepot-selection-2026"
+    ],
+    "sectionId": "renovation",
+    "groupId": "renovation-remont-pomeshcheniy"
   }
 ]
