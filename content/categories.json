@@ -842,5 +842,26 @@
     ],
     "sectionId": "renovation",
     "groupId": "renovation-remont-pomeshcheniy"
+  },
+  {
+    "id": "cutting-installation-tools",
+    "title": "Режущий и монтажный инструмент",
+    "cardTitle": "Режущий и монтажный инструмент",
+    "description": "Выбор ручного режущего и монтажного инструмента для ремонта и мастерской.",
+    "intro": "Сравниваем назначение, эргономику, расходники и совместимость инструмента с материалами.",
+    "start": [
+      "Определите материал и частоту работ.",
+      "Проверьте совместимость расходников и удобство рукоятки.",
+      "Учитывайте безопасность хранения и замены оснастки."
+    ],
+    "articles": [
+      "construction-knife-guide",
+      "metal-hacksaw-guide",
+      "clamps-guide",
+      "manual-riveter-guide",
+      "sealant-gun-guide"
+    ],
+    "sectionId": "tools",
+    "groupId": "tools-ruchnoy-instrument"
   }
 ]
