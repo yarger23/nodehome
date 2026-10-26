@@ -884,5 +884,26 @@
     ],
     "sectionId": "tools",
     "groupId": "tools-ruchnoy-instrument"
+  },
+  {
+    "id": "drills-screwdrivers",
+    "title": "Дрели и шуруповёрты",
+    "cardTitle": "Дрели и шуруповёрты",
+    "description": "Как выбрать дрель и шуруповёрт, сравнить питание, момент и режимы работы.",
+    "intro": "Разбираем характеристики дрелей и шуруповёртов, чтобы выбрать инструмент под конкретные домашние задачи.",
+    "start": [
+      "Определите материалы и частоту работы.",
+      "Сравните момент, муфту, скорости и питание.",
+      "Проверьте оснастку, удобство и безопасность."
+    ],
+    "articles": [
+      "kak-vybrat-shurupovert-dlya-doma",
+      "drel-ili-shurupovert-chto-vybrat",
+      "akkumulyatornyy-ili-setevoy-shurupovert",
+      "krutyashchiy-moment-shurupoverta",
+      "udarnaya-ili-bezudarnaya-drel"
+    ],
+    "sectionId": "tools",
+    "groupId": "tools-elektroinstrument"
   }
 ]
