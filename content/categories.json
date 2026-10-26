@@ -863,5 +863,26 @@
     ],
     "sectionId": "tools",
     "groupId": "tools-ruchnoy-instrument"
+  },
+  {
+    "id": "plaster-tools",
+    "title": "Штукатурный инструмент",
+    "cardTitle": "Штукатурный инструмент",
+    "description": "Выбор шпателей, кельм, правил, тёрок и приспособлений для декоративной штукатурки.",
+    "intro": "Подбирайте инструмент под материал, площадь поверхности и этап отделки.",
+    "start": [
+      "Уточните тип штукатурной смеси и технологию её нанесения.",
+      "Проверьте геометрию и удобство инструмента перед покупкой.",
+      "Содержите рабочие кромки и подошвы в чистоте."
+    ],
+    "articles": [
+      "shtukaturnye-shpateli-vybor",
+      "kelma-i-shtukaturnaya-lopatka",
+      "pravilo-dlya-shtukaturki-kak-vybrat",
+      "terki-i-poluterki-dlya-shtukaturki",
+      "instrument-dlya-dekorativnoy-shtukaturki"
+    ],
+    "sectionId": "tools",
+    "groupId": "tools-ruchnoy-instrument"
   }
 ]
