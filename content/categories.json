@@ -936,5 +936,26 @@
     ],
     "sectionId": "tools",
     "groupId": "tools-ruchnoy-instrument"
+  },
+  {
+    "id": "painting-tools",
+    "title": "Малярный инструмент",
+    "cardTitle": "Малярный инструмент",
+    "description": "Выбор валиков, кистей, малярной ленты, лотков и аксессуаров для аккуратной покраски дома.",
+    "intro": "Практические руководства по малярному инструменту: подбирайте оснастку под краску и поверхность, делайте пробный выкрас и сохраняйте инструмент в хорошем состоянии.",
+    "start": [
+      "Проверьте совместимость инструмента с конкретной краской и основанием.",
+      "Сравните материал, размер и удобство работы, а не только цену.",
+      "Соблюдайте инструкции производителя при очистке и хранении."
+    ],
+    "articles": [
+      "painting-roller-selection-2026",
+      "painting-brush-selection-2026",
+      "painting-masking-tape-selection-2026",
+      "painting-tray-grid-2026",
+      "painting-tools-cleaning-storage-2026"
+    ],
+    "sectionId": "tools",
+    "groupId": "tools-ruchnoy-instrument"
   }
 ]
