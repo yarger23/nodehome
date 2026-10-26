@@ -910,5 +910,26 @@
     ],
     "sectionId": "tools",
     "groupId": "tools-elektroinstrument"
+  },
+  {
+    "id": "woodworking-tools",
+    "title": "Столярный инструмент",
+    "cardTitle": "Столярный инструмент",
+    "description": "Ручной столярный инструмент: стамески, рубанки, струбцины, угольники и пилы. Как выбрать и пользоваться безопасно.",
+    "intro": "Выбор ручного столярного инструмента зависит от материала, точности обработки и характера работы. Сравнивайте геометрию, удобство и возможность обслуживания.",
+    "start": [
+      "Определите задачи и размеры заготовок.",
+      "Проверьте геометрию, удобство хвата и отсутствие люфтов.",
+      "Используйте надёжную фиксацию заготовок и защиту режущих кромок."
+    ],
+    "articles": [
+      "kak-vybrat-stamesku-po-derevu",
+      "ruchnoy-rubanok-kak-vybrat",
+      "strubtsiny-dlya-stolyarnykh-rabot",
+      "stolyarnyy-ugolnik-vybor-i-proverka",
+      "ruchnaya-pila-po-derevu-kak-vybrat"
+    ],
+    "sectionId": "tools",
+    "groupId": "tools-ruchnoy-instrument"
   }
 ]
