@@ -902,5 +902,26 @@
     "articles": [],
     "sectionId": "tools",
     "groupId": "tools-ruchnoy-instrument"
+  },
+  {
+    "id": "slesarnyy-instrument-ruchnoy",
+    "title": "Слесарный инструмент",
+    "cardTitle": "Слесарный инструмент",
+    "description": "Выбор ручных слесарных инструментов: ключи, отвёртки, пассатижи, напильники и полезный набор для дома.",
+    "intro": "Подбирайте инструмент по крепежу и задаче, проверяйте геометрию рабочих частей и учитывайте ограничения каждого типа.",
+    "start": [
+      "Определите работы и размеры крепежа до покупки.",
+      "Проверяйте точность посадки, целостность рукояток и рабочие кромки.",
+      "Храните инструмент сухим и не используйте его не по назначению."
+    ],
+    "articles": [
+      "home-locksmith-toolkit-2026",
+      "wrench-types-guide-2026",
+      "pliers-differences-2026",
+      "screwdriver-bit-profiles-2026",
+      "metal-files-guide-2026"
+    ],
+    "sectionId": "tools",
+    "groupId": "tools-ruchnoy-instrument"
   }
 ]
