@@ -854,7 +854,12 @@
       "Проверьте совместимость расходников и удобство рукоятки.",
       "Учитывайте безопасность хранения и замены оснастки."
     ],
-    "articles": [],
+    "articles": [
+      "tile-adhesive-spatula-guide",
+      "tile-cutter-manual-vs-electric",
+      "tile-installation-toolkit",
+      "tile-leveling-system-svp"
+    ],
     "sectionId": "tools",
     "groupId": "tools-ruchnoy-instrument"
   },
@@ -884,7 +889,9 @@
       "Сравните момент, муфту, скорости и питание.",
       "Проверьте оснастку, удобство и безопасность."
     ],
-    "articles": [],
+    "articles": [
+      "udarnaya-ili-bezudarnaya-drel"
+    ],
     "sectionId": "tools",
     "groupId": "tools-elektroinstrument"
   },
@@ -899,7 +906,13 @@
       "Проверьте геометрию, удобство хвата и отсутствие люфтов.",
       "Используйте надёжную фиксацию заготовок и защиту режущих кромок."
     ],
-    "articles": [],
+    "articles": [
+      "kak-vybrat-stamesku-po-derevu",
+      "ruchnaya-pila-po-derevu-kak-vybrat",
+      "ruchnoy-rubanok-kak-vybrat",
+      "stolyarnyy-ugolnik-vybor-i-proverka",
+      "strubtsiny-dlya-stolyarnykh-rabot"
+    ],
     "sectionId": "tools",
     "groupId": "tools-ruchnoy-instrument"
   },
