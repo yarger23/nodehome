@@ -854,13 +854,7 @@
       "Проверьте совместимость расходников и удобство рукоятки.",
       "Учитывайте безопасность хранения и замены оснастки."
     ],
-    "articles": [
-      "tile-cutter-manual-vs-electric",
-      "tile-installation-toolkit",
-      "tile-adhesive-spatula-guide",
-      "tile-leveling-system-svp",
-      "cut-porcelain-stoneware-tools"
-    ],
+    "articles": [],
     "sectionId": "tools",
     "groupId": "tools-ruchnoy-instrument"
   },
@@ -875,13 +869,7 @@
       "Проверьте геометрию и удобство инструмента перед покупкой.",
       "Содержите рабочие кромки и подошвы в чистоте."
     ],
-    "articles": [
-      "shtukaturnye-shpateli-vybor",
-      "kelma-i-shtukaturnaya-lopatka",
-      "pravilo-dlya-shtukaturki-kak-vybrat",
-      "terki-i-poluterki-dlya-shtukaturki",
-      "instrument-dlya-dekorativnoy-shtukaturki"
-    ],
+    "articles": [],
     "sectionId": "tools",
     "groupId": "tools-ruchnoy-instrument"
   },
@@ -896,13 +884,7 @@
       "Сравните момент, муфту, скорости и питание.",
       "Проверьте оснастку, удобство и безопасность."
     ],
-    "articles": [
-      "kak-vybrat-shurupovert-dlya-doma",
-      "drel-ili-shurupovert-chto-vybrat",
-      "akkumulyatornyy-ili-setevoy-shurupovert",
-      "krutyashchiy-moment-shurupoverta",
-      "udarnaya-ili-bezudarnaya-drel"
-    ],
+    "articles": [],
     "sectionId": "tools",
     "groupId": "tools-elektroinstrument"
   },
@@ -917,13 +899,7 @@
       "Проверьте геометрию, удобство хвата и отсутствие люфтов.",
       "Используйте надёжную фиксацию заготовок и защиту режущих кромок."
     ],
-    "articles": [
-      "kak-vybrat-stamesku-po-derevu",
-      "ruchnoy-rubanok-kak-vybrat",
-      "strubtsiny-dlya-stolyarnykh-rabot",
-      "stolyarnyy-ugolnik-vybor-i-proverka",
-      "ruchnaya-pila-po-derevu-kak-vybrat"
-    ],
+    "articles": [],
     "sectionId": "tools",
     "groupId": "tools-ruchnoy-instrument"
   }
