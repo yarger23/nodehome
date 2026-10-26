@@ -14,6 +14,7 @@
   <url><loc>https://nodehome.ru/landscape/</loc></url>
   <url><loc>https://nodehome.ru/landscape/page/2/</loc></url>
   <url><loc>https://nodehome.ru/tools/</loc></url>
+  <url><loc>https://nodehome.ru/tools/page/2/</loc></url>
   <url><loc>https://nodehome.ru/construction/proektirovanie-i-podgotovka/</loc></url>
   <url><loc>https://nodehome.ru/construction/proektirovanie-i-podgotovka/page/2/</loc></url>
   <url><loc>https://nodehome.ru/construction/fundamenty-i-osnovaniya/</loc></url>
@@ -39,6 +40,7 @@
   <url><loc>https://nodehome.ru/landscape/drenazh-i-vodootvedenie/</loc></url>
   <url><loc>https://nodehome.ru/landscape/hozyaystvennye-postroyki/</loc></url>
   <url><loc>https://nodehome.ru/tools/ruchnoy-instrument/</loc></url>
+  <url><loc>https://nodehome.ru/tools/elektroinstrument/</loc></url>
   <url><loc>https://nodehome.ru/construction/proektirovanie-i-podgotovka/proekty-domov-i-planirovki/</loc></url>
   <url><loc>https://nodehome.ru/construction/proektirovanie-i-podgotovka/proekty-domov-i-planirovki/page/2/</loc></url>
   <url><loc>https://nodehome.ru/construction/proektirovanie-i-podgotovka/arkhitektura-i-konstruktivnye-resheniya/</loc></url>
@@ -93,6 +95,7 @@
   <url><loc>https://nodehome.ru/landscape/hozyaystvennye-postroyki/bani-i-sauny/</loc></url>
   <url><loc>https://nodehome.ru/tools/ruchnoy-instrument/shtukaturnyy-instrument/</loc></url>
   <url><loc>https://nodehome.ru/tools/ruchnoy-instrument/rezhushchiy-i-montazhnyy-instrument/</loc></url>
+  <url><loc>https://nodehome.ru/tools/elektroinstrument/dreli-i-shurupovyorty/</loc></url>
   <url><loc>https://nodehome.ru/catalog/land/</loc></url>
   <url><loc>https://nodehome.ru/catalog/foundation/</loc></url>
   <url><loc>https://nodehome.ru/catalog/walls/</loc></url>
@@ -111,6 +114,7 @@
   <url><loc>https://nodehome.ru/catalog/kitchen-drawer-organization/</loc></url>
   <url><loc>https://nodehome.ru/catalog/kitchen-dining-furniture/</loc></url>
   <url><loc>https://nodehome.ru/catalog/indoor-plants-decor/</loc></url>
+  <url><loc>https://nodehome.ru/catalog/cutting-installation-tools/</loc></url>
   <url><loc>https://nodehome.ru/article/foundation/</loc></url>
   <url><loc>https://nodehome.ru/article/gidroizolyatsiya-fundamenta/</loc></url>
   <url><loc>https://nodehome.ru/article/podgotovka-uchastka-k-stroitelstvu/</loc></url>
@@ -127,12 +131,14 @@
   <url><loc>https://nodehome.ru/article/pech-dlya-bani-drovyanaya-ili-elektricheskaya/</loc></url>
   <url><loc>https://nodehome.ru/article/razmery-parilki-v-bane/</loc></url>
   <url><loc>https://nodehome.ru/article/paroizolyatsiya-bani/</loc></url>
+  <url><loc>https://nodehome.ru/article/akkumulyatornyy-ili-setevoy-shurupovert/</loc></url>
   <url><loc>https://nodehome.ru/article/armopoyas-v-dome-iz-gazobetona-kogda-nuzhen-i-kak-sdelat/</loc></url>
   <url><loc>https://nodehome.ru/article/banketka-v-prikhozhey-kak-vybrat/</loc></url>
   <url><loc>https://nodehome.ru/article/chem-otdelat-fasad-chastnogo-doma/</loc></url>
   <url><loc>https://nodehome.ru/article/chem-otdelat-tsokol-chastnogo-doma/</loc></url>
   <url><loc>https://nodehome.ru/article/kak-vybrat-strubtsiny/</loc></url>
   <url><loc>https://nodehome.ru/article/kak-vybrat-stroitelnyy-nozh/</loc></url>
+  <url><loc>https://nodehome.ru/article/cut-porcelain-stoneware-tools/</loc></url>
   <url><loc>https://nodehome.ru/article/dekor-zhurnalnogo-stolika-idei-i-pravila/</loc></url>
   <url><loc>https://nodehome.ru/article/dekorativnye-podushki-na-divan/</loc></url>
   <url><loc>https://nodehome.ru/article/derevyannoe-ili-zhelezobetonnoe-perekrytie-chto-vybrat/</loc></url>
@@ -140,6 +146,7 @@
   <url><loc>https://nodehome.ru/article/dom-dlya-neskolkikh-pokoleniy-planirovka/</loc></url>
   <url><loc>https://nodehome.ru/article/dom-s-kabinetom-gde-razmestit-rabochee-mesto/</loc></url>
   <url><loc>https://nodehome.ru/article/domashnyaya-biblioteka-khranenie-knig/</loc></url>
+  <url><loc>https://nodehome.ru/article/drel-ili-shurupovert-chto-vybrat/</loc></url>
   <url><loc>https://nodehome.ru/article/drenazh-uchastka-vokrug-doma/</loc></url>
   <url><loc>https://nodehome.ru/article/elektroprovodka-v-chastnom-dome/</loc></url>
   <url><loc>https://nodehome.ru/article/garazh-pristroennyy-ili-otdelno-stoyashchiy/</loc></url>
@@ -159,6 +166,7 @@
   <url><loc>https://nodehome.ru/article/kak-vybrat-pokryvalo-dlya-spalni/</loc></url>
   <url><loc>https://nodehome.ru/article/kak-vybrat-proekt-doma/</loc></url>
   <url><loc>https://nodehome.ru/article/kak-vybrat-shtory-dlya-spalni/</loc></url>
+  <url><loc>https://nodehome.ru/article/kak-vybrat-shurupovert-dlya-doma/</loc></url>
   <url><loc>https://nodehome.ru/article/kak-vybrat-tsvet-sten-dlya-severnoy-komnaty/</loc></url>
   <url><loc>https://nodehome.ru/article/kak-vybrat-tsvet-sten-v-gostinoy/</loc></url>
   <url><loc>https://nodehome.ru/article/kak-vybrat-vysotu-potolkov-v-chastnom-dome/</loc></url>
@@ -176,6 +184,7 @@
   <url><loc>https://nodehome.ru/article/kotelnaya-v-chastnom-dome-trebovaniya-i-planirovka/</loc></url>
   <url><loc>https://nodehome.ru/article/kovrik-dlya-prikhozhey-kak-vybrat/</loc></url>
   <url><loc>https://nodehome.ru/article/kraska-oboi-ili-dekorativnaya-shtukaturka-dlya-sten/</loc></url>
+  <url><loc>https://nodehome.ru/article/krutyashchiy-moment-shurupoverta/</loc></url>
   <url><loc>https://nodehome.ru/article/kryltso-chastnogo-doma-razmery-i-materialy/</loc></url>
   <url><loc>https://nodehome.ru/article/lestnitsa-v-chastnom-dome-razmery-i-raspolozhenie/</loc></url>
   <url><loc>https://nodehome.ru/article/malenkaya-gostinaya-rasstanovka-mebeli/</loc></url>
@@ -217,8 +226,13 @@
   <url><loc>https://nodehome.ru/article/styazhka-pola-mokryaya-polusukhaya-ili-sukhaya/</loc></url>
   <url><loc>https://nodehome.ru/article/tambur-v-chastnom-dome-kak-splanirovat/</loc></url>
   <url><loc>https://nodehome.ru/article/terki-i-poluterki-dlya-shtukaturki/</loc></url>
+  <url><loc>https://nodehome.ru/article/tile-adhesive-spatula-guide/</loc></url>
+  <url><loc>https://nodehome.ru/article/tile-cutter-manual-vs-electric/</loc></url>
+  <url><loc>https://nodehome.ru/article/tile-installation-toolkit/</loc></url>
+  <url><loc>https://nodehome.ru/article/tile-leveling-system-svp/</loc></url>
   <url><loc>https://nodehome.ru/article/treshchiny-v-stenakh-doma/</loc></url>
   <url><loc>https://nodehome.ru/article/tv-zona-v-gostinoy-oformlenie-i-khranenie/</loc></url>
+  <url><loc>https://nodehome.ru/article/udarnaya-ili-bezudarnaya-drel/</loc></url>
   <url><loc>https://nodehome.ru/article/uteplenie-cherdachnogo-perekrytiya-v-chastnom-dome/</loc></url>
   <url><loc>https://nodehome.ru/article/uteplenie-fasada-chastnogo-doma/</loc></url>
   <url><loc>https://nodehome.ru/article/uteplenie-fundamenta-i-tsokolya-chastnogo-doma/</loc></url>
