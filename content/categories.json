@@ -994,5 +994,22 @@
     ],
     "sectionId": "renovation",
     "groupId": "renovation-dveri-i-elementy-interera"
+  },
+  {
+    "id": "floor-protection-materials",
+    "title": "Защита пола при ремонте",
+    "cardTitle": "Укрывные материалы",
+    "description": "Выбор защитных плёнок, картона и укрывного флиса для временной защиты пола во время ремонта.",
+    "intro": "Сравнивайте материалы по нагрузке, совместимости с покрытием и удобству ухода.",
+    "start": [
+      "Уточните тип и состояние пола.",
+      "Оцените брызги, пыль и проходную нагрузку.",
+      "Сверьте противоскользящие свойства и допустимую фиксацию."
+    ],
+    "articles": [
+      "floor-protection-plastic-paper-fleece-2026"
+    ],
+    "sectionId": "renovation",
+    "groupId": "renovation-planirovanie-remonta"
   }
 ]
