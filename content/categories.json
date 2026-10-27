@@ -975,5 +975,22 @@
     ],
     "sectionId": "renovation",
     "groupId": "renovation-remont-pomeshcheniy"
+  },
+  {
+    "id": "floor-skirting-materials",
+    "title": "Выбор напольных плинтусов",
+    "cardTitle": "Плинтусы для пола",
+    "description": "Сравнение материалов, профилей и отделки напольных плинтусов для ремонта квартиры.",
+    "intro": "Подберите плинтус по влагостойкости, внешнему виду, высоте и условиям ухода.",
+    "start": [
+      "Сравните образцы с полом и наличниками.",
+      "Проверьте влажность и режим уборки помещения.",
+      "Посчитайте длины, углы и полный комплект."
+    ],
+    "articles": [
+      "floor-skirting-mdf-pvc-duropolymer-2026"
+    ],
+    "sectionId": "renovation",
+    "groupId": "renovation-dveri-i-elementy-interera"
   }
 ]
