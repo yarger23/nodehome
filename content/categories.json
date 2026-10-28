@@ -1014,5 +1014,22 @@
     ],
     "sectionId": "renovation",
     "groupId": "renovation-planirovanie-remonta"
+  },
+  {
+    "id": "laminate-selection",
+    "title": "Выбор ламината",
+    "cardTitle": "Ламинат",
+    "description": "Как выбрать ламинат для квартиры по классу нагрузки, конструкции, уходу и дизайну.",
+    "intro": "Разбираемся в классах и свойствах ламината без мифов и переплаты.",
+    "start": [
+      "Определите интенсивность использования комнаты.",
+      "Проверьте ограничения по влаге и уходу.",
+      "Сравните образцы и гарантию конкретных коллекций."
+    ],
+    "articles": [
+      "laminate-use-class-32-vs-33-2026"
+    ],
+    "sectionId": "renovation",
+    "groupId": "renovation-poly-i-napolnye-pokrytiya"
   }
 ]
