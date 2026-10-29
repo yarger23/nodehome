@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-10-29T12:00:00Z",
+  "description": "Служебный неиндексируемый реестр независимого редакционного аудита Nodehome. Хеш версии — Git blob SHA исходного JSON статьи на момент проверки.",
+  "articles": [
+    {
+      "id": "nabor-ruchnogo-stolyarnogo-instrumenta-dlya-doma-2026",
+      "url": "/article/nabor-ruchnogo-stolyarnogo-instrumenta-dlya-doma/",
+      "publishedAt": "2026-10-29",
+      "lastAuditAt": "2026-10-29T12:00:00Z",
+      "auditCount": 1,
+      "versionHash": "f2a25160bb0f686f456507d28b373e5e323c6d90",
+      "status": "Проверена, замечаний нет",
+      "nextAuditAt": "2026-10-30T12:00:00Z",
+      "issuesFound": [],
+      "issuesFixed": [],
+      "unresolved": [],
+      "scores": {
+        "accuracy": 9,
+        "safety": 10,
+        "usefulness": 9,
+        "completeness": 9,
+        "seo": 9,
+        "structure": 9,
+        "language": 9,
+        "image": 9,
+        "uniqueness": 9
+      },
+      "notes": "Первая независимая проверка. Рекомендации по исправности, назначению и хранению ручного инструмента сверены с актуальными материалами OSHA/CCOHS; опасных пошаговых операций нет. Внутренние ссылки релевантны. Изображение присутствует в assets/images как WebP и имеет осмысленный alt. Публичную доступность URL инструментом проверить не удалось."
+    },
+    {
+      "id": "stolyarnyy-verstak-dlya-doma-kak-vybrat-2026",
+      "url": "/article/stolyarnyy-verstak-dlya-doma-kak-vybrat/",
+      "publishedAt": "2026-10-29",
+      "lastAuditAt": "2026-10-29T12:00:00Z",
+      "auditCount": 1,
+      "versionHash": "15e9eea1c466ea500133fa3ea22bfe07cb4ae045",
+      "status": "Проверена, замечаний нет",
+      "nextAuditAt": "2026-10-30T12:00:00Z",
+      "issuesFound": [],
+      "issuesFixed": [],
+      "unresolved": [],
+      "scores": {
+        "accuracy": 9,
+        "safety": 10,
+        "usefulness": 9,
+        "completeness": 9,
+        "seo": 9,
+        "structure": 9,
+        "language": 9,
+        "image": 9,
+        "uniqueness": 9
+      },
+      "notes": "Первая независимая проверка. Материал корректно ограничивает паспортные нагрузки конкретной моделью, не даёт опасных столярных инструкций и подчёркивает устойчивость, исправность и безопасное хранение. Изображение присутствует в assets/images как WebP и имеет осмысленный alt. Публичную доступность URL инструментом проверить не удалось."
+    }
+  ]
+}
