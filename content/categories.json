@@ -886,7 +886,9 @@
       "Проверьте геометрию и удобство инструмента перед покупкой.",
       "Содержите рабочие кромки и подошвы в чистоте."
     ],
-    "articles": [],
+    "articles": [
+      "sanding-mesh-vs-sandpaper-putty-2026"
+    ],
     "sectionId": "tools",
     "groupId": "tools-ruchnoy-instrument"
   },
