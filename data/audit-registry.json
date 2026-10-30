@@ -1,116 +1,17 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-30T18:00:00Z",
-  "policy": {
-    "firstAudit": "after publication",
-    "secondAudit": "24-48 hours after first audit",
-    "deepAudit": "7 days after first audit",
-    "periodicAfterThreeSuccessfulAudits": true
-  },
+  "updatedAt": "2026-10-30T23:56:00Z",
+  "policy": {"firstAudit":"after publication","secondAudit":"24-48 hours after first audit","deepAudit":"7 days after first audit","periodicAfterThreeSuccessfulAudits":true},
   "articles": [
-    {
-      "id": "chem-ukryt-mebel-pri-pokraske-sten",
-      "url": "/article/chem-ukryt-mebel-pri-pokraske-sten/",
-      "publishedAt": "2026-10-30T11:12:24Z",
-      "lastAuditAt": "2026-10-30T12:00:00Z",
-      "auditCount": 1,
-      "versionHash": "37b7dd5aaeeabaad7f5692e84af0ed1c3b9b7221",
-      "status": "Проверена, замечаний нет",
-      "findings": [], "fixed": [], "unresolved": [],
-      "nextAuditAt": "2026-10-31T12:00:00Z",
-      "scores": {"accuracy": 9, "safety": 10, "usefulness": 9, "completeness": 9, "seo": 9, "structure": 9, "language": 9, "image": 9, "uniqueness": 9},
-      "evidence": ["3M masking guidance: surface compatibility and clean/dry application conditions independently checked"]
-    },
-    {
-      "id": "otkrytyy-stellazh-ryadom-s-rabochim-stolom",
-      "url": "/article/otkrytyy-stellazh-ryadom-s-rabochim-stolom/",
-      "publishedAt": "2026-10-29T20:29:22Z",
-      "lastAuditAt": "2026-10-30T12:00:00Z",
-      "auditCount": 1,
-      "versionHash": "b44dabac0053f10ab32441952c0d9ae8e1c1dec5",
-      "status": "Проверена, замечаний нет",
-      "findings": [], "fixed": [], "unresolved": [],
-      "nextAuditAt": "2026-10-31T12:00:00Z",
-      "scores": {"accuracy": 9, "safety": 10, "usefulness": 9, "completeness": 9, "seo": 9, "structure": 9, "language": 9, "image": 9, "uniqueness": 9},
-      "evidence": ["OSHA storage guidance independently checked: heavy loads low/middle, do not exceed shelving capacity, prevent falling/collapse"]
-    },
-    {
-      "id": "kak-organizovat-khranenie-instrumenta-na-perfopaneli",
-      "url": "/article/kak-organizovat-khranenie-instrumenta-na-perfopaneli/",
-      "publishedAt": "2026-10-29T20:28:57Z",
-      "lastAuditAt": "2026-10-30T12:00:00Z",
-      "auditCount": 1,
-      "versionHash": "ecfa787511c29509a5cf37a6aae567242b47f7b5",
-      "status": "Проверена, замечаний нет",
-      "findings": [], "fixed": [], "unresolved": [],
-      "nextAuditAt": "2026-10-31T12:00:00Z",
-      "scores": {"accuracy": 9, "safety": 10, "usefulness": 9, "completeness": 9, "seo": 9, "structure": 9, "language": 9, "image": 9, "uniqueness": 9},
-      "evidence": ["Load limits are correctly deferred to the specific panel/accessory/manufacturer; heavy and exposed cutting tools are conservatively handled"]
-    },
-    {
-      "id": "kak-sravnit-vykrasy-kraski-na-stene",
-      "url": "/article/kak-sravnit-vykrasy-kraski-na-stene/",
-      "publishedAt": "2026-10-29T20:28:37Z",
-      "lastAuditAt": "2026-10-30T12:00:00Z",
-      "auditCount": 1,
-      "versionHash": "4b05bd719d937c8224946d529b30c80248077a2a",
-      "status": "Проверена, замечаний нет",
-      "findings": [], "fixed": [], "unresolved": [],
-      "nextAuditAt": "2026-10-31T12:00:00Z",
-      "scores": {"accuracy": 10, "safety": 10, "usefulness": 9, "completeness": 9, "seo": 9, "structure": 9, "language": 9, "image": 9, "uniqueness": 9},
-      "evidence": ["Benjamin Moore independently confirms brush-on samples and evaluation under changing light; Sherwin-Williams likewise exposes day/night lighting as a color-selection factor"]
-    },
-    {
-      "id": "shlifovalnaya-setka-ili-nazhdachnaya-bumaga-dlya-shpaklevki",
-      "url": "/article/shlifovalnaya-setka-ili-nazhdachnaya-bumaga-dlya-shpaklevki/",
-      "publishedAt": "2026-10-30T15:32:36Z",
-      "lastAuditAt": "2026-10-30T18:00:00Z",
-      "auditCount": 1,
-      "versionHash": "258f679e7d6f569f8c3fff215d098b4a7838eee7",
-      "status": "Проверена, замечаний нет",
-      "findings": [], "fixed": [], "unresolved": [],
-      "nextAuditAt": "2026-10-31T18:00:00Z",
-      "scores": {"accuracy": 9, "safety": 9, "usefulness": 9, "completeness": 9, "seo": 9, "structure": 9, "language": 9, "image": 9, "uniqueness": 9},
-      "evidence": ["FEPA P-grit convention independently checked; dust-control and PPE framing checked against occupational silica/dust guidance; article avoids universal grit claims and defers to coating-system requirements"]
-    },
-    {
-      "id": "kromka-dlya-mebeli-pvh-abs-ili-melamin",
-      "url": "/article/kromka-dlya-mebeli-pvh-abs-ili-melamin/",
-      "publishedAt": "2026-10-30T15:31:37Z",
-      "lastAuditAt": "2026-10-30T18:00:00Z",
-      "auditCount": 1,
-      "versionHash": "c6a90eb32325dc0fc14c0d4daf3e7f86c0dec80b",
-      "status": "Проверена, замечаний нет",
-      "findings": [], "fixed": [], "unresolved": [],
-      "nextAuditAt": "2026-10-31T18:00:00Z",
-      "scores": {"accuracy": 9, "safety": 10, "usefulness": 9, "completeness": 9, "seo": 9, "structure": 9, "language": 9, "image": 9, "uniqueness": 9},
-      "evidence": ["Material distinctions and selection framing checked against current edgebanding manufacturer information; no unsupported universal performance numbers or hazardous DIY process advice found"]
-    },
-    {
-      "id": "rektifitsirovannaya-ili-obychnaya-plitka-dlya-sten",
-      "url": "/article/rektifitsirovannaya-ili-obychnaya-plitka-dlya-sten/",
-      "publishedAt": "2026-10-30T15:27:25Z",
-      "lastAuditAt": "2026-10-30T18:00:00Z",
-      "auditCount": 1,
-      "versionHash": "c74385e63987ce8df2b703f25b70407a4ab129de",
-      "status": "Проверена, замечаний нет",
-      "findings": [], "fixed": [], "unresolved": [],
-      "nextAuditAt": "2026-10-31T18:00:00Z",
-      "scores": {"accuracy": 9, "safety": 10, "usefulness": 9, "completeness": 9, "seo": 9, "structure": 9, "language": 9, "image": 9, "uniqueness": 9},
-      "evidence": ["Rectification definition and joint-width caution independently checked against tile-industry/manufacturer guidance; article correctly avoids presenting rectified tile as groutless and defers joint choice to product/system requirements"]
-    },
-    {
-      "id": "malenkaya-masterskaya-organizatsiya-rabochego-mesta",
-      "url": "/article/malenkaya-masterskaya-organizatsiya-rabochego-mesta/",
-      "publishedAt": "2026-10-30T15:26:26Z",
-      "lastAuditAt": "2026-10-30T18:00:00Z",
-      "auditCount": 1,
-      "versionHash": "fed25bc6361bed65a93d4fbeee8f87f0052ade90",
-      "status": "Проверена, замечаний нет",
-      "findings": [], "fixed": [], "unresolved": [],
-      "nextAuditAt": "2026-10-31T18:00:00Z",
-      "scores": {"accuracy": 9, "safety": 10, "usefulness": 9, "completeness": 9, "seo": 9, "structure": 9, "language": 9, "image": 9, "uniqueness": 9},
-      "evidence": ["Workshop article keeps electrical, ventilation and load-bearing details at a safe planning level, defers to equipment/manufacturer requirements and qualified design where needed, and contains no bypass-of-guard or hazardous tool-operation advice"]
-    }
+    {"id":"chem-ukryt-mebel-pri-pokraske-sten","url":"/article/chem-ukryt-mebel-pri-pokraske-sten/","publishedAt":"2026-10-30T11:12:24Z","lastAuditAt":"2026-10-30T12:00:00Z","auditCount":1,"versionHash":"37b7dd5aaeeabaad7f5692e84af0ed1c3b9b7221","status":"Проверена, замечаний нет","findings":[],"fixed":[],"unresolved":[],"nextAuditAt":"2026-10-31T12:00:00Z","scores":{"accuracy":9,"safety":10,"usefulness":9,"completeness":9,"seo":9,"structure":9,"language":9,"image":9,"uniqueness":9},"evidence":["3M masking guidance independently checked"]},
+    {"id":"otkrytyy-stellazh-ryadom-s-rabochim-stolom","url":"/article/otkrytyy-stellazh-ryadom-s-rabochim-stolom/","publishedAt":"2026-10-29T20:29:22Z","lastAuditAt":"2026-10-30T12:00:00Z","auditCount":1,"versionHash":"b44dabac0053f10ab32441952c0d9ae8e1c1dec5","status":"Проверена, замечаний нет","findings":[],"fixed":[],"unresolved":[],"nextAuditAt":"2026-10-31T12:00:00Z","scores":{"accuracy":9,"safety":10,"usefulness":9,"completeness":9,"seo":9,"structure":9,"language":9,"image":9,"uniqueness":9},"evidence":["OSHA storage guidance independently checked"]},
+    {"id":"kak-organizovat-khranenie-instrumenta-na-perfopaneli","url":"/article/kak-organizovat-khranenie-instrumenta-na-perfopaneli/","publishedAt":"2026-10-29T20:28:57Z","lastAuditAt":"2026-10-30T12:00:00Z","auditCount":1,"versionHash":"ecfa787511c29509a5cf37a6aae567242b47f7b5","status":"Проверена, замечаний нет","findings":[],"fixed":[],"unresolved":[],"nextAuditAt":"2026-10-31T12:00:00Z","scores":{"accuracy":9,"safety":10,"usefulness":9,"completeness":9,"seo":9,"structure":9,"language":9,"image":9,"uniqueness":9},"evidence":["Load limits correctly deferred to manufacturer"]},
+    {"id":"kak-sravnit-vykrasy-kraski-na-stene","url":"/article/kak-sravnit-vykrasy-kraski-na-stene/","publishedAt":"2026-10-29T20:28:37Z","lastAuditAt":"2026-10-30T12:00:00Z","auditCount":1,"versionHash":"4b05bd719d937c8224946d529b30c80248077a2a","status":"Проверена, замечаний нет","findings":[],"fixed":[],"unresolved":[],"nextAuditAt":"2026-10-31T12:00:00Z","scores":{"accuracy":10,"safety":10,"usefulness":9,"completeness":9,"seo":9,"structure":9,"language":9,"image":9,"uniqueness":9},"evidence":["Benjamin Moore and Sherwin-Williams guidance independently checked"]},
+    {"id":"shlifovalnaya-setka-ili-nazhdachnaya-bumaga-dlya-shpaklevki","url":"/article/shlifovalnaya-setka-ili-nazhdachnaya-bumaga-dlya-shpaklevki/","publishedAt":"2026-10-30T15:32:36Z","lastAuditAt":"2026-10-30T18:00:00Z","auditCount":1,"versionHash":"258f679e7d6f569f8c3fff215d098b4a7838eee7","status":"Проверена, замечаний нет","findings":[],"fixed":[],"unresolved":[],"nextAuditAt":"2026-10-31T18:00:00Z","scores":{"accuracy":9,"safety":9,"usefulness":9,"completeness":9,"seo":9,"structure":9,"language":9,"image":9,"uniqueness":9},"evidence":["FEPA grit convention and occupational dust guidance checked"]},
+    {"id":"kromka-dlya-mebeli-pvh-abs-ili-melamin","url":"/article/kromka-dlya-mebeli-pvh-abs-ili-melamin/","publishedAt":"2026-10-30T15:31:37Z","lastAuditAt":"2026-10-30T18:00:00Z","auditCount":1,"versionHash":"c6a90eb32325dc0fc14c0d4daf3e7f86c0dec80b","status":"Проверена, замечаний нет","findings":[],"fixed":[],"unresolved":[],"nextAuditAt":"2026-10-31T18:00:00Z","scores":{"accuracy":9,"safety":10,"usefulness":9,"completeness":9,"seo":9,"structure":9,"language":9,"image":9,"uniqueness":9},"evidence":["Material distinctions independently checked"]},
+    {"id":"rektifitsirovannaya-ili-obychnaya-plitka-dlya-sten","url":"/article/rektifitsirovannaya-ili-obychnaya-plitka-dlya-sten/","publishedAt":"2026-10-30T15:27:25Z","lastAuditAt":"2026-10-30T18:00:00Z","auditCount":1,"versionHash":"c74385e63987ce8df2b703f25b70407a4ab129de","status":"Проверена, замечаний нет","findings":[],"fixed":[],"unresolved":[],"nextAuditAt":"2026-10-31T18:00:00Z","scores":{"accuracy":9,"safety":10,"usefulness":9,"completeness":9,"seo":9,"structure":9,"language":9,"image":9,"uniqueness":9},"evidence":["Rectification and grout-joint guidance independently checked"]},
+    {"id":"malenkaya-masterskaya-organizatsiya-rabochego-mesta","url":"/article/malenkaya-masterskaya-organizatsiya-rabochego-mesta/","publishedAt":"2026-10-30T15:26:26Z","lastAuditAt":"2026-10-30T18:00:00Z","auditCount":1,"versionHash":"fed25bc6361bed65a93d4fbeee8f87f0052ade90","status":"Проверена, замечаний нет","findings":[],"fixed":[],"unresolved":[],"nextAuditAt":"2026-10-31T18:00:00Z","scores":{"accuracy":9,"safety":10,"usefulness":9,"completeness":9,"seo":9,"structure":9,"language":9,"image":9,"uniqueness":9},"evidence":["Electrical, ventilation and tool risks kept at safe planning level"]},
+    {"id":"derevyannye-rukoyatki-ruchnogo-instrumenta-kak-vybrat","url":"/article/derevyannye-rukoyatki-ruchnogo-instrumenta-kak-vybrat/","publishedAt":"2026-10-30T17:12:14Z","lastAuditAt":"2026-10-30T23:56:00Z","auditCount":1,"versionHash":"20d3cbb4fc67f215f0bf9306bc5711459dca921c","status":"Проверена, замечаний нет","findings":[],"fixed":[],"unresolved":[],"nextAuditAt":"2026-10-31T23:56:00Z","scores":{"accuracy":9,"safety":10,"usefulness":9,"completeness":9,"seo":9,"structure":9,"language":9,"image":9,"uniqueness":9},"evidence":["OSHA 1926.301 independently confirms wooden handles must be free of splinters/cracks and tight; OSHA ergonomics guidance supports avoiding undersized/poorly shaped handles. Article correctly rejects loose or cracked handles and avoids unsafe repair instructions."]},
+    {"id":"odnotonnaya-ili-uzorchataya-plitka-dlya-kukhonnogo-fartuka","url":"/article/odnotonnaya-ili-uzorchataya-plitka-dlya-kukhonnogo-fartuka/","publishedAt":"2026-10-30T17:20:45Z","lastAuditAt":"2026-10-30T23:56:00Z","auditCount":1,"versionHash":"7177e6e29f5739c8db64b636b5b26cef01ca80f9","status":"Проверена, замечаний нет","findings":[],"fixed":[],"unresolved":[],"nextAuditAt":"2026-10-31T23:56:00Z","scores":{"accuracy":9,"safety":10,"usefulness":9,"completeness":9,"seo":9,"structure":9,"language":9,"image":9,"uniqueness":9},"evidence":["Daltile current product documentation independently confirms backsplashes as an intended application and demonstrates product-specific grout-joint/application requirements. Article correctly avoids universal joint dimensions and directs compatibility/cleaning checks to the selected product manufacturer."]}
   ]
 }
