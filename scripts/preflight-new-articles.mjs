@@ -78,6 +78,35 @@ function imageLooksValid(bytes, extension) {
   if (extension === "avif") return bytes.toString("ascii", 4, 8) === "ftyp" && /avif|avis/.test(bytes.toString("ascii", 8, 20));
   return false;
 }
+// Decode dimensions from the final WebP/AVIF bytes, not from metadata or filenames.
+function imagePixelSize(bytes, extension) {
+  if (extension === "webp") {
+    if (bytes.length < 30) return null;
+    const kind = bytes.toString("ascii", 12, 16);
+    if (kind === "VP8X") return { width: 1 + bytes.readUIntLE(24, 3), height: 1 + bytes.readUIntLE(27, 3) };
+    if (kind === "VP8 " && bytes[23] === 0x9d && bytes[24] === 0x01 && bytes[25] === 0x2a) {
+      return { width: bytes.readUInt16LE(26) & 0x3fff, height: bytes.readUInt16LE(28) & 0x3fff };
+    }
+    if (kind === "VP8L" && bytes[20] === 0x2f) {
+      const a = bytes[21], b = bytes[22], c = bytes[23], d = bytes[24];
+      return { width: 1 + (a | ((b & 0x3f) << 8)), height: 1 + ((b >> 6) | (c << 2) | ((d & 0x0f) << 10)) };
+    }
+    return null;
+  }
+  if (extension === "avif") {
+    let pos = 0;
+    while ((pos = bytes.indexOf("ispe", pos, "ascii")) >= 0) {
+      if (pos >= 4 && pos + 16 <= bytes.length) {
+        const boxSize = bytes.readUInt32BE(pos - 4);
+        const width = bytes.readUInt32BE(pos + 8), height = bytes.readUInt32BE(pos + 12);
+        if (boxSize >= 20 && boxSize <= bytes.length - (pos - 4) && width > 0 && height > 0 && width <= 100000 && height <= 100000) return { width, height };
+      }
+      pos += 4;
+    }
+  }
+  return null;
+}
+
 function checkArticle(file) {
   const a = load(file);
   const label = file;
@@ -126,6 +155,12 @@ function checkArticle(file) {
       const bytes = readFileSync(path.join(ROOT, imagePath));
       const ext = a.image.split(".").at(-1);
       if (!imageLooksValid(bytes, ext)) fail(label, "Image file is too small or has invalid WebP/AVIF header");
+      const dimensions = imagePixelSize(bytes, ext);
+      if (!dimensions || dimensions.width < 1200 || dimensions.height < 800) {
+        fail(label, "Final photo must be at least 1200x800 real pixels; got " +
+          (dimensions ? dimensions.width + "x" + dimensions.height : "unreadable dimensions"));
+      }
+      if (bytes.length < 25000) fail(label, "Photo is suspiciously overcompressed (<25 KB); inspect or re-encode from original");
       const sha = createHash("sha256").update(bytes).digest("hex");
       if ((photoHashes.get(sha) || []).length !== 1) fail(label, "Source photograph bytes reused in other published article(s)");
     }
