@@ -104,7 +104,7 @@ function checkArticle(file) {
     }
   }
   if (!Array.isArray(a.faqs) || a.faqs.length < 4 ||
-      a.faqs.some((f) => !asText(f.q) || asText(f.answer || f.a).length < 35)) fail(label, "At least 4 meaningful FAQs required");
+      a.faqs.some((f) => !asText(f.question || f.q) || asText(f.answer || f.a).length < 35)) fail(label, "At least 4 meaningful FAQs required");
   if (!asText(a.image) || !new RegExp("^" + a.slug + "-hero\\.(webp|avif)$").test(a.image)) fail(label, "Unique original photo must use slug-hero.webp/avif");
   else {
     one(label, a.image, images);
