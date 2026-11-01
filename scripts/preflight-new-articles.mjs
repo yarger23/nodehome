@@ -7,6 +7,7 @@
  */
 import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { execFileSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -52,11 +53,20 @@ const extraFiles = readdirSync(path.join(ROOT, "content/articles")).filter((p) =
 const all = [...legacy, ...extraFiles.map((f) => load("content/articles/" + f))];
 const published = all.filter((a) => a.status === "published");
 const ids = new Map(), slugs = new Map(), titles = new Map(), images = new Map();
+const photoHashes = new Map();
 for (const a of published) {
   for (const [map, val] of [[ids, a.id], [slugs, a.slug], [titles, normalize(a.title)], [images, a.image]]) {
     if (!val) continue;
     map.set(val, [...(map.get(val) || []), a.id]);
   }
+}
+// Compare decoded source-photo bytes, not just filenames: reused images are disallowed.
+for (const article of published) {
+  if (!article.image) continue;
+  const photoPath = path.join(ROOT, "assets/images", article.image);
+  if (!existsSync(photoPath)) continue; // build.mjs handles historic missing assets.
+  const hash = createHash("sha256").update(readFileSync(photoPath)).digest("hex");
+  photoHashes.set(hash, [...(photoHashes.get(hash) || []), article.id]);
 }
 function one(label, key, map) {
   const matches = map.get(key) || [];
@@ -116,6 +126,8 @@ function checkArticle(file) {
       const bytes = readFileSync(path.join(ROOT, imagePath));
       const ext = a.image.split(".").at(-1);
       if (!imageLooksValid(bytes, ext)) fail(label, "Image file is too small or has invalid WebP/AVIF header");
+      const sha = createHash("sha256").update(bytes).digest("hex");
+      if ((photoHashes.get(sha) || []).length !== 1) fail(label, "Source photograph bytes reused in other published article(s)");
     }
   }
   if (!asText(a.imageAlt) || a.imageAlt.length < 15) fail(label, "Image alt missing/too short");
