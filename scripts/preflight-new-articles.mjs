@@ -34,7 +34,9 @@ function changedFiles() {
   }
 }
 
-const changed = [...new Set(changedFiles())].filter((p) => /^content\/articles\/[a-z0-9-]+\.json$/.test(p) && exists(p));
+const articleFlag = process.argv.indexOf("--article");
+const selectedFiles = articleFlag >= 0 ? [process.argv[articleFlag + 1]] : changedFiles();
+const changed = [...new Set(selectedFiles)].filter((p) => /^content\/articles\/[a-z0-9-]+\.json$/.test(p) && exists(p));
 console.log("[preflight] Changed independent articles:", changed.length);
 if (changed.length === 0) {
   console.log("[preflight] No changed articles; full site validation remains in build.mjs.");
