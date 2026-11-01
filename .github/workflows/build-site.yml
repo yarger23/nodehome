@@ -41,6 +41,8 @@ jobs:
         env:
           NODEHOME_BASE_SHA: ${{ github.event.before }}
         run: node scripts/preflight-new-articles.mjs --verify-built
+      - name: One-time smoke test for a 1 November publication
+        run: node scripts/preflight-new-articles.mjs --article content/articles/gubka-dlya-ochistki-plitki-posle-zatirki.json --verify-built
       - name: Commit generated pages
         run: |
           git config user.name "github-actions[bot]"
