@@ -40,3 +40,5 @@ jobs:
           test -f site/article/kakoy-obogrevatel-luchshe-dlya-kvartiry/index.html
           test -f site/article/kak-sdelat-temnuyu-komnatu-svetlee/index.html
           echo "Validated."
+
+# Retry after correcting internal article slugs.
