@@ -52,3 +52,5 @@ jobs:
               assert path.exists(),str(path)
           print("PASS: all",len(pubs),"new pages generated with canonical and photos checked separately")
           PY
+
+# Rerun after fixing the mixed-border section slug.
