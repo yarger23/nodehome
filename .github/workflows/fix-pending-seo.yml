@@ -1,0 +1,24 @@
+name: Repair old article SEO metadata (temporary)
+on:
+  push:
+    branches: [content/2026-11-03-pending-18]
+    paths: [.github/workflows/fix-pending-seo.yml]
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python scripts/tmp-fix-pending-seo.py
+      - name: Commit corrected SEO metadata
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/articles/
+          git diff --cached --quiet && { echo 'Expected edited articles'; exit 1; }
+          git commit -m "content: fix SEO titles and introductions for old pending articles"
+          git push origin HEAD:content/2026-11-03-pending-18
