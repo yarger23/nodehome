@@ -660,7 +660,8 @@
     ],
     "articles": [
       "ceiling-finish-options-comparison",
-      "ceiling-paint-selection-2026"
+      "ceiling-paint-selection-2026",
+      "nov-01-seo-33-e6c8d858"
     ],
     "sectionId": "renovation",
     "groupId": "renovation-potolki"
@@ -696,7 +697,13 @@
       "paint-fan-deck-vs-sample-swatch-2026-11-01",
       "wallpaper-smoothing-brush-vs-plastic-tool-2026-11-01",
       "wallpaper-tools-starter-kit-2026-11-02",
-      "winter-interior-renovation-guide-2026"
+      "winter-interior-renovation-guide-2026",
+      "nov-01-seo-01-bd375231",
+      "nov-01-seo-04-646d9210",
+      "nov-01-seo-11-30ddd59a",
+      "nov-01-seo-13-4ddca3a8",
+      "nov-01-seo-16-a6f3bd22",
+      "nov-01-seo-18-39a4e951"
     ],
     "sectionId": "renovation",
     "groupId": "renovation-otdelka-sten"
@@ -718,7 +725,10 @@
       "small-vs-large-bathroom-wall-tile-2026",
       "tile-grout-color-match-contrast-2026",
       "rectified-vs-nonrectified-wall-tile-2026",
-      "plain-vs-patterned-kitchen-backsplash-tile-2026"
+      "plain-vs-patterned-kitchen-backsplash-tile-2026",
+      "nov-01-seo-20-67a6867e",
+      "nov-01-seo-22-9dec07c9",
+      "nov-01-seo-35-069b3a7c"
     ],
     "sectionId": "renovation",
     "groupId": "renovation-plitochnye-raboty"
@@ -769,7 +779,8 @@
       "underbed-storage-boxes-selection-2026-10-31",
       "matte-vs-glossy-wardrobe-fronts-2026-10-31",
       "open-wardrobe-niche-design-2026-10-31",
-      "thermal-curtains-winter-2026"
+      "thermal-curtains-winter-2026",
+      "nov-01-seo-26-c223bee7"
     ],
     "sectionId": "renovation",
     "groupId": "renovation-remont-pomeshcheniy"
@@ -1105,7 +1116,10 @@
       "laminate-tile-transition-profile-selection-2026",
       "skirting-height-and-profile-selection-2026",
       "skirting-paintable-vs-factory-finished-2026",
-      "skirting-edges-and-finish-inspection-2026-11-02"
+      "skirting-edges-and-finish-inspection-2026-11-02",
+      "nov-01-seo-24-004af3a8",
+      "nov-01-seo-29-a1a8f2f0",
+      "nov-01-seo-30-12a6ebd3"
     ],
     "sectionId": "renovation",
     "groupId": "renovation-dveri-i-elementy-interera"
@@ -1175,7 +1189,9 @@
       "Проверьте защиту корпуса и удобство обслуживания."
     ],
     "articles": [
-      "solar-garden-stake-lights-selection-2026-11-01"
+      "solar-garden-stake-lights-selection-2026-11-01",
+      "nov-01-seo-02-e1aaa7d0",
+      "nov-01-seo-03-c2cd91db"
     ],
     "sectionId": "landscape",
     "groupId": "landscape-landshaft-i-ozelenenie"
@@ -1196,5 +1212,69 @@
     ],
     "sectionId": "tools",
     "groupId": "tools-elektroinstrument"
+  },
+  {
+    "id": "garden-beds-landscaping",
+    "title": "Озеленение и цветники",
+    "groupId": "landscape-landshaft-i-ozelenenie",
+    "articles": [
+      "nov-01-seo-06-3c4502e9",
+      "nov-01-seo-12-d1eb7a48",
+      "nov-01-seo-14-488eb1e8",
+      "nov-01-seo-15-c6eb044e",
+      "nov-01-seo-17-570c1e51",
+      "nov-01-seo-19-4f31374e",
+      "nov-01-seo-21-09671ffc",
+      "nov-01-seo-25-c462fdb2",
+      "nov-01-seo-27-e427039f",
+      "nov-01-seo-28-af611b60",
+      "nov-01-seo-32-8afae6fd",
+      "nov-01-seo-34-173f7dd1"
+    ],
+    "sectionId": "landscape",
+    "cardTitle": "Цветники и озеленение",
+    "description": "Практические материалы по посадкам, композициям цветников, мульче и уходу за зелёными зонами частного сада.",
+    "intro": "Подбираем растения по свету и условиям участка, планируем цветники и уход без случайных решений.",
+    "start": [
+      "Определите освещённость, влажность почвы и доступное место.",
+      "Сравните взрослые размеры растений и требования к уходу.",
+      "Продумайте сезонные акценты, мульчирование и дорожки."
+    ]
+  },
+  {
+    "id": "garden-pathways",
+    "title": "Садовые дорожки и мощение",
+    "groupId": "landscape-dorozhki-i-ploshchadki",
+    "articles": [
+      "nov-01-seo-07-35328d5e",
+      "nov-01-seo-09-2ba314e2",
+      "nov-01-seo-23-b66b80d2"
+    ],
+    "sectionId": "landscape",
+    "cardTitle": "Дорожки и мощение",
+    "description": "Как выбрать покрытия, ширину и обрамление садовых дорожек с учётом удобства, грунта и нагрузки.",
+    "intro": "Разбираем варианты покрытия и размещения дорожек: от гравия до плитки, бордюров и удобных проходов.",
+    "start": [
+      "Определите ежедневные маршруты и требуемую ширину.",
+      "Сравните материалы по обслуживанию и условиям участка.",
+      "Предусмотрите водоотвод и устойчивое обрамление покрытия."
+    ]
+  },
+  {
+    "id": "garden-rest-zones",
+    "title": "Зоны отдыха на участке",
+    "groupId": "landscape-terrasy-i-zony-otdyha",
+    "articles": [
+      "nov-01-seo-31-ac4389ac"
+    ],
+    "sectionId": "landscape",
+    "cardTitle": "Садовые зоны отдыха",
+    "description": "Планирование места отдыха в саду: солнце и тень, маршруты, приватность, виды и сезонные сценарии.",
+    "intro": "Помогаем выбрать место для отдыха с учётом солнца, ветра и привычного использования сада.",
+    "start": [
+      "Изучите солнце, тень, ветер и приватность в разное время.",
+      "Проверьте удобство подходов из дома и сада.",
+      "Сравните варианты покрытий, мебели и озеленения."
+    ]
   }
 ]
