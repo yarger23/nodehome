@@ -1,0 +1,26 @@
+name: Complete 18 pending article texts (temporary)
+on:
+  push:
+    branches: [content/2026-11-03-pending-18]
+    paths: [.github/workflows/complete-pending-18.yml]
+permissions:
+  contents: write
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Fix editorial structure, FAQ, categories and internal links
+        run: python scripts/tmp-publish-pending.py
+      - name: Commit 18 completed texts to isolated branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/articles/ content/categories.json
+          git diff --cached --quiet && { echo 'No changes were produced'; exit 1; }
+          git commit -m "content: finish and register 18 overdue articles"
+          git push origin HEAD:content/2026-11-03-pending-18
