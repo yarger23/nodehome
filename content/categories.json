@@ -169,7 +169,8 @@
       "bedroom-curtains-selection-2026",
       "open-kitchen-shelves-2026",
       "small-kitchen-dining-table-2026",
-      "bedroom-bedspread-selection-2026"
+      "bedroom-bedspread-selection-2026",
+      "planirovka-kladovoy-v-dome"
     ],
     "sectionId": "construction",
     "groupId": "construction-proektirovanie-i-podgotovka"
@@ -455,7 +456,9 @@
     ],
     "articles": [
       "ventilation-in-private-house",
-      "winter-indoor-humidity-guide-2026"
+      "winter-indoor-humidity-guide-2026",
+      "konditsioner-ventilyatsiya-osushitel-ochistitel",
+      "datchik-co2-dlya-doma"
     ],
     "sectionId": "engineering",
     "groupId": "engineering-ventilyatsiya-i-klimat"
@@ -625,7 +628,9 @@
       "Уточните узлы окон, цоколя и водостока."
     ],
     "articles": [
-      "private-house-facade-finish-choice"
+      "private-house-facade-finish-choice",
+      "derevyannaya-obshivka-fasada-vybor",
+      "fibrocementnaya-oblicovka-kriterii-vybora"
     ],
     "sectionId": "construction",
     "groupId": "construction-fasady-i-uteplenie"
@@ -911,7 +916,8 @@
       "tile-notched-trowel-shapes-selection-2026-11-01",
       "tile-spacers-cross-t-wedges-selection-2026-11-01",
       "rubber-vs-sponge-grout-float-selection-2026-11-01",
-      "notched-trowel-purchase-check-2026-11-02"
+      "notched-trowel-purchase-check-2026-11-02",
+      "cut-porcelain-stoneware-tools"
     ],
     "sectionId": "tools",
     "groupId": "tools-ruchnoy-instrument"
@@ -932,7 +938,12 @@
       "narrow-vs-wide-putty-knife-small-repairs-2026-11-01",
       "flexible-vs-stiff-putty-knife-2026-11-01",
       "plastic-vs-stainless-decorative-plaster-trowel-2026-11-02",
-      "cleaning-and-storing-plaster-trowel-2026-11-02"
+      "cleaning-and-storing-plaster-trowel-2026-11-02",
+      "shtukaturnye-shpateli-vybor",
+      "kelma-i-shtukaturnaya-lopatka",
+      "pravilo-dlya-shtukaturki-kak-vybrat",
+      "terki-i-poluterki-dlya-shtukaturki",
+      "instrument-dlya-dekorativnoy-shtukaturki"
     ],
     "sectionId": "tools",
     "groupId": "tools-ruchnoy-instrument"
@@ -949,7 +960,12 @@
       "Проверьте оснастку, удобство и безопасность."
     ],
     "articles": [
-      "udarnaya-ili-bezudarnaya-drel"
+      "udarnaya-ili-bezudarnaya-drel",
+      "kak-vybrat-shurupovert-dlya-doma",
+      "drel-ili-shurupovert-chto-vybrat",
+      "akkumulyatornyy-ili-setevoy-shurupovert",
+      "krutyashchiy-moment-shurupoverta",
+      "akkumulyatornaya-platforma-instrumenta"
     ],
     "sectionId": "tools",
     "groupId": "tools-elektroinstrument"
@@ -985,7 +1001,9 @@
       "sandpaper-sheets-vs-rolls-2026-11-01",
       "tool-bag-vs-plastic-toolbox-2026-11-01",
       "removable-cups-vs-dividers-organizer-2026-11-01",
-      "sandpaper-and-sanding-sponge-storage-2026-11-02"
+      "sandpaper-and-sanding-sponge-storage-2026-11-02",
+      "lazernyy-dalnomer-dlya-remonta-vybor",
+      "organayzer-keys-ili-sumka-dlya-instrumenta"
     ],
     "sectionId": "tools",
     "groupId": "tools-ruchnoy-instrument"
