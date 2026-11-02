@@ -104,7 +104,11 @@ for i in range(0,36*3,3):
         if re.search(r"(?i)^(вывод|итоги|читайте также|внутренние ссылки|полезные материалы|полезные материалы nodehome)",heading):
             related+=re.findall(r"/article/([a-z0-9-]+)/",body)
             if heading.casefold() in ("вывод","итоги") and sections:
-                sections[-1]["paragraphs"]+=paragraphs(body)
+                ps=paragraphs(body)
+                if len(ps)>=2 and len(" ".join(ps))>=180:
+                    sections.append({"id":"vyvod","title":"Вывод","paragraphs":ps})
+                else:
+                    sections[-1]["paragraphs"]+=ps
             continue
         p=paragraphs(body)
         if len(p)<2 or len(" ".join(p))<180:
