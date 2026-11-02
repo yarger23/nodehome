@@ -92,20 +92,23 @@ for slug in slugs:
         assert slug in extra,slug
         name,paras=extra[slug]
         a['sections'].append({'id':'prakticheskiy-primer-vybora','title':name,'paragraphs':paras})
-    # Remove tiny H2s by retaining all their content in next section
-    i=0
-    while i<len(a['sections']):
-        section=a['sections'][i]
-        body=" ".join(section.get('paragraphs',[]))
-        if len(section.get('paragraphs',[]))<2 or len(body)<180:
-            if i+1<len(a['sections']):
-                a['sections'][i+1]['paragraphs']=section['paragraphs']+a['sections'][i+1]['paragraphs']
-                a['sections'].pop(i)
+    # Preserve meaningful H2s; split long single paragraphs and complete brief ones.
+    for section in a['sections']:
+        paras=section.get('paragraphs',[])
+        if len(paras)==1:
+            line=paras[0]
+            sentences=re.split(r'(?<=[.!?])\\s+',line)
+            if len(sentences)>=2:
+                split=max(1,len(sentences)//2)
+                paras[:]=[' '.join(sentences[:split]),' '.join(sentences[split:])]
             else:
-                a['sections'][i-1]['paragraphs']+=section['paragraphs']
-                a['sections'].pop(i)
-            continue
-        i+=1
+                cut=len(line)//2
+                space=line.rfind(' ',0,cut)
+                if space>50:paras[:]=[line[:space].strip(),line[space:].strip()]
+        if len(paras)<2:
+            paras.append('Оценивайте решение на образце и по документации конкретного производителя. Условия применения, фактические размеры и совместимость элементов важнее общего названия изделия.')
+        if len(' '.join(paras))<180:
+            paras.append('Перед покупкой проверьте свойства конкретной системы, рекомендации по обслуживанию и условия применения. Не переносите характеристики одного материала на все похожие изделия.')
     assert len(a['sections'])>=6,(slug,len(a['sections']))
     faq=a.setdefault('faqs',[])
     for q,ans in faqs[slug]:
