@@ -47,3 +47,5 @@ jobs:
           NODEHOME_BASE_SHA="$BASE" node scripts/preflight-new-articles.mjs --verify-built
 
 # Trigger full pre-merge validation after cover commits.
+
+# Rerun after repairing SEO title and introduction requirements.
