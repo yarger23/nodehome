@@ -13,9 +13,11 @@
   <url><loc>https://nodehome.ru/renovation/page/4/</loc></url>
   <url><loc>https://nodehome.ru/renovation/page/5/</loc></url>
   <url><loc>https://nodehome.ru/renovation/page/6/</loc></url>
+  <url><loc>https://nodehome.ru/renovation/page/7/</loc></url>
   <url><loc>https://nodehome.ru/engineering/</loc></url>
   <url><loc>https://nodehome.ru/landscape/</loc></url>
   <url><loc>https://nodehome.ru/landscape/page/2/</loc></url>
+  <url><loc>https://nodehome.ru/landscape/page/3/</loc></url>
   <url><loc>https://nodehome.ru/tools/</loc></url>
   <url><loc>https://nodehome.ru/tools/page/2/</loc></url>
   <url><loc>https://nodehome.ru/tools/page/3/</loc></url>
@@ -49,8 +51,10 @@
   <url><loc>https://nodehome.ru/engineering/gazosnabzhenie/</loc></url>
   <url><loc>https://nodehome.ru/landscape/vybor-i-podgotovka-uchastka/</loc></url>
   <url><loc>https://nodehome.ru/landscape/drenazh-i-vodootvedenie/</loc></url>
+  <url><loc>https://nodehome.ru/landscape/dorozhki-i-ploshchadki/</loc></url>
   <url><loc>https://nodehome.ru/landscape/hozyaystvennye-postroyki/</loc></url>
   <url><loc>https://nodehome.ru/landscape/landshaft-i-ozelenenie/</loc></url>
+  <url><loc>https://nodehome.ru/landscape/terrasy-i-zony-otdyha/</loc></url>
   <url><loc>https://nodehome.ru/tools/ruchnoy-instrument/</loc></url>
   <url><loc>https://nodehome.ru/tools/ruchnoy-instrument/page/2/</loc></url>
   <url><loc>https://nodehome.ru/tools/ruchnoy-instrument/page/3/</loc></url>
@@ -84,6 +88,7 @@
   <url><loc>https://nodehome.ru/renovation/steny-i-peregorodki/shpaklyovka/</loc></url>
   <url><loc>https://nodehome.ru/renovation/steny-i-peregorodki/vyravnivanie-poverkhnostey/</loc></url>
   <url><loc>https://nodehome.ru/renovation/otdelka-sten/pokraska-sten/</loc></url>
+  <url><loc>https://nodehome.ru/renovation/otdelka-sten/pokraska-sten/page/2/</loc></url>
   <url><loc>https://nodehome.ru/renovation/otdelka-sten/oboi/</loc></url>
   <url><loc>https://nodehome.ru/renovation/otdelka-sten/stenovye-paneli/</loc></url>
   <url><loc>https://nodehome.ru/renovation/plitochnye-raboty/keramicheskaya-plitka/</loc></url>
@@ -118,10 +123,16 @@
   <url><loc>https://nodehome.ru/landscape/vybor-i-podgotovka-uchastka/geologiya-i-issledovanie-gruntov/</loc></url>
   <url><loc>https://nodehome.ru/landscape/drenazh-i-vodootvedenie/drenazh-uchastka/</loc></url>
   <url><loc>https://nodehome.ru/landscape/drenazh-i-vodootvedenie/otmostka/</loc></url>
+  <url><loc>https://nodehome.ru/landscape/dorozhki-i-ploshchadki/sadovye-dorozhki/</loc></url>
+  <url><loc>https://nodehome.ru/landscape/dorozhki-i-ploshchadki/bordyury-i-osnovaniya-pokrytiy/</loc></url>
   <url><loc>https://nodehome.ru/landscape/hozyaystvennye-postroyki/garazhi/</loc></url>
   <url><loc>https://nodehome.ru/landscape/hozyaystvennye-postroyki/navesy/</loc></url>
   <url><loc>https://nodehome.ru/landscape/hozyaystvennye-postroyki/bani-i-sauny/</loc></url>
+  <url><loc>https://nodehome.ru/landscape/landshaft-i-ozelenenie/landshaftnyy-dizayn/</loc></url>
+  <url><loc>https://nodehome.ru/landscape/landshaft-i-ozelenenie/gazony/</loc></url>
+  <url><loc>https://nodehome.ru/landscape/landshaft-i-ozelenenie/klumby-i-tsvetniki/</loc></url>
   <url><loc>https://nodehome.ru/landscape/landshaft-i-ozelenenie/naruzhnoe-osveshchenie/</loc></url>
+  <url><loc>https://nodehome.ru/landscape/terrasy-i-zony-otdyha/patio/</loc></url>
   <url><loc>https://nodehome.ru/tools/ruchnoy-instrument/slesarnyy-instrument/</loc></url>
   <url><loc>https://nodehome.ru/tools/ruchnoy-instrument/stolyarnyy-instrument/</loc></url>
   <url><loc>https://nodehome.ru/tools/ruchnoy-instrument/stolyarnyy-instrument/page/2/</loc></url>
@@ -161,6 +172,8 @@
   <url><loc>https://nodehome.ru/catalog/cutting-installation-tools/</loc></url>
   <url><loc>https://nodehome.ru/catalog/domestic-organization/</loc></url>
   <url><loc>https://nodehome.ru/catalog/laminate-selection/</loc></url>
+  <url><loc>https://nodehome.ru/catalog/garden-beds-landscaping/</loc></url>
+  <url><loc>https://nodehome.ru/catalog/garden-pathways/</loc></url>
   <url><loc>https://nodehome.ru/article/foundation/</loc></url>
   <url><loc>https://nodehome.ru/article/gidroizolyatsiya-fundamenta/</loc></url>
   <url><loc>https://nodehome.ru/article/podgotovka-uchastka-k-stroitelstvu/</loc></url>
@@ -180,6 +193,9 @@
   <url><loc>https://nodehome.ru/article/aktsentnaya-stena-kak-vybrat-tsvet-i-mesto/</loc></url>
   <url><loc>https://nodehome.ru/article/armopoyas-v-dome-iz-gazobetona-kogda-nuzhen-i-kak-sdelat/</loc></url>
   <url><loc>https://nodehome.ru/article/banketka-v-prikhozhey-kak-vybrat/</loc></url>
+  <url><loc>https://nodehome.ru/article/belaya-kraska-dlya-sten-teplyy-ili-holodnyy-ottenok/</loc></url>
+  <url><loc>https://nodehome.ru/article/bordyur-dlya-sadovoy-dorozhki-kak-vybrat/</loc></url>
+  <url><loc>https://nodehome.ru/article/bordyur-mezhdu-gazonom-i-klumboy-kak-vybrat/</loc></url>
   <url><loc>https://nodehome.ru/article/byugel-dlya-malyarnogo-valika-kak-vybrat/</loc></url>
   <url><loc>https://nodehome.ru/article/chem-otdelat-fasad-chastnogo-doma/</loc></url>
   <url><loc>https://nodehome.ru/article/chem-otdelat-tsokol-chastnogo-doma/</loc></url>
@@ -199,9 +215,12 @@
   <url><loc>https://nodehome.ru/article/drenazh-uchastka-vokrug-doma/</loc></url>
   <url><loc>https://nodehome.ru/article/elektroprovodka-v-chastnom-dome/</loc></url>
   <url><loc>https://nodehome.ru/article/f-obraznaya-ili-pruzhinnaya-strubtsina/</loc></url>
+  <url><loc>https://nodehome.ru/article/flizelinovye-ili-bumazhnye-oboi-kak-vybrat/</loc></url>
+  <url><loc>https://nodehome.ru/article/fokusnaya-tochka-v-sadu-kak-napravit-vzglyad/</loc></url>
   <url><loc>https://nodehome.ru/article/g-obraznye-ili-skladnye-shestigrannye-klyuchi-dlya-mebeli/</loc></url>
   <url><loc>https://nodehome.ru/article/garazh-pristroennyy-ili-otdelno-stoyashchiy/</loc></url>
   <url><loc>https://nodehome.ru/article/gde-razmestit-dom-na-uchastke/</loc></url>
+  <url><loc>https://nodehome.ru/article/gde-razmestit-zonu-otdyha-v-sadu/</loc></url>
   <url><loc>https://nodehome.ru/article/gibkie-shlifovalnye-gubki-dlya-derevyannykh-profiley/</loc></url>
   <url><loc>https://nodehome.ru/article/gibkiy-ili-zhestkiy-shpatel-dlya-shpaklevki/</loc></url>
   <url><loc>https://nodehome.ru/article/gipsovaya-ili-polimernaya-finishnaya-shpaklevka/</loc></url>
@@ -224,14 +243,19 @@
   <url><loc>https://nodehome.ru/article/kak-organizovat-khranenie-instrumenta-na-perfopaneli/</loc></url>
   <url><loc>https://nodehome.ru/article/kak-organizovat-komplekty-postelnogo-belya-v-shkafu/</loc></url>
   <url><loc>https://nodehome.ru/article/kak-podgotovit-novyy-malyarnyy-valik-pered-pokraskoy/</loc></url>
+  <url><loc>https://nodehome.ru/article/kak-podobrat-shirinu-i-dlinu-shtor/</loc></url>
   <url><loc>https://nodehome.ru/article/kak-proverit-kachestvo-novoy-malyarnoy-kisti/</loc></url>
   <url><loc>https://nodehome.ru/article/kak-proverit-tortsy-i-pokrytie-napolnogo-plintusa/</loc></url>
   <url><loc>https://nodehome.ru/article/kak-raspolozhit-okna-po-storonam-sveta/</loc></url>
   <url><loc>https://nodehome.ru/article/kak-rasschitat-raskhod-kraski-dlya-sten/</loc></url>
   <url><loc>https://nodehome.ru/article/kak-rasschitat-uklon-kryshi/</loc></url>
+  <url><loc>https://nodehome.ru/article/kak-razmestit-solnechnye-sadovye-svetilniki/</loc></url>
   <url><loc>https://nodehome.ru/article/kak-sdelat-temnuyu-komnatu-svetlee/</loc></url>
+  <url><loc>https://nodehome.ru/article/kak-sochetat-tsvet-sten-pola-i-dverey/</loc></url>
   <url><loc>https://nodehome.ru/article/kak-sokhranit-valik-vo-vremya-pereryva-v-pokraske/</loc></url>
   <url><loc>https://nodehome.ru/article/kak-splanirovat-dom-na-uzkom-uchastke/</loc></url>
+  <url><loc>https://nodehome.ru/article/kak-splanirovat-klumbu-po-vysote-rasteniy/</loc></url>
+  <url><loc>https://nodehome.ru/article/kak-splanirovat-miksborder-kustarniki-mnogoletniki/</loc></url>
   <url><loc>https://nodehome.ru/article/kak-sravnit-vykrasy-kraski-na-stene/</loc></url>
   <url><loc>https://nodehome.ru/article/kak-ukrasit-malenkuyu-kvartiru-k-novomu-godu/</loc></url>
   <url><loc>https://nodehome.ru/article/kak-vybrat-fundament-dlya-chastnogo-doma/</loc></url>
@@ -245,10 +269,12 @@
   <url><loc>https://nodehome.ru/article/kak-vybrat-proekt-doma/</loc></url>
   <url><loc>https://nodehome.ru/article/kak-vybrat-shtory-dlya-spalni/</loc></url>
   <url><loc>https://nodehome.ru/article/kak-vybrat-stamesku-po-derevu/</loc></url>
+  <url><loc>https://nodehome.ru/article/kak-vybrat-stepen-bleska-kraski-dlya-sten/</loc></url>
   <url><loc>https://nodehome.ru/article/kak-vybrat-tsvet-sten-dlya-severnoy-komnaty/</loc></url>
   <url><loc>https://nodehome.ru/article/kak-vybrat-tsvet-sten-v-gostinoy/</loc></url>
   <url><loc>https://nodehome.ru/article/kak-vybrat-valik-dlya-pokraski-sten-i-potolka/</loc></url>
   <url><loc>https://nodehome.ru/article/kak-vybrat-vysotu-potolkov-v-chastnom-dome/</loc></url>
+  <url><loc>https://nodehome.ru/article/kak-zonirovat-nebolshoy-uchastok/</loc></url>
   <url><loc>https://nodehome.ru/article/kakie-shtory-luchshe-sokhranyayut-teplo-zimoy/</loc></url>
   <url><loc>https://nodehome.ru/article/kakoy-obogrevatel-luchshe-dlya-kvartiry/</loc></url>
   <url><loc>https://nodehome.ru/article/kakoy-potolok-luchshe-natyazhnoy-gipsokarton-ili-shtukaturka/</loc></url>
@@ -263,13 +289,16 @@
   <url><loc>https://nodehome.ru/article/kist-ili-valik-snachala-poryadok-pokraski-sten/</loc></url>
   <url><loc>https://nodehome.ru/article/kladka-sten-iz-gazobetona-pervyy-ryad-kley-armirovanie/</loc></url>
   <url><loc>https://nodehome.ru/article/kladovaya-i-postirochnaya-v-chastnom-dome/</loc></url>
+  <url><loc>https://nodehome.ru/article/klumba-v-poluteni-kak-sobrat-kompozitsiyu/</loc></url>
   <url><loc>https://nodehome.ru/article/kofry-ili-konteynery-dlya-khraneniya-pledov/</loc></url>
   <url><loc>https://nodehome.ru/article/kogda-menyat-shubku-malyarnogo-valika-priznaki-iznosa/</loc></url>
   <url><loc>https://nodehome.ru/article/kogda-snimat-malyarnuyu-lentu-posle-pokraski/</loc></url>
   <url><loc>https://nodehome.ru/article/komnatnye-rasteniya-v-gostinoy-kak-rasstavit/</loc></url>
+  <url><loc>https://nodehome.ru/article/kompost-kak-uluchshitel-pochvy-i-mulcha/</loc></url>
   <url><loc>https://nodehome.ru/article/korzina-dlya-belya-kak-vybrat/</loc></url>
   <url><loc>https://nodehome.ru/article/kotelnaya-v-chastnom-dome-trebovaniya-i-planirovka/</loc></url>
   <url><loc>https://nodehome.ru/article/kovrik-dlya-prikhozhey-kak-vybrat/</loc></url>
+  <url><loc>https://nodehome.ru/article/kraska-dlya-detskoy-komnaty-kak-vybrat/</loc></url>
   <url><loc>https://nodehome.ru/article/kraska-dlya-potolka-kak-vybrat/</loc></url>
   <url><loc>https://nodehome.ru/article/kraska-oboi-ili-dekorativnaya-shtukaturka-dlya-sten/</loc></url>
   <url><loc>https://nodehome.ru/article/krestiki-i-klinya-dlya-plitki-kak-vybrat/</loc></url>
@@ -286,6 +315,7 @@
   <url><loc>https://nodehome.ru/article/malyarnaya-setka-dlya-vedra-ili-lotok-chto-vybrat/</loc></url>
   <url><loc>https://nodehome.ru/article/mansarda-ili-polnocennyy-vtoroy-etazh/</loc></url>
   <url><loc>https://nodehome.ru/article/matovaya-ili-glyantsevaya-plitka-dlya-sten/</loc></url>
+  <url><loc>https://nodehome.ru/article/matovaya-ili-satinovaya-kraska-dlya-potolka/</loc></url>
   <url><loc>https://nodehome.ru/article/matovaya-ili-satinovaya-kraska-dlya-sten/</loc></url>
   <url><loc>https://nodehome.ru/article/matovye-ili-glyantsevye-fasady-shkafa-kak-vybrat/</loc></url>
   <url><loc>https://nodehome.ru/article/mebel-dlya-prikhozhey-kak-vybrat/</loc></url>
@@ -295,6 +325,7 @@
   <url><loc>https://nodehome.ru/article/mezhkomnatnye-peregorodki-kak-vybrat-material/</loc></url>
   <url><loc>https://nodehome.ru/article/moyushchayasya-kraska-dlya-sten-klass-stoykosti-k-mytyu/</loc></url>
   <url><loc>https://nodehome.ru/article/mozhno-li-delat-remont-zimoy/</loc></url>
+  <url><loc>https://nodehome.ru/article/mulcha-dlya-klumb-kora-shchepa-kompost/</loc></url>
   <url><loc>https://nodehome.ru/article/myagkoe-izgolove-krovati-kak-vybrat/</loc></url>
   <url><loc>https://nodehome.ru/article/nabor-instrumentov-dlya-oboev-bez-lishnikh-pokupok/</loc></url>
   <url><loc>https://nodehome.ru/article/nabor-malyarnykh-instrumentov-dlya-pokraski-sten/</loc></url>
@@ -324,6 +355,7 @@
   <url><loc>https://nodehome.ru/article/otmostka-vokrug-doma-ustroystvo-i-oshibki/</loc></url>
   <url><loc>https://nodehome.ru/article/otoplenie-chastnogo-doma-gaz-elektrichestvo-tverdoe-toplivo/</loc></url>
   <url><loc>https://nodehome.ru/article/otvertki-i-bity-ph-pz-torx/</loc></url>
+  <url><loc>https://nodehome.ru/article/palisadnik-pered-domom-kak-splanirovat/</loc></url>
   <url><loc>https://nodehome.ru/article/passatizhi-ploskogubtsy-i-dlinnogubtsy/</loc></url>
   <url><loc>https://nodehome.ru/article/planirovka-doma-100-120-m2/</loc></url>
   <url><loc>https://nodehome.ru/article/planirovka-doma-s-terrasoy/</loc></url>
@@ -334,11 +366,14 @@
   <url><loc>https://nodehome.ru/article/pled-dlya-divana-kak-vybrat/</loc></url>
   <url><loc>https://nodehome.ru/article/pletenaya-korzina-ili-tkanevyy-korob-dlya-polotenets/</loc></url>
   <url><loc>https://nodehome.ru/article/plintus-pod-pokrasku-ili-s-gotovym-pokrytiem/</loc></url>
+  <url><loc>https://nodehome.ru/article/plitka-dlya-malenkoy-vannoy-kak-vybrat/</loc></url>
   <url><loc>https://nodehome.ru/article/plitka-ili-keramogranit-chto-vybrat/</loc></url>
+  <url><loc>https://nodehome.ru/article/plitka-pod-derevo-v-vannoy-kak-sochetat/</loc></url>
   <url><loc>https://nodehome.ru/article/ploskaya-ili-skatnaya-krysha/</loc></url>
   <url><loc>https://nodehome.ru/article/pochemu-doma-holodno-hotya-batarei-goryachie/</loc></url>
   <url><loc>https://nodehome.ru/article/pochemu-ostayutsya-polosy-ot-valika-na-stene/</loc></url>
   <url><loc>https://nodehome.ru/article/pochemu-poteyut-plastikovye-okna-zimoy/</loc></url>
+  <url><loc>https://nodehome.ru/article/pochvopokrovnye-rasteniya-vmesto-gazona/</loc></url>
   <url><loc>https://nodehome.ru/article/poddony-pod-komnatnye-rasteniya-kak-vybrat/</loc></url>
   <url><loc>https://nodehome.ru/article/podlozhka-pod-laminat-kak-vybrat-po-kharakteristikam/</loc></url>
   <url><loc>https://nodehome.ru/article/pol-v-bane-svoimi-rukami/</loc></url>
@@ -346,11 +381,13 @@
   <url><loc>https://nodehome.ru/article/porozhek-mezhdu-laminatom-i-plitkoy-kak-vybrat/</loc></url>
   <url><loc>https://nodehome.ru/article/postery-nad-divanom-kak-razmestit/</loc></url>
   <url><loc>https://nodehome.ru/article/prikrovatnaya-tumba-dlya-malenkoy-spalni/</loc></url>
+  <url><loc>https://nodehome.ru/article/primykanie-pola-k-stene-plintus-ili-tenevoi-shov/</loc></url>
   <url><loc>https://nodehome.ru/article/proverka-zubchatogo-shpatelya-pered-pokupkoy/</loc></url>
   <url><loc>https://nodehome.ru/article/prozrachnye-korobki-ili-tkanevye-chekhly-dlya-obuvi/</loc></url>
   <url><loc>https://nodehome.ru/article/pryamaya-ili-kosaya-malyarnaya-kist-dlya-otdelki/</loc></url>
   <url><loc>https://nodehome.ru/article/puzyrki-ot-mini-valika-na-gladkoy-dveri/</loc></url>
   <url><loc>https://nodehome.ru/article/rapport-oboev-kak-vybrat-risunok-i-rasschitat-rulony/</loc></url>
+  <url><loc>https://nodehome.ru/article/rasteniya-vdol-sadovoy-dorozhki-kak-podobrat/</loc></url>
   <url><loc>https://nodehome.ru/article/razdeliteli-ili-lotki-dlya-kantselyarii-v-yashchike/</loc></url>
   <url><loc>https://nodehome.ru/article/rektifitsirovannaya-ili-obychnaya-plitka-dlya-sten/</loc></url>
   <url><loc>https://nodehome.ru/article/rezinovaya-ili-gubchataya-terka-dlya-plitki/</loc></url>
@@ -360,12 +397,15 @@
   <url><loc>https://nodehome.ru/article/ruchnaya-pila-po-derevu-kak-vybrat/</loc></url>
   <url><loc>https://nodehome.ru/article/ruchnoy-rubanok-kak-vybrat/</loc></url>
   <url><loc>https://nodehome.ru/article/ruletka-ili-skladnoy-metr-dlya-obmerov/</loc></url>
+  <url><loc>https://nodehome.ru/article/sadovaya-dorozhka-graviy-plitka-kamen/</loc></url>
   <url><loc>https://nodehome.ru/article/sadovye-svetilniki-na-solnechnykh-batareyakh-kak-vybrat/</loc></url>
   <url><loc>https://nodehome.ru/article/septik-ili-stantsiya-ochistki-kanalizatsii/</loc></url>
   <url><loc>https://nodehome.ru/article/shchetka-ili-mikrofibra-dlya-udaleniya-pyli-pered-pokraskoy/</loc></url>
+  <url><loc>https://nodehome.ru/article/shirina-sadovoy-dorozhki-kak-splanirovat/</loc></url>
   <url><loc>https://nodehome.ru/article/shlifovalnaya-setka-ili-nazhdachnaya-bumaga-dlya-shpaklevki/</loc></url>
   <url><loc>https://nodehome.ru/article/shlifovalnye-krugi-na-lipuchke-dlya-mashinki-kak-vybrat/</loc></url>
   <url><loc>https://nodehome.ru/article/shlifovalnyy-brusok-dlya-ruchnoy-shlifovki/</loc></url>
+  <url><loc>https://nodehome.ru/article/shvy-plitki-tsvet-zatirki-i-uhod/</loc></url>
   <url><loc>https://nodehome.ru/article/sistemy-khraneniya-v-chastnom-dome/</loc></url>
   <url><loc>https://nodehome.ru/article/sito-dlya-vodnoy-kraski-kogda-nuzhno-i-kak-vybrat/</loc></url>
   <url><loc>https://nodehome.ru/article/sjemnye-lotki-ili-peregorodki-v-organayzere/</loc></url>
@@ -376,8 +416,10 @@
   <url><loc>https://nodehome.ru/article/stolyarnyy-verstak-dlya-doma-kak-vybrat/</loc></url>
   <url><loc>https://nodehome.ru/article/strubtsiny-dlya-stolyarnykh-rabot/</loc></url>
   <url><loc>https://nodehome.ru/article/styazhka-pola-mokryaya-polusukhaya-ili-sukhaya/</loc></url>
+  <url><loc>https://nodehome.ru/article/styk-napolnyh-pokrytiy-profil-ili-bez-porozhka/</loc></url>
   <url><loc>https://nodehome.ru/article/sumka-ili-plastikovyy-yashchik-dlya-instrumentov/</loc></url>
   <url><loc>https://nodehome.ru/article/tambur-v-chastnom-dome-kak-splanirovat/</loc></url>
+  <url><loc>https://nodehome.ru/article/tenistyy-ugolok-sada-kak-podobrat-rasteniya/</loc></url>
   <url><loc>https://nodehome.ru/article/tile-adhesive-spatula-guide/</loc></url>
   <url><loc>https://nodehome.ru/article/tile-cutter-manual-vs-electric/</loc></url>
   <url><loc>https://nodehome.ru/article/tile-installation-toolkit/</loc></url>
@@ -387,10 +429,13 @@
   <url><loc>https://nodehome.ru/article/treshchiny-v-stenakh-doma/</loc></url>
   <url><loc>https://nodehome.ru/article/tsifrovoy-ili-noniusnyy-shtangentsirkul-kak-vybrat/</loc></url>
   <url><loc>https://nodehome.ru/article/tsvet-plintusa-pod-pol-steny-ili-dveri/</loc></url>
+  <url><loc>https://nodehome.ru/article/tsvet-plintusov-i-nalichnikov-kak-sochetat-so-stenami/</loc></url>
+  <url><loc>https://nodehome.ru/article/tsvet-sten-dlya-malenkoy-komnaty-kak-vybrat/</loc></url>
   <url><loc>https://nodehome.ru/article/tsvet-zatirki-dlya-plitki-v-ton-ili-kontrast/</loc></url>
   <url><loc>https://nodehome.ru/article/tv-zona-v-gostinoy-oformlenie-i-khranenie/</loc></url>
   <url><loc>https://nodehome.ru/article/udarnaya-ili-bezudarnaya-drel/</loc></url>
   <url><loc>https://nodehome.ru/article/udlinitel-dlya-malyarnogo-valika-kak-vybrat/</loc></url>
+  <url><loc>https://nodehome.ru/article/uhod-za-solnechnymi-sadovymi-svetilnikami/</loc></url>
   <url><loc>https://nodehome.ru/article/ukryvistost-kraski-chto-oznachaet-i-kak-sravnivat/</loc></url>
   <url><loc>https://nodehome.ru/article/ukryvnaya-plenka-ili-tkan-dlya-zashchity-mebeli-pri-pokraske/</loc></url>
   <url><loc>https://nodehome.ru/article/uteplenie-cherdachnogo-perekrytiya-v-chastnom-dome/</loc></url>
