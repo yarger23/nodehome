@@ -54,3 +54,5 @@ jobs:
           PY
 
 # Rerun after fixing the mixed-border section slug.
+
+# Retry after completing garden category metadata.
