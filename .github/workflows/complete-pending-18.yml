@@ -24,3 +24,5 @@ jobs:
           git diff --cached --quiet && { echo 'No changes were produced'; exit 1; }
           git commit -m "content: finish and register 18 overdue articles"
           git push origin HEAD:content/2026-11-03-pending-18
+
+# Retry after preserving H2 section count.
