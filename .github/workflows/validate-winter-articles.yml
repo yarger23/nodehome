@@ -1,0 +1,42 @@
+name: Verify winter articles before main (temporary)
+on:
+  push:
+    branches:
+      - content/2026-11-02-winter-seo-ten
+    paths:
+      - .github/workflows/validate-winter-articles.yml
+permissions:
+  contents: read
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate changed articles and source assets
+        run: |
+          BASE=$(git merge-base origin/main HEAD)
+          echo "Validating changes since $BASE"
+          node --check scripts/preflight-new-articles.mjs
+          NODEHOME_BASE_SHA="$BASE" node scripts/preflight-new-articles.mjs
+      - name: Generate HTML
+        run: |
+          node --check scripts/build.mjs
+          node --check assets/site.js
+          node scripts/build.mjs
+      - name: Verify generated HTML and photo copies
+        run: |
+          BASE=$(git merge-base origin/main HEAD)
+          NODEHOME_BASE_SHA="$BASE" node scripts/preflight-new-articles.mjs --verify-built
+      - name: Count pages and photos
+        run: |
+          echo "Pages and photos:"
+          find site/article -name index.html | wc -l
+          test -f site/article/kakoy-obogrevatel-luchshe-dlya-kvartiry/index.html
+          test -f site/article/kak-sdelat-temnuyu-komnatu-svetlee/index.html
+          echo "Validated."
