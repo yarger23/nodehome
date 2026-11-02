@@ -335,7 +335,8 @@
     "description": "Выбор окон для частного дома: профиль, стеклопакет, солнцезащита и монтаж.",
     "intro": "Сравнивайте окна по задачам комнат и характеристикам всего блока. До заказа проверьте открывание, безопасность остекления и устройство монтажного шва.",
     "articles": [
-      "private-house-window-selection"
+      "private-house-window-selection",
+      "winter-window-condensation-2026"
     ],
     "sectionId": "construction",
     "groupId": "construction-okna-i-naruzhnye-dveri"
@@ -393,7 +394,9 @@
       "Сравните первоначальные и эксплуатационные расходы на одном расчётном горизонте."
     ],
     "articles": [
-      "private-house-heating-choice"
+      "private-house-heating-choice",
+      "heater-apartment-guide-2026",
+      "cold-home-hot-radiators-2026"
     ],
     "sectionId": "engineering",
     "groupId": "engineering-otoplenie"
@@ -451,7 +454,8 @@
       "Согласуйте кухонную вытяжку, котёл и дымоход с проектировщиком."
     ],
     "articles": [
-      "ventilation-in-private-house"
+      "ventilation-in-private-house",
+      "winter-indoor-humidity-guide-2026"
     ],
     "sectionId": "engineering",
     "groupId": "engineering-ventilyatsiya-i-klimat"
@@ -691,7 +695,8 @@
       "washable-wall-paint-wet-scrub-2026",
       "paint-fan-deck-vs-sample-swatch-2026-11-01",
       "wallpaper-smoothing-brush-vs-plastic-tool-2026-11-01",
-      "wallpaper-tools-starter-kit-2026-11-02"
+      "wallpaper-tools-starter-kit-2026-11-02",
+      "winter-interior-renovation-guide-2026"
     ],
     "sectionId": "renovation",
     "groupId": "renovation-otdelka-sten"
@@ -739,7 +744,10 @@
       "living-room-wall-art-2026",
       "living-room-houseplant-placement-2026",
       "coffee-table-styling-2026",
-      "felt-vs-silicone-furniture-leg-protectors-2026-11-02"
+      "felt-vs-silicone-furniture-leg-protectors-2026-11-02",
+      "holiday-string-lights-home-2026",
+      "small-apartment-newyear-decor-2026",
+      "dark-room-lightening-interior-2026"
     ],
     "sectionId": "renovation",
     "groupId": "renovation-remont-pomeshcheniy"
@@ -760,7 +768,8 @@
       "bedroom-soft-headboard-2026",
       "underbed-storage-boxes-selection-2026-10-31",
       "matte-vs-glossy-wardrobe-fronts-2026-10-31",
-      "open-wardrobe-niche-design-2026-10-31"
+      "open-wardrobe-niche-design-2026-10-31",
+      "thermal-curtains-winter-2026"
     ],
     "sectionId": "renovation",
     "groupId": "renovation-remont-pomeshcheniy"
@@ -1073,7 +1082,8 @@
       "desk-drawer-stationery-dividers-vs-trays-2026-11-01",
       "organize-bedding-sets-by-kit-or-type-2026-11-02",
       "woven-basket-vs-fabric-bin-towel-storage-2026-11-02",
-      "fabric-drawer-dividers-for-dresser-2026-11-02"
+      "fabric-drawer-dividers-for-dresser-2026-11-02",
+      "winter-clothes-shoes-storage-2026"
     ],
     "sectionId": "renovation",
     "groupId": "renovation-remont-pomeshcheniy"
