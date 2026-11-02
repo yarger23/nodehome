@@ -1,0 +1,46 @@
+name: Validate 18 pending NodeHome articles (temporary)
+on:
+  push:
+    branches: [content/2026-11-03-pending-18]
+    paths:
+      - assets/images/*-hero.webp
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Inventory 18 completed articles
+        run: |
+          python3 - <<'PY'
+          import json,pathlib
+          p=pathlib.Path('content/articles')
+          x=['shtukaturnye-shpateli-vybor','kelma-i-shtukaturnaya-lopatka','pravilo-dlya-shtukaturki-kak-vybrat','terki-i-poluterki-dlya-shtukaturki','instrument-dlya-dekorativnoy-shtukaturki','cut-porcelain-stoneware-tools','kak-vybrat-shurupovert-dlya-doma','drel-ili-shurupovert-chto-vybrat','akkumulyatornyy-ili-setevoy-shurupovert','krutyashchiy-moment-shurupoverta','derevyannaya-obshivka-fasada-vybor','konditsioner-ventilyatsiya-osushitel-ochistitel','lazernyy-dalnomer-dlya-remonta-vybor','datchik-co2-dlya-doma','akkumulyatornaya-platforma-instrumenta','planirovka-kladovoy-v-dome','fibrocementnaya-oblicovka-kriterii-vybora','organayzer-keys-ili-sumka-dlya-instrumenta']
+          assert len(x)==18 and len(set(x))==18
+          for slug in x:
+              a=json.loads((p/(slug+'.json')).read_text())
+              assert a['slug']==slug and a['status']=='published',(slug,'unpublished')
+              assert len(a['sections'])>=6 and len(a['faqs'])>=4,(slug,'incomplete')
+              assert (pathlib.Path('assets/images')/a['image']).is_file(),(slug,'image missing')
+          for slug in ['kak-vybrat-tsvet-zatirki-dlya-plitki','kak-vybrat-plintus-dlya-pola','kak-rasschitat-kolichestvo-oboev-s-raportom','tsvet-plintusa-pod-steny-ili-pol']:
+              assert json.loads((p/(slug+'.json')).read_text())['status']=='draft'
+          print('18 complete articles and 4 held duplicate drafts: PASS')
+          PY
+      - name: Preflight new publications
+        run: |
+          BASE=$(git merge-base origin/main HEAD)
+          NODEHOME_BASE_SHA="$BASE" node scripts/preflight-new-articles.mjs
+      - name: Build NodeHome static site
+        run: |
+          node --check scripts/build.mjs
+          node --check assets/site.js
+          node scripts/build.mjs
+      - name: Verify ready articles and HTML
+        run: |
+          BASE=$(git merge-base origin/main HEAD)
+          NODEHOME_BASE_SHA="$BASE" node scripts/preflight-new-articles.mjs --verify-built
