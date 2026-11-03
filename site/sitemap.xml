@@ -15,6 +15,7 @@
   <url><loc>https://nodehome.ru/renovation/page/6/</loc></url>
   <url><loc>https://nodehome.ru/renovation/page/7/</loc></url>
   <url><loc>https://nodehome.ru/engineering/</loc></url>
+  <url><loc>https://nodehome.ru/engineering/page/2/</loc></url>
   <url><loc>https://nodehome.ru/landscape/</loc></url>
   <url><loc>https://nodehome.ru/landscape/page/2/</loc></url>
   <url><loc>https://nodehome.ru/landscape/page/3/</loc></url>
@@ -50,6 +51,8 @@
   <url><loc>https://nodehome.ru/engineering/elektrosnabzhenie/</loc></url>
   <url><loc>https://nodehome.ru/engineering/ventilyatsiya-i-klimat/</loc></url>
   <url><loc>https://nodehome.ru/engineering/gazosnabzhenie/</loc></url>
+  <url><loc>https://nodehome.ru/engineering/umnyy-dom-i-bezopasnost/</loc></url>
+  <url><loc>https://nodehome.ru/engineering/obsluzhivanie-inzhenernyh-sistem/</loc></url>
   <url><loc>https://nodehome.ru/landscape/vybor-i-podgotovka-uchastka/</loc></url>
   <url><loc>https://nodehome.ru/landscape/drenazh-i-vodootvedenie/</loc></url>
   <url><loc>https://nodehome.ru/landscape/dorozhki-i-ploshchadki/</loc></url>
@@ -116,13 +119,17 @@
   <url><loc>https://nodehome.ru/engineering/otoplenie/vodyanye-tyoplye-poly/</loc></url>
   <url><loc>https://nodehome.ru/engineering/vodosnabzhenie/skvazhiny-i-kolodtsy/</loc></url>
   <url><loc>https://nodehome.ru/engineering/vodosnabzhenie/razvodka-vodosnabzheniya/</loc></url>
+  <url><loc>https://nodehome.ru/engineering/vodosnabzhenie/filtry-i-vodopodgotovka/</loc></url>
   <url><loc>https://nodehome.ru/engineering/kanalizatsiya-i-santehnika/vnutrennyaya-kanalizatsiya/</loc></url>
   <url><loc>https://nodehome.ru/engineering/kanalizatsiya-i-santehnika/lokalnye-ochistnye-sooruzheniya/</loc></url>
   <url><loc>https://nodehome.ru/engineering/elektrosnabzhenie/elektroprovodka/</loc></url>
+  <url><loc>https://nodehome.ru/engineering/elektrosnabzhenie/avtomaty-uzo-i-difavtomaty/</loc></url>
   <url><loc>https://nodehome.ru/engineering/ventilyatsiya-i-klimat/pritochnaya-i-vytyazhnaya-ventilyatsiya/</loc></url>
   <url><loc>https://nodehome.ru/engineering/ventilyatsiya-i-klimat/osushenie-i-uvlazhnenie-vozdukha/</loc></url>
   <url><loc>https://nodehome.ru/engineering/ventilyatsiya-i-klimat/upravlenie-mikroklimatom/</loc></url>
   <url><loc>https://nodehome.ru/engineering/gazosnabzhenie/trebovaniya-k-gazovym-pomeshcheniyam/</loc></url>
+  <url><loc>https://nodehome.ru/engineering/umnyy-dom-i-bezopasnost/pozharnaya-signalizatsiya/</loc></url>
+  <url><loc>https://nodehome.ru/engineering/obsluzhivanie-inzhenernyh-sistem/poisk-i-ustranenie-neispravnostey/</loc></url>
   <url><loc>https://nodehome.ru/landscape/vybor-i-podgotovka-uchastka/vybor-zemelnogo-uchastka/</loc></url>
   <url><loc>https://nodehome.ru/landscape/vybor-i-podgotovka-uchastka/geologiya-i-issledovanie-gruntov/</loc></url>
   <url><loc>https://nodehome.ru/landscape/drenazh-i-vodootvedenie/drenazh-uchastka/</loc></url>
@@ -161,7 +168,9 @@
   <url><loc>https://nodehome.ru/catalog/roof-structures/</loc></url>
   <url><loc>https://nodehome.ru/catalog/roof-insulation/</loc></url>
   <url><loc>https://nodehome.ru/catalog/house-heating-choice/</loc></url>
+  <url><loc>https://nodehome.ru/catalog/water-source-choice/</loc></url>
   <url><loc>https://nodehome.ru/catalog/ventilation-private-house/</loc></url>
+  <url><loc>https://nodehome.ru/catalog/house-electrical-wiring/</loc></url>
   <url><loc>https://nodehome.ru/catalog/facade-cladding-choice/</loc></url>
   <url><loc>https://nodehome.ru/catalog/ceiling-finish-choice/</loc></url>
   <url><loc>https://nodehome.ru/catalog/wall-finish-comparison/</loc></url>
@@ -200,6 +209,7 @@
   <url><loc>https://nodehome.ru/article/akkumulyatornaya-platforma-instrumenta/</loc></url>
   <url><loc>https://nodehome.ru/article/akkumulyatornyy-ili-setevoy-shurupovert/</loc></url>
   <url><loc>https://nodehome.ru/article/aktsentnaya-stena-kak-vybrat-tsvet-i-mesto/</loc></url>
+  <url><loc>https://nodehome.ru/article/analiz-vody-iz-skvazhiny-pokazateli-i-chastota/</loc></url>
   <url><loc>https://nodehome.ru/article/armopoyas-v-dome-iz-gazobetona-kogda-nuzhen-i-kak-sdelat/</loc></url>
   <url><loc>https://nodehome.ru/article/banketka-v-prikhozhey-kak-vybrat/</loc></url>
   <url><loc>https://nodehome.ru/article/belaya-kraska-dlya-sten-teplyy-ili-holodnyy-ottenok/</loc></url>
@@ -212,6 +222,7 @@
   <url><loc>https://nodehome.ru/article/chem-zakryt-pol-na-vremya-remonta/</loc></url>
   <url><loc>https://nodehome.ru/article/cut-porcelain-stoneware-tools/</loc></url>
   <url><loc>https://nodehome.ru/article/datchik-co2-dlya-doma/</loc></url>
+  <url><loc>https://nodehome.ru/article/datchiki-dyma-ugarnogo-i-bytovogo-gaza/</loc></url>
   <url><loc>https://nodehome.ru/article/dekor-zhurnalnogo-stolika-idei-i-pravila/</loc></url>
   <url><loc>https://nodehome.ru/article/dekorativnaya-galka-dlya-kashpo-kak-vybrat/</loc></url>
   <url><loc>https://nodehome.ru/article/dekorativnye-podushki-na-divan/</loc></url>
@@ -362,6 +373,7 @@
   <url><loc>https://nodehome.ru/article/oboi-dlya-spalni-bumazhnye-flizelinovye-ili-vinilovye/</loc></url>
   <url><loc>https://nodehome.ru/article/oboynaya-shchetka-ili-plastikovyy-shpatel/</loc></url>
   <url><loc>https://nodehome.ru/article/obraztsy-otdelochnykh-materialov-pered-remontom/</loc></url>
+  <url><loc>https://nodehome.ru/article/obsluzhivanie-inzhenernyh-sistem-chastnogo-doma/</loc></url>
   <url><loc>https://nodehome.ru/article/ochistka-i-khranenie-shtukaturnoy-kelmy/</loc></url>
   <url><loc>https://nodehome.ru/article/odnoetazhnyy-ili-dvuhetazhnyy-dom/</loc></url>
   <url><loc>https://nodehome.ru/article/odnotonnaya-ili-uzorchataya-plitka-dlya-kukhonnogo-fartuka/</loc></url>
@@ -470,6 +482,7 @@
   <url><loc>https://nodehome.ru/article/uteplenie-skatnoy-kryshi-chastnogo-doma/</loc></url>
   <url><loc>https://nodehome.ru/article/uzkaya-ili-shirokaya-malyarnaya-kist-dlya-otdelki/</loc></url>
   <url><loc>https://nodehome.ru/article/uzkiy-ili-shirokiy-shpatel-dlya-melkogo-remonta/</loc></url>
+  <url><loc>https://nodehome.ru/article/uzo-ili-difavtomat-v-chem-raznica/</loc></url>
   <url><loc>https://nodehome.ru/article/valik-dlya-gruntovki-sten-kak-vybrat/</loc></url>
   <url><loc>https://nodehome.ru/article/valik-i-lotok-sovmestimost-razmerov/</loc></url>
   <url><loc>https://nodehome.ru/article/vedro-dlya-kraski-kak-vybrat/</loc></url>
@@ -477,6 +490,7 @@
   <url><loc>https://nodehome.ru/article/ventilyatsiya-v-chastnom-dome/</loc></url>
   <url><loc>https://nodehome.ru/article/vkhodnaya-dver-v-chastnom-dome-kak-vybrat/</loc></url>
   <url><loc>https://nodehome.ru/article/vkladysh-dlya-malyarnogo-lotka-kogda-nuzhen/</loc></url>
+  <url><loc>https://nodehome.ru/article/vlazhnost-i-plesen-v-dome-chto-proverit/</loc></url>
   <url><loc>https://nodehome.ru/article/vlazhnost-vozduha-v-kvartire-zimoy/</loc></url>
   <url><loc>https://nodehome.ru/article/vnutrennyaya-kanalizatsiya-v-chastnom-dome/</loc></url>
   <url><loc>https://nodehome.ru/article/vodoprovod-v-chastnom-dome-skhema-razvodki/</loc></url>
