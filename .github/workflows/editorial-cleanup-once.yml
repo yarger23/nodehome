@@ -1,0 +1,46 @@
+name: Nodehome editorial cleanup once
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/editorial-cleanup-once.yml"
+
+concurrency:
+  group: nodehome-site-main
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Improve current publication batch
+        run: |
+          node --check scripts/editorial-cleanup-once.mjs
+          node scripts/editorial-cleanup-once.mjs
+      - name: Check editorial uniqueness and completeness
+        run: |
+          node --check scripts/editorial-quality-check.mjs
+          node scripts/editorial-quality-check.mjs
+      - name: Validate full site
+        run: |
+          node --check scripts/build.mjs
+          node scripts/build.mjs
+      - name: Commit improved articles and generated pages
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f scripts/editorial-cleanup-once.mjs .github/workflows/editorial-cleanup-once.yml
+          git add -A content/articles/ site/ scripts/editorial-quality-check.mjs .github/workflows/build-site.yml scripts/editorial-cleanup-once.mjs .github/workflows/editorial-cleanup-once.yml
+          if ! git diff --cached --quiet; then
+            git commit -m "content: editorial polish for November release"
+            git push origin HEAD:main
+          fi
