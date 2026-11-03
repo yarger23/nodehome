@@ -657,8 +657,21 @@ function articlePage(article) {
   const articleTopic = parentGroup?.topics.find((topic) => topic.id === article.topicId);
   const toc = article.sections.map((section) =>
     '<li><a href="#' + escapeHtml(section.id) + '">' + escapeHtml(section.title) + "</a></li>").join("");
-  const related = articles.filter((other) => other.id !== article.id &&
-    other.categoryIds.some((id) => article.categoryIds.includes(id))).slice(0, 2);
+  // Only recommend articles sharing meaningful title terms within a category.
+  const titleStems = (s) => new Set((String(s || "").toLocaleLowerCase("ru-RU").match(/[а-яёa-z]{4,}/g) || [])
+    .filter((w) => !["выбрать","выбор","когда","зачем","после","дома","ремонта","какой","какая","можно","нужно","перед","сравнение"].includes(w))
+    .map((w) => w.slice(0, 6)));
+  const currentTerms = titleStems(article.title);
+  const related = articles.filter((other) => other.id !== article.id).map((other) => {
+    const sameCategory = other.categoryIds.some((id) => article.categoryIds.includes(id));
+    const sameTopic = !!(article.topicId && other.topicId === article.topicId);
+    const overlap = [...titleStems(other.title)].filter((term) => currentTerms.has(term)).length;
+    return { other, score: sameCategory && overlap ? overlap * 10 + (sameTopic ? 6 : 0) : 0 };
+  }).filter((item) => item.score > 0).sort((x, y) => y.score - x.score || x.other.title.localeCompare(y.other.title, "ru"))
+    .slice(0, 2).map((item) => item.other);
+  const sources = (article.editorialSources || []).filter((s) => /^https:\/\//.test(s.url || "") && s.title).slice(0, 8);
+  const sourcesHtml = sources.length ? '<section class="article-sources"><h2>Источники и документы</h2><ul>' +
+    sources.map((s) => '<li><a href="' + escapeHtml(s.url) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(s.title) + '</a></li>').join("") + '</ul></section>' : "";
   const faqs = article.faqs.map((item) =>
     '<details class="faq-item"><summary>' + escapeHtml(item.question) + '</summary><p>' +
     escapeHtml(item.answer) + "</p></details>").join("");
@@ -684,7 +697,8 @@ function articlePage(article) {
     '<details class="article-toc"><summary>Содержание статьи <span>' + article.sections.length + " раздела</span></summary><ol>" + toc + "</ol></details>" +
     '<div class="article-reading"><div class="article-content">' + articleBody(article) +
     (faqs ? '<section class="article-faq"><h2>Частые вопросы</h2>' + faqs + "</section>" : "") +
-    '<p class="source-note">Материал носит справочный характер. Условия работ, допустимые слои и сроки проверяйте по проекту и инструкции производителя.</p>' +
+    sourcesHtml +
+    '<p class="source-note">Материал справочный. Характеристики и ограничения конкретных изделий и систем проверяйте по официальной документации.</p>' +
     "</div></div></article>" +
     (related.length ? '<section class="section section-muted related-section"><div class="container">' +
       sectionHeading("Продолжить", "Материалы по теме") + '<div class="article-grid">' +
