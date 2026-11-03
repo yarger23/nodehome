@@ -38,8 +38,10 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          rm -f scripts/editorial-cleanup-once.mjs .github/workflows/editorial-cleanup-once.yml
-          git add -A content/articles/ site/ scripts/editorial-quality-check.mjs .github/workflows/build-site.yml scripts/editorial-cleanup-once.mjs .github/workflows/editorial-cleanup-once.yml
+          # The cleanup helper edits build-site.yml locally to install a future guard.
+          # Do not include workflow changes in this Actions push: GITHUB_TOKEN cannot update workflows.
+          git checkout -- .github/workflows/build-site.yml
+          git add -A content/articles/ site/
           if ! git diff --cached --quiet; then
             git commit -m "content: editorial polish for November release"
             git push origin HEAD:main
