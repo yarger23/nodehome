@@ -1,0 +1,36 @@
+name: Nodehome engineering five release validation
+on:
+  push:
+    branches:
+      - release/nodehome-first-five-engineering-2026-11-03
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build-and-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate editorial JSON and source images
+        run: |
+          node --check scripts/preflight-new-articles.mjs
+          node scripts/preflight-new-articles.mjs --article content/articles/datchiki-dyma-ugarnogo-i-bytovogo-gaza.json
+          node scripts/preflight-new-articles.mjs --article content/articles/obsluzhivanie-inzhenernyh-sistem-chastnogo-doma.json
+          node scripts/preflight-new-articles.mjs --article content/articles/analiz-vody-iz-skvazhiny-pokazateli-i-chastota.json
+          node scripts/preflight-new-articles.mjs --article content/articles/uzo-ili-difavtomat-v-chem-raznica.json
+          node scripts/preflight-new-articles.mjs --article content/articles/vlazhnost-i-plesen-v-dome-chto-proverit.json
+      - name: Build static site
+        run: |
+          node --check scripts/build.mjs
+          node --check assets/site.js
+          node scripts/build.mjs
+      - name: Verify five generated HTML pages, canonicals and approved images
+        run: |
+          node scripts/preflight-new-articles.mjs --article content/articles/datchiki-dyma-ugarnogo-i-bytovogo-gaza.json --verify-built
+          node scripts/preflight-new-articles.mjs --article content/articles/obsluzhivanie-inzhenernyh-sistem-chastnogo-doma.json --verify-built
+          node scripts/preflight-new-articles.mjs --article content/articles/analiz-vody-iz-skvazhiny-pokazateli-i-chastota.json --verify-built
+          node scripts/preflight-new-articles.mjs --article content/articles/uzo-ili-difavtomat-v-chem-raznica.json --verify-built
+          node scripts/preflight-new-articles.mjs --article content/articles/vlazhnost-i-plesen-v-dome-chto-proverit.json --verify-built
