@@ -26,12 +26,24 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
+      - name: Publish engineering articles with approved covers
+        run: |
+          node --check scripts/publish-engineering-20.mjs
+          node scripts/publish-engineering-20.mjs
       - name: Preflight new articles BEFORE site generation
         env:
           NODEHOME_BASE_SHA: ${{ github.event.before }}
         run: |
           node --check scripts/preflight-new-articles.mjs
           node scripts/preflight-new-articles.mjs
+      - name: Validate newly promoted engineering articles
+        run: |
+          list="${RUNNER_TEMP}/nodehome-engineering-promoted.txt"
+          if [ -s "$list" ]; then
+            while IFS= read -r file; do
+              node scripts/preflight-new-articles.mjs --article "$file"
+            done < "$list"
+          fi
       - name: Editorial quality guard
         run: |
           node --check scripts/editorial-quality-check.mjs
@@ -45,12 +57,20 @@ jobs:
         env:
           NODEHOME_BASE_SHA: ${{ github.event.before }}
         run: node scripts/preflight-new-articles.mjs --verify-built
+      - name: Verify newly published engineering pages
+        run: |
+          list="${RUNNER_TEMP}/nodehome-engineering-promoted.txt"
+          if [ -s "$list" ]; then
+            while IFS= read -r file; do
+              node scripts/preflight-new-articles.mjs --verify-built --article "$file"
+            done < "$list"
+          fi
       - name: Commit generated pages
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           # Do not touch archived article sources or older cover images.
-          git add -A site/
+          git add -A site/ content/articles/ content/categories.json
           if ! git diff --cached --quiet; then
             git commit -m "build: regenerate published Nodehome pages"
             git push origin HEAD:main
