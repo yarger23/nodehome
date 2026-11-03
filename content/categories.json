@@ -329,7 +329,8 @@
     "description": "Газоснабжение частного дома и требования к размещению газового оборудования.",
     "intro": "Газовое оборудование проектируют с учётом типа системы, помещения, вентиляции и условий подключения.",
     "articles": [
-      "boiler-room-private-house"
+      "boiler-room-private-house",
+      "kak-vybrat-organizaciyu-po-obsluzhivaniyu-gaza"
     ],
     "sectionId": "engineering",
     "groupId": "engineering-gazosnabzhenie",
@@ -469,7 +470,8 @@
     "intro": "Колодец или скважину выбирают по геологии участка, водопотреблению, качеству воды, доступности обслуживания и действующим условиям пользования недрами.",
     "articles": [
       "well-or-borehole-for-private-house",
-      "analiz-vody-iz-skvazhiny-pokazateli-i-chastota"
+      "analiz-vody-iz-skvazhiny-pokazateli-i-chastota",
+      "ochistka-vody-po-rezultatam-analiza"
     ],
     "sectionId": "engineering",
     "groupId": "engineering-vodosnabzhenie",
@@ -495,7 +497,8 @@
       "winter-indoor-humidity-guide-2026",
       "konditsioner-ventilyatsiya-osushitel-ochistitel",
       "datchik-co2-dlya-doma",
-      "vlazhnost-i-plesen-v-dome-chto-proverit"
+      "vlazhnost-i-plesen-v-dome-chto-proverit",
+      "pritochnaya-ventilyatsiya-ili-provetrivanie"
     ],
     "sectionId": "engineering",
     "groupId": "engineering-ventilyatsiya-i-klimat"
@@ -564,7 +567,8 @@
     ],
     "articles": [
       "house-electrical-wiring",
-      "uzo-ili-difavtomat-v-chem-raznica"
+      "uzo-ili-difavtomat-v-chem-raznica",
+      "skolko-elektroenergii-potreblyaet-chastnyy-dom"
     ],
     "sectionId": "engineering",
     "groupId": "engineering-elektrosnabzhenie"
