@@ -438,7 +438,8 @@
     "description": "Выбор автономного источника водоснабжения для частного дома.",
     "intro": "Колодец или скважину выбирают по геологии участка, водопотреблению, качеству воды, доступности обслуживания и действующим условиям пользования недрами.",
     "articles": [
-      "well-or-borehole-for-private-house"
+      "well-or-borehole-for-private-house",
+      "analiz-vody-iz-skvazhiny-pokazateli-i-chastota"
     ],
     "sectionId": "engineering",
     "groupId": "engineering-vodosnabzhenie"
@@ -458,7 +459,8 @@
       "ventilation-in-private-house",
       "winter-indoor-humidity-guide-2026",
       "konditsioner-ventilyatsiya-osushitel-ochistitel",
-      "datchik-co2-dlya-doma"
+      "datchik-co2-dlya-doma",
+      "vlazhnost-i-plesen-v-dome-chto-proverit"
     ],
     "sectionId": "engineering",
     "groupId": "engineering-ventilyatsiya-i-klimat"
@@ -526,7 +528,8 @@
       "Передайте схему и исходные данные квалифицированному проектировщику или электромонтажнику."
     ],
     "articles": [
-      "house-electrical-wiring"
+      "house-electrical-wiring",
+      "uzo-ili-difavtomat-v-chem-raznica"
     ],
     "sectionId": "engineering",
     "groupId": "engineering-elektrosnabzhenie"
@@ -1294,5 +1297,39 @@
       "Проверьте удобство подходов из дома и сада.",
       "Сравните варианты покрытий, мебели и озеленения."
     ]
+  },
+  {
+    "id": "home-safety-detectors",
+    "title": "Домашние датчики безопасности",
+    "cardTitle": "Датчики безопасности",
+    "description": "Дымовые и газовые извещатели, защита от угарного газа и раннее предупреждение об опасности.",
+    "intro": "Здесь разбираем назначение защитных датчиков, критерии выбора и безопасную эксплуатацию. Монтаж и диагностику оборудования поручайте специалистам.",
+    "start": [
+      "Определите виды опасностей в своём доме.",
+      "Сверьте документы и назначение конкретного прибора.",
+      "Согласуйте расположение и обслуживание со специалистами."
+    ],
+    "articles": [
+      "datchiki-dyma-ugarnogo-i-bytovogo-gaza"
+    ],
+    "sectionId": "engineering",
+    "groupId": "engineering-umnyy-dom-i-bezopasnost"
+  },
+  {
+    "id": "engineering-service",
+    "title": "Обслуживание инженерных систем",
+    "cardTitle": "Обслуживание систем",
+    "description": "Плановые проверки, документация и выбор сервисных организаций для инженерии частного дома.",
+    "intro": "Соберите паспорт оборудования, узнайте сроки профессионального обслуживания и ведите историю работ, не вмешиваясь в опасные узлы.",
+    "start": [
+      "Составьте перечень инженерных систем и устройств.",
+      "Изучите паспортные сроки обслуживания.",
+      "Записывайте результаты работ и контакты сервиса."
+    ],
+    "articles": [
+      "obsluzhivanie-inzhenernyh-sistem-chastnogo-doma"
+    ],
+    "sectionId": "engineering",
+    "groupId": "engineering-obsluzhivanie-inzhenernyh-sistem"
   }
 ]
