@@ -1,0 +1,20 @@
+name: Nodehome 43 editorial release gate
+on:
+  push:
+    branches:
+      - editorial/nodehome-43-seo-quality-2026-11-03
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax-check QA
+        run: node --check scripts/qa-nodehome-43.mjs
+      - name: Check editorial readiness of 43 existing articles
+        run: node scripts/qa-nodehome-43.mjs
