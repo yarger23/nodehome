@@ -330,7 +330,8 @@
     "intro": "Газовое оборудование проектируют с учётом типа системы, помещения, вентиляции и условий подключения.",
     "articles": [
       "boiler-room-private-house",
-      "kak-vybrat-organizaciyu-po-obsluzhivaniyu-gaza"
+      "kak-vybrat-organizaciyu-po-obsluzhivaniyu-gaza",
+      "dogovor-obsluzhivaniya-gazovogo-oborudovaniya"
     ],
     "sectionId": "engineering",
     "groupId": "engineering-gazosnabzhenie",
@@ -423,7 +424,11 @@
     "articles": [
       "private-house-heating-choice",
       "heater-apartment-guide-2026",
-      "cold-home-hot-radiators-2026"
+      "cold-home-hot-radiators-2026",
+      "podgotovka-inzhenernyh-sistem-k-zime",
+      "stoimost-otopleniya-chastnogo-doma-sravnenie",
+      "kak-snizit-rashody-na-otoplenie-bez-zameny-kotla",
+      "priznaki-neispravnosti-otopleniya-kogda-vyzyvat-mastera"
     ],
     "sectionId": "engineering",
     "groupId": "engineering-otoplenie"
@@ -498,7 +503,8 @@
       "konditsioner-ventilyatsiya-osushitel-ochistitel",
       "datchik-co2-dlya-doma",
       "vlazhnost-i-plesen-v-dome-chto-proverit",
-      "pritochnaya-ventilyatsiya-ili-provetrivanie"
+      "pritochnaya-ventilyatsiya-ili-provetrivanie",
+      "kondensat-na-oknah-prichiny-i-chto-proverit"
     ],
     "sectionId": "engineering",
     "groupId": "engineering-ventilyatsiya-i-klimat"
@@ -568,7 +574,10 @@
     "articles": [
       "house-electrical-wiring",
       "uzo-ili-difavtomat-v-chem-raznica",
-      "skolko-elektroenergii-potreblyaet-chastnyy-dom"
+      "skolko-elektroenergii-potreblyaet-chastnyy-dom",
+      "dokumenty-pri-priemke-elektromontazha",
+      "elektrobezopasnost-vannoy-voprosy-proektirovshchiku",
+      "vydelennaya-elektricheskaya-moshchnost-dlya-doma"
     ],
     "sectionId": "engineering",
     "groupId": "engineering-elektrosnabzhenie"
@@ -636,7 +645,9 @@
       "Рассчитайте расход, напор и диаметры, предусмотрев обслуживание оборудования."
     ],
     "articles": [
-      "water-supply-layout"
+      "water-supply-layout",
+      "datchik-protechki-ili-sistema-zashchity",
+      "perepady-davleniya-vody-v-chastnom-dome"
     ],
     "sectionId": "engineering",
     "groupId": "engineering-vodosnabzhenie"
