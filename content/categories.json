@@ -315,7 +315,12 @@
       "private-house-porch-design"
     ],
     "sectionId": "construction",
-    "groupId": "construction-proektirovanie-i-podgotovka"
+    "groupId": "construction-proektirovanie-i-podgotovka",
+    "start": [
+      "Зафиксируйте требования к планировке, несущим конструкциям и инженерным системам до выбора архитектурного решения.",
+      "Проверьте высоты, проёмы, узлы и доступ для обслуживания на проектных чертежах.",
+      "Согласуйте изменения с проектировщиком и профильными специалистами до начала работ."
+    ]
   },
   {
     "id": "gas-equipment",
@@ -327,7 +332,12 @@
       "boiler-room-private-house"
     ],
     "sectionId": "engineering",
-    "groupId": "engineering-gazosnabzhenie"
+    "groupId": "engineering-gazosnabzhenie",
+    "start": [
+      "Уточните условия подключения и требования к газовому оборудованию у уполномоченной организации.",
+      "Согласуйте помещение, вентиляцию и проект с профильными специалистами.",
+      "Не изменяйте газовую арматуру и подключения самостоятельно."
+    ]
   },
   {
     "id": "windows-selection",
@@ -340,7 +350,12 @@
       "winter-window-condensation-2026"
     ],
     "sectionId": "construction",
-    "groupId": "construction-okna-i-naruzhnye-dveri"
+    "groupId": "construction-okna-i-naruzhnye-dveri",
+    "start": [
+      "Проверьте размеры проёмов, требования к остеклению и открыванию окон.",
+      "Сравнивайте характеристики всего оконного блока, а не только профиля.",
+      "Заранее уточните монтажные узлы, герметизацию швов и гарантийные условия."
+    ]
   },
   {
     "id": "staircases",
@@ -352,7 +367,12 @@
       "staircase-dimensions-placement"
     ],
     "sectionId": "construction",
-    "groupId": "construction-perekrytiya-i-lestnitsy"
+    "groupId": "construction-perekrytiya-i-lestnitsy",
+    "start": [
+      "Определите высоту между готовыми полами и размеры лестничного проёма.",
+      "Проверьте геометрию ступеней, проходы, ограждения и удобство движения.",
+      "Согласуйте несущую конструкцию и крепление лестницы с проектировщиком."
+    ]
   },
   {
     "id": "floor-systems-comparison",
@@ -381,7 +401,12 @@
       "water-or-electric-underfloor-heating"
     ],
     "sectionId": "engineering",
-    "groupId": "engineering-otoplenie"
+    "groupId": "engineering-otoplenie",
+    "start": [
+      "Определите площадь обогрева, доступный источник тепла и мощность электросети.",
+      "Сравните совместимость решения с конструкцией пола и финишным покрытием.",
+      "Перед монтажом согласуйте расчёт, управление и защиту системы со специалистом."
+    ]
   },
   {
     "id": "house-heating-choice",
@@ -429,7 +454,12 @@
       "septic-tank-or-treatment-plant"
     ],
     "sectionId": "engineering",
-    "groupId": "engineering-kanalizatsiya-i-santehnika"
+    "groupId": "engineering-kanalizatsiya-i-santehnika",
+    "start": [
+      "Оцените объём стоков, режим проживания и условия участка.",
+      "Уточните требования к размещению, очистке и отводу воды для выбранной системы.",
+      "Сравните варианты по обслуживанию, энергозависимости и полной стоимости эксплуатации."
+    ]
   },
   {
     "id": "water-source-choice",
@@ -442,7 +472,12 @@
       "analiz-vody-iz-skvazhiny-pokazateli-i-chastota"
     ],
     "sectionId": "engineering",
-    "groupId": "engineering-vodosnabzhenie"
+    "groupId": "engineering-vodosnabzhenie",
+    "start": [
+      "Определите потребность дома в воде и проверьте доступные источники на участке.",
+      "Проведите лабораторный анализ воды и оцените сезонные риски её качества.",
+      "Согласуйте выбор источника и оборудования с профильными специалистами."
+    ]
   },
   {
     "id": "ventilation-private-house",
