@@ -107,9 +107,27 @@ function imagePixelSize(bytes, extension) {
   return null;
 }
 
+// Existing published articles may have historical reused covers. Editing only the
+// text must not turn an unchanged legacy cover into a "new article" failure.
+// New articles and changed cover bytes still receive full uniqueness checks.
+function hasUnchangedLegacyCover(file, article) {
+  const before = (process.env.NODEHOME_BASE_SHA || "").trim();
+  const base = /^[0-9a-f]{40}$/.test(before) && !/^0+$/.test(before) ? before : "HEAD^";
+  try {
+    const previous = JSON.parse(execFileSync("git", ["show", base + ":" + file], { cwd: ROOT, encoding: "utf8" }));
+    if (!previous?.image || previous.image !== article.image) return false;
+    execFileSync("git", ["diff", "--exit-code", base, "HEAD", "--", "assets/images/" + article.image],
+      { cwd: ROOT, stdio: "ignore" });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 function checkArticle(file) {
   const a = load(file);
   const label = file;
+  const existingUnchangedCover = hasUnchangedLegacyCover(file, a);
   if (a.status !== "published") {
     warn(label, "status is not published, not counted as a publication");
     return;
@@ -148,7 +166,7 @@ function checkArticle(file) {
       a.faqs.some((f) => !asText(f.question || f.q) || asText(f.answer || f.a).length < 35)) fail(label, "At least 4 meaningful FAQs required");
   if (!asText(a.image) || !new RegExp("^" + a.slug + "-hero\\.(webp|avif)$").test(a.image)) fail(label, "Unique original photo must use slug-hero.webp/avif");
   else {
-    one(label, a.image, images);
+    if (!existingUnchangedCover) one(label, a.image, images);
     const imagePath = "assets/images/" + a.image;
     if (!exists(imagePath)) fail(label, "Missing source photo: " + imagePath);
     else {
@@ -162,7 +180,7 @@ function checkArticle(file) {
       }
       if (bytes.length < 25000) fail(label, "Photo is suspiciously overcompressed (<25 KB); inspect or re-encode from original");
       const sha = createHash("sha256").update(bytes).digest("hex");
-      if ((photoHashes.get(sha) || []).length !== 1) fail(label, "Source photograph bytes reused in other published article(s)");
+      if (!existingUnchangedCover && (photoHashes.get(sha) || []).length !== 1) fail(label, "Source photograph bytes reused in other published article(s)");
     }
   }
   if (!asText(a.imageAlt) || a.imageAlt.length < 15) fail(label, "Image alt missing/too short");
