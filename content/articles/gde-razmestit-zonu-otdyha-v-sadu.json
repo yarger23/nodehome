@@ -87,7 +87,17 @@
             "Что видно с дорожек и из окон"
           ]
         ]
-      }
+      },
+      "links": [
+        {
+          "label": "Как зонировать небольшой участок",
+          "href": "/article/kak-zonirovat-nebolshoy-uchastok/"
+        },
+        {
+          "label": "Ширина садовой дорожки",
+          "href": "/article/shirina-sadovoy-dorozhki-kak-splanirovat/"
+        }
+      ]
     },
     {
       "id": "privatnost-bez-oshchushcheniya-zakrytogo-boksa",
