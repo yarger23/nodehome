@@ -45,7 +45,17 @@
             "Подъезд, освещение, дорожку, коммуникации и дополнительную застройку"
           ]
         ]
-      }
+      },
+      "links": [
+        {
+          "label": "Навес для автомобиля или гараж",
+          "href": "/article/naves-dlya-avtomobilya-ili-garazh/"
+        },
+        {
+          "label": "Как разместить дом на участке",
+          "href": "/article/gde-razmestit-dom-na-uchastke/"
+        }
+      ]
     },
     {
       "id": "uchastok-i-vezd",
