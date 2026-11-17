@@ -325,7 +325,9 @@ function layout(options) {
     (socialImage ? '<meta property="og:image" content="' + socialImage + '">\n' : "") +
     '<title>' + escapeHtml(title) + "</title>\n" +
     (options.preload ? '<link rel="preload" as="image" href="/assets/images/' + escapeHtml(options.preload) + '" fetchpriority="high">\n' : "") +
-    '<link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="32x32">\n' +
+    '<link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="16x16 32x32 48x48">\n' +
+    '<link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">\n' +
+    '<link rel="icon" href="/assets/favicon-192.png" type="image/png" sizes="192x192">\n' +
     '<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" sizes="180x180">\n' +
     '<link rel="stylesheet" href="/assets/site.css?v=' + CSS_VERSION + '">\n' +
     schemaScript(options.schema) + '\n' +
@@ -872,6 +874,7 @@ async function main() {
   await mkdir(OUTPUT, { recursive: true });
   await cp(path.join(ROOT, "assets"), path.join(OUTPUT, "assets"), { recursive: true });
   await cp(path.join(ROOT, "assets", "favicon.ico"), path.join(OUTPUT, "favicon.ico"));
+  await cp(path.join(ROOT, "assets", "favicon.svg"), path.join(OUTPUT, "favicon.svg"));
 
   const routes = ["/", "/catalog/", "/calculators/", "/search/"];
   const sitemapRoutes = ["/", "/catalog/", "/calculators/"];
