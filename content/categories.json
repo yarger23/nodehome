@@ -460,9 +460,9 @@
     ],
     "articles": [
       "internal-sewerage-in-private-house",
-        "sewer-odor-bathroom-causes-and-fixes-2026",
-        "pochemu-pakhnet-kanalizatsiey-iz-rakoviny-na-kuhne",
-        "shataetsya-unitaz-kak-zakrepit"
+      "sewer-odor-bathroom-causes-and-fixes-2026",
+      "pochemu-pakhnet-kanalizatsiey-iz-rakoviny-na-kuhne",
+      "shataetsya-unitaz-kak-zakrepit"
     ],
     "sectionId": "engineering",
     "groupId": "engineering-kanalizatsiya-i-santehnika"
@@ -682,7 +682,8 @@
     "articles": [
       "water-supply-layout",
       "datchik-protechki-ili-sistema-zashchity",
-      "perepady-davleniya-vody-v-chastnom-dome"
+      "perepady-davleniya-vody-v-chastnom-dome",
+      "mozhno-li-mytsya-rzhavoy-vodoy-iz-krana"
     ],
     "sectionId": "engineering",
     "groupId": "engineering-vodosnabzhenie"
