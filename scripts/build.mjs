@@ -634,6 +634,10 @@ function articleBody(article) {
       html += '<div class="article-table-scroll" role="region" aria-label="Сравнение материалов" tabindex="0"><table class="article-comparison-table"><thead><tr>' +
         headerCells + "</tr></thead><tbody>" + rows + "</tbody></table></div>";
     }
+    if (section.calculatorId && calculatorData[section.calculatorId]) {
+      html += '<div class="calculator-panel article-calculator">' +
+        calculatorForm(section.calculatorId, calculatorData[section.calculatorId]) + '</div>';
+    }
     if (section.image) {
       html += '<figure class="article-figure"><img src="/assets/images/' + escapeHtml(section.image) +
         '" alt="' + escapeHtml(section.imageAlt || "") + '" width="1200" height="800" loading="lazy" decoding="async">' +
@@ -731,6 +735,20 @@ function articlePage(article) {
 }
 
 const calculatorData = {
+  putty: {
+    title: "Калькулятор расхода шпаклёвки",
+    intro: "Рассчитайте ориентировочную массу шпаклёвки для сплошного выравнивания стен по площади, толщине каждого слоя и паспортному расходу смеси.",
+    formula: "Площадь × средняя толщина одного слоя × число слоёв × расход на 1 м² при 1 мм. После этого прибавляется запас; количество упаковок округляется вверх.",
+    fields: [
+      { name: "area", label: "Площадь шпаклевания", unit: "м²", step: "0.1", value: "30", min: "0.1" },
+      { name: "rate", label: "Расход с упаковки", unit: "кг/м² на 1 мм", step: "0.01", value: "1.2", min: "0.01" },
+      { name: "thickness", label: "Средняя толщина одного слоя", unit: "мм", step: "0.1", value: "1", min: "0.1" },
+      { name: "coats", label: "Количество слоёв", unit: "слоя", step: "1", value: "2", min: "1" },
+      { name: "bag", label: "Вес мешка или ведра", unit: "кг", step: "0.1", value: "20", min: "0.1" },
+      { name: "reserve", label: "Запас", unit: "%", step: "1", value: "10", min: "0" }
+    ],
+    note: "Расход и допустимую толщину возьмите из инструкции выбранной шпаклёвки. Швы гипсокартона, отдельные ямки и заполнение глубоких неровностей рассчитывают отдельно."
+  },
   plaster: {
     title: "Расчёт штукатурки",
     intro: "Оцените массу сухой смеси и число мешков по площади, среднему слою и расходу, указанному производителем.",
