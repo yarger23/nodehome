@@ -123,6 +123,19 @@
       const reserve = getNumber(form, "reserve");
       const multiplier = 1 + reserve / 100;
 
+      if (type === "putty") {
+        const rate = getNumber(form, "rate");
+        const coats = getNumber(form, "coats");
+        const bag = getNumber(form, "bag");
+        const kilograms = area * thickness * coats * rate * multiplier;
+        const bags = Math.ceil(kilograms / bag);
+        showResult(form, "Предварительный расход шпаклёвки", [
+          numberFormat.format(kilograms) + " кг материала с учётом запаса",
+          "Упаковок: " + bags + " по " + numberFormat.format(bag) + " кг; слоёв: " + coats
+        ]);
+        return;
+      }
+
       if (type === "plaster") {
         const rate = getNumber(form, "rate");
         const bag = getNumber(form, "bag");
