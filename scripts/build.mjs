@@ -724,7 +724,7 @@ function articlePage(article) {
     }
   ];
   return layout({
-    title: article.title,
+    title: article.seoTitle || article.title,
     description: article.description,
     route: "/article/" + article.slug + "/",
     body,
