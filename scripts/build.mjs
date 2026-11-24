@@ -618,6 +618,14 @@ function categoryPage(category, page = 1, route = "/catalog/" + category.id + "/
   });
 }
 
+function formatRuSectionCount(count) {
+  const last = count % 10;
+  const lastTwo = count % 100;
+  const noun = last === 1 && lastTwo !== 11 ? "раздел" :
+    last >= 2 && last <= 4 && (lastTwo < 12 || lastTwo > 14) ? "раздела" : "разделов";
+  return count + " " + noun;
+}
+
 function articleBody(article) {
   return article.sections.map((section) => {
     let html = '<section id="' + escapeHtml(section.id) + '"><h2>' + escapeHtml(section.title) + "</h2>";
@@ -696,11 +704,13 @@ function articlePage(article) {
   const body = '<article class="article-shell container">' + breadcrumb(pathItems) +
     '<header class="article-head"><p class="eyebrow">' + escapeHtml(primaryCategory ? primaryCategory.title : "Инструкция") + "</p>" +
     "<h1>" + escapeHtml(article.title) + "</h1><p class=\"article-lead\">" + escapeHtml(article.intro) + "</p>" +
-    '<div class="article-meta"><span>' + escapeHtml(article.minutes) + " минут чтения</span><span>Практическая инструкция</span></div></header>" +
+    '<div class="article-meta"><span>' + escapeHtml(article.minutes) + " минут чтения</span><span>Практическая инструкция</span>" +
+    (article.updatedAt ? "<span>Обновлено " + escapeHtml(article.updatedAt.split("-").reverse().join(".")) + "</span>" : "") +
+    "</div></header>" +
     (article.image ? '<img class="article-cover" src="/assets/images/' + escapeHtml(article.image) +
       '" alt="' + escapeHtml(article.imageAlt || "") +
       '" width="1200" height="800" fetchpriority="high" decoding="async">' : "") +
-    '<details class="article-toc"><summary>Содержание статьи <span>' + article.sections.length + " раздела</span></summary><ol>" + toc + "</ol></details>" +
+    '<details class="article-toc"><summary>Содержание статьи <span>' + formatRuSectionCount(article.sections.length) + "</span></summary><ol>" + toc + "</ol></details>" +
     '<div class="article-reading"><div class="article-content">' + articleBody(article) +
     (faqs ? '<section class="article-faq"><h2>Частые вопросы</h2>' + faqs + "</section>" : "") +
     sourcesHtml +
@@ -718,6 +728,7 @@ function articlePage(article) {
       description: article.description,
       ...(article.image ? { image: BASE_URL + "/assets/images/" + article.image } : {}),
       ...(article.publishedAt ? { datePublished: article.publishedAt } : {}),
+      ...(article.updatedAt ? { dateModified: article.updatedAt } : {}),
       mainEntityOfPage: BASE_URL + "/article/" + article.slug + "/",
       inLanguage: "ru-RU",
       publisher: { "@type": "Organization", name: site.siteName, url: BASE_URL }
